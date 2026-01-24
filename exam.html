@@ -1314,4 +1314,33 @@
 </div>
 
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Select all elements with the class 'cite'
+        const citations = document.querySelectorAll('.cite');
+
+        citations.forEach(span => {
+            const text = span.innerHTML;
+            console.log(text)
+            
+            // Regex to extract the filename and page number
+            // Matches format: "Source: [filename], Page [number]"
+            const match = text.match(/Source:\s*(.*?),\s*Page\s*(\d+)/);
+
+            if (match) {
+                const filename = match[1].trim();
+                const pageNum = match[2].trim();
+                
+                // Construct the path to the PDF with the specific page anchor
+                // Note: #page=N is a standard parameter supported by most PDF viewers (Chrome, Edge, Firefox)
+                const pdfPath = `inputs/${filename}#page=${pageNum}`;
+
+                // Replace the text with a clickable link
+                // target="_blank" ensures it opens in a new tab so you don't lose your place in the quiz
+                span.innerHTML = `<a href="${pdfPath}" target="_blank" title="Open PDF at Page ${pageNum}" style="text-decoration: underline; color: inherit; cursor: pointer;">${text}</a>`;
+            }
+        });
+    });
+</script>
 </html>
