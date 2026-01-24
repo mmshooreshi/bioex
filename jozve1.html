@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ماژول تسلط بر امتحان: مهندسی بیوشیمی (Biochemical Engineering)</title>
+    <style>
+        :root {
+            --bg-color: #fdfdfd;
+            --text-color: #333;
+            --accent-color: #2c3e50;
+            --concept-bg: #fff3cd; /* Gold/Yellow for Concepts */
+            --process-bg: #d1ecf1; /* Soft Blue for Processes */
+            --trap-bg: #f8d7da;    /* Light Red for Traps */
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: var(--text-color);
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--accent-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        h1 { font-size: 2.2em; text-align: center; margin-bottom: 40px; }
+        h2 { margin-top: 40px; }
+
+        /* Highlighting Classes */
+        .concept { background-color: var(--concept-bg); padding: 2px 4px; border-radius: 4px; font-weight: bold; border-bottom: 2px solid #ffeeba; }
+        .process { background-color: var(--process-bg); padding: 2px 4px; border-radius: 4px; border-bottom: 2px solid #bee5eb; }
+        .trap { background-color: var(--trap-bg); padding: 2px 4px; border-radius: 4px; font-weight: bold; color: #721c24; border-bottom: 2px solid #f5c6cb; }
+
+        /* English Terms */
+        .en {
+            font-family: 'Consolas', 'Courier New', monospace;
+            direction: ltr;
+            display: inline-block;
+            font-size: 0.95em;
+            color: #d63384;
+        }
+
+        /* Cheat Sheet */
+        .cheat-sheet {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: var(--border-radius);
+        }
+        .cheat-sheet ul { list-style-type: square; padding-right: 20px; }
+        .cheat-sheet li { margin-bottom: 10px; }
+
+        /* MCQs */
+        .mcq-block {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            transition: transform 0.2s;
+        }
+        .mcq-block:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+
+        .question { font-weight: bold; font-size: 1.1em; margin-bottom: 15px; }
+        
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .options label:hover { background-color: #f8f9fa; }
+
+        /* Answer Feedback */
+        .feedback {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-right: 4px solid var(--accent-color);
+            font-size: 0.95em;
+        }
+        .correct-answer { color: #155724; font-weight: bold; }
+        .explanation { margin-top: 5px; }
+
+        /* Button */
+        .reveal-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            margin-top: 10px;
+        }
+        .reveal-btn:hover { background-color: #1a252f; }
+
+        /* Footer */
+        .footer-note {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>مهندسی بیوشیمی: ماژول تسلط بر امتحان نهایی<br><span style="font-size:0.6em; color:#666;">Lecture 1 Review Strategy</span></h1>
+
+    <div style="background-color: #e2e3e5; padding: 15px; border-radius: 8px; margin-bottom: 30px;">
+        <strong>راهنمای مطالعه (Legenda):</strong><br>
+        <span class="concept">طلایی</span>: تعاریف کلیدی و مفاهیم پایه.<br>
+        <span class="process">آبی ملایم</span>: فرآیندها، مکانیسم‌ها و روش‌های فنی.<br>
+        <span class="trap">قرمز روشن</span>: تله‌های امتحانی، استثناها و نکات انحرافی.
+    </div>
+
+    <h2>بخش اول: برگه تقلب حقایق کلیدی (The Cheat Sheet)</h2>
+    <div class="cheat-sheet">
+        <p>قبل از ورود به تست‌ها، این "حقایق با بازده بالا" (High-Yield Facts) را مرور کنید. این‌ها دقیقا همان نقاطی هستند که طراح سوال روی آن‌ها تمرکز می‌کند.</p>
+        <ul>
+            <li><strong>تمایز تعاریف:</strong> <span class="concept">Biochemical Engineering</span> گسترش اصول مهندسی شیمی است که از یک <span class="en">Biocatalyst</span> استفاده می‌کند. این را با <span class="trap">Biomedical Engineering</span> (که روی سیستم‌های سلامت انسان متمرکز است) اشتباه نگیرید.</li>
+            <li><strong>داستان پنی‌سیلین:</strong> کشف توسط فلمینگ (1928)، اما توسعه فرآیند <span class="process">Fermentation</span> در دهه 1940 انجام شد چون <span class="trap">Chemical Synthesis</span> بسیار دشوار بود.</li>
+            <li><strong>قانون Brix:</strong> فرمول طلایی برای تخمین الکل: <span class="trap">1 Baume = 1.8 Brix = 1% Potential Alcohol</span>.</li>
+            <li><strong>استوکیومتری اتانول:</strong> 180 گرم گلوکز به صورت <span class="concept">Theoretical</span> مقدار 92 گرم اتانول می‌دهد، اما <span class="trap">Actual Yield</span> حدود 84.6 گرم است (چگالی اتانول: 0.789 g/mL).</li>
+            <li><strong>صنعت نساجی (Textiles):</strong> استفاده از آنزیم <span class="en">Cellulase</span> برای سنگ‌شویی (Stonewashing). مزیت: ضایعات کمتر. <span class="trap">عیب بزرگ: پارچه را ضعیف می‌کند (Weakens the fabric).</span></li>
+            <li><strong>توسعه دارو (Pharma Timeline):</strong> میانگین 15 سال زمان و هزینه 400 میلیون دلار. فازها: <span class="process">Phase I</span> (داوطلبان سالم) -> <span class="process">Phase III</span> (چند هزار بیمار).</li>
+            <li><strong>آمار صنعت کانادا:</strong> در سال 2018، درآمد به 54 میلیارد دلار رسید (توسط 8000 شرکت). این یک جهش بزرگ نسبت به ارقام سال 1999 است.</li>
+        </ul>
+    </div>
+
+    <h2>بخش دوم: 35 سوال چندگزینه‌ای دشوار (Mastery MCQs)</h2>
+    <p>به سوالات زیر پاسخ دهید. برای دیدن پاسخ تشریحی و تحلیل "تله‌های آموزشی"، روی دکمه کلیک کنید.</p>
+
+    <div class="mcq-block">
+        <div class="question">1. کدام گزینه دقیق‌ترین تمایز بین <span class="en">Biomedical Engineering</span> و <span class="en">Biochemical Engineering</span> را بر اساس یادداشت‌های درس بیان می‌کند؟</div>
+        <div class="options">
+            <label><input type="radio" name="q1"> الف) اولی بر روی سیستم‌های کشاورزی تمرکز دارد، دومی بر روی داروسازی.</label>
+            <label><input type="radio" name="q1"> ب) اولی مهندسی روی سیستم‌ها برای بهبود سلامت انسان است؛ دومی گسترش اصول مهندسی شیمی با استفاده از <span class="en">Biocatalyst</span> است.</label>
+            <label><input type="radio" name="q1"> ج) اولی زیرمجموعه‌ای از <span class="en">Biotechnology</span> است، در حالی که دومی کاملاً از مهندسی شیمی جداست.</label>
+            <label><input type="radio" name="q1"> د) اولی از آنزیم‌ها استفاده می‌کند، دومی فقط از سلول‌های زنده استفاده می‌کند.</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a1')">نمایش پاسخ و تحلیل</button>
+        <div id="a1" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                دقت کنید! یادداشت‌ها <span class="concept">Biomedical Engineering</span> را صریحاً به عنوان "engineering on systems to improve human health" تعریف می‌کنند. در مقابل، <span class="concept">Biochemical Engineering</span> به عنوان "extension of chemical engineering principles" تعریف شده که از یک <span class="en">Biocatalyst</span> برای تغییر شیمیایی مطلوب استفاده می‌کند. <span class="trap">تله:</span> بسیاری از دانشجویان فکر می‌کنند هر دو یکی هستند، اما "بیوکاتالیست" کلیدواژه مهندسی بیوشیمی است.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">2. در تاریخچه تولید پنی‌سیلین، چرا در دهه 1940 مسیر <span class="en">Fermentation</span> انتخاب شد؟</div>
+        <div class="options">
+            <label><input type="radio" name="q2"> الف) زیرا الکساندر فلمینگ فرآیند تخمیر را در سال 1928 کامل کرده بود.</label>
+            <label><input type="radio" name="q2"> ب) زیرا سنتز شیمیایی (<span class="en">Chemical synthesis</span>) بسیار دشوار ثابت شد.</label>
+            <label><input type="radio" name="q2"> ج) زیرا بازده تخمیر 100% بود.</label>
+            <label><input type="radio" name="q2"> د) زیرا کپک پنی‌سیلین در محیط کشت شیمیایی رشد نمی‌کرد.</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a2')">نمایش پاسخ و تحلیل</button>
+        <div id="a2" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                طبق اسلایدها، مسیر تخمیر انتخاب شد چون "<span class="trap">Chemical synthesis proved to be too difficult</span>". فلمینگ فقط کشف را انجام داد (1928)، اما فرآیند مهندسی و انتخاب مسیر تولید مربوط به دهه 1940 است.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">3. اگر 180 گرم گلوکز داشته باشیم، <span class="trap">حجم واقعی (Actual Volume)</span> اتانول تولید شده تقریباً چقدر خواهد بود؟ (چگالی اتانول = 0.789 g/mL)</div>
+        <div class="options">
+            <label><input type="radio" name="q3"> الف) 116.6 میلی‌لیتر</label>
+            <label><input type="radio" name="q3"> ب) 92 میلی‌لیتر</label>
+            <label><input type="radio" name="q3"> ج) 107.2 میلی‌لیتر</label>
+            <label><input type="radio" name="q3"> د) 84.6 میلی‌لیتر</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a3')">نمایش پاسخ و تحلیل</button>
+        <div id="a3" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                این یک <span class="trap">سوال محاسباتی فریبنده</span> است.
+                <br>1. بازده تئوری جرمی: 180g گلوکز -> 92g اتانول.
+                <br>2. بازده واقعی جرمی (طبق اسلاید): 84.6g.
+                <br>3. تبدیل جرم به حجم: Volume = Mass / Density.
+                <br>4. محاسبه: 84.6 / 0.789 = <span class="concept">107.2 mL</span>.
+                <br>گزینه (د) جرم است نه حجم. گزینه (الف) حجم تئوری است، نه واقعی.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">4. در مقیاس <span class="en">Brix</span>، رابطه تقریبی بین Baume و پتانسیل الکل چیست؟</div>
+        <div class="options">
+            <label><input type="radio" name="q4"> الف) 1 Baume = 1 Brix = 1% Alcohol</label>
+            <label><input type="radio" name="q4"> ب) 1 Baume = 1.8 Brix = 1.8% Alcohol</label>
+            <label><input type="radio" name="q4"> ج) 1 Baume = 1.8 Brix = 1% Alcohol</label>
+            <label><input type="radio" name="q4"> د) 1.8 Baume = 1 Brix = 1% Alcohol</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a4')">نمایش پاسخ و تحلیل</button>
+        <div id="a4" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                قانون سرانگشتی (Rule of thumb) در اسلایدها به صراحت بیان شده است: <span class="concept">1 Baume = 1.8 Brix = 18 g/L sugar = 1% potential alcohol</span>. دقت کنید که 1.8 بریکس معادل 1 درصد الکل است، نه 1.8 درصد.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">5. کدام یک از موارد زیر به عنوان <span class="trap">عیب (Disadvantage)</span> اصلی استفاده از آنزیم <span class="en">Cellulase</span> در سنگ‌شویی جین ذکر شده است؟</div>
+        <div class="options">
+            <label><input type="radio" name="q5"> الف) تولید ضایعات جامد بیشتر (More solid waste)</label>
+            <label><input type="radio" name="q5"> ب) زمان تیمار طولانی‌تر (Longer treatment times)</label>
+            <label><input type="radio" name="q5"> ج) ضعیف شدن پارچه (Weakens the fabric)</label>
+            <label><input type="radio" name="q5"> د) نیاز به دمای بسیار بالا</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a5')">نمایش پاسخ و تحلیل</button>
+        <div id="a5" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                در مقایسه روش سنتی (Pumice stones) و روش جدید (Cellulase)، اسلاید مزایا را "new looks" و "shorter treatment times" ذکر می‌کند، اما به صراحت می‌گوید که این آنزیم <span class="trap">weakens the fabric</span> (چون سلولز پنبه را هیدرولیز می‌کند). گزینه‌های الف و ب برعکس هستند.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">6. طبق آمار BioTalent Canada (گزارش 2018)، درآمد سالانه علوم زیستی و بیوتکنولوژی کانادا چقدر بوده است؟</div>
+        <div class="options">
+            <label><input type="radio" name="q6"> الف) 1.9 میلیارد دلار</label>
+            <label><input type="radio" name="q6"> ب) 30.2 میلیارد دلار</label>
+            <label><input type="radio" name="q6"> ج) 54 میلیارد دلار</label>
+            <label><input type="radio" name="q6"> د) 400 میلیون دلار</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a6')">نمایش پاسخ و تحلیل</button>
+        <div id="a6" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                این سوال برای تست دقت شما به <span class="trap">تاریخ آمار</span> است. 1.9 میلیارد مربوط به آمار قدیمی (1999) است. 30.2 میلیارد مربوط به صنعت مواد شیمیایی (2000) است. عدد صحیح برای سال 2018، <span class="concept">$54 billion</span> است.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">7. در فرآیند تایید دارو، فاز سوم (<span class="en">Phase III</span>) شامل چه گروهی است؟</div>
+        <div class="options">
+            <label><input type="radio" name="q7"> الف) داوطلبان سالم (Healthy volunteers)</label>
+            <label><input type="radio" name="q7"> ب) آزمایش پیش‌بالینی روی حیوانات (Preclinical in animals)</label>
+            <label><input type="radio" name="q7"> ج) 1000 تا 3000 بیمار (Patients)</label>
+            <label><input type="radio" name="q7"> د) بررسی FDA</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a7')">نمایش پاسخ و تحلیل</button>
+        <div id="a7" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                ترتیب حیاتی است:
+                <br>Phase I: داوطلبان سالم.
+                <br><span class="process">Phase III: 1000 to 3000 patients</span>.
+                <br>گزینه الف مربوط به فاز یک است.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">8. بزرگترین بازار منفرد (Single market) برای آنزیم‌ها کدام صنعت است؟</div>
+        <div class="options">
+            <label><input type="radio" name="q8"> الف) داروسازی (Pharmaceuticals)</label>
+            <label><input type="radio" name="q8"> ب) مواد شوینده (Detergents)</label>
+            <label><input type="radio" name="q8"> ج) نساجی (Textiles)</label>
+            <label><input type="radio" name="q8"> د) صنایع غذایی (Food)</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a8')">نمایش پاسخ و تحلیل</button>
+        <div id="a8" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                اسلاید مربوط به شوینده‌ها صریحاً بیان می‌کند: "<span class="concept">Detergent industry is the largest single market for enzymes</span>" با سهم 25 تا 30 درصد از کل فروش.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">9. نقش <span class="en">Bentonite</span> در فلوچارت تولید شراب (Winemaking) چیست؟</div>
+        <div class="options">
+            <label><input type="radio" name="q9"> الف) تخمیر قندها</label>
+            <label><input type="radio" name="q9"> ب) تنظیم pH</label>
+            <label><input type="radio" name="q9"> ج) شفاف‌سازی و حذف پروتئین‌ها (در مرحله Blend components)</label>
+            <label><input type="radio" name="q9"> د) کشتن مخمرها</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a9')">نمایش پاسخ و تحلیل</button>
+        <div id="a9" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                در اسلاید "Process flowsheet - Modern Wine Making"، بنتونیت (<span class="process">Bentonite slurry</span>) به تانک ترکیب اجزا اضافه می‌شود. بنتونیت معمولاً برای جذب پروتئین‌ها و شفاف‌سازی استفاده می‌شود (reading flow chart).
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">10. کدام یک از چالش‌های زیر برای <span class="en">Bioprocesses</span> در مقایسه با فرآیندهای شیمیایی معمولی ذکر شده است؟</div>
+        <div class="options">
+            <label><input type="radio" name="q10"> الف) محصولات معمولاً بسیار غلیظ هستند.</label>
+            <label><input type="radio" name="q10"> ب) سلول‌ها در برابر شرایط خارجی (T, pH) مقاوم هستند.</label>
+            <label><input type="radio" name="q10"> ج) محصول نهایی معمولاً در محیط بیوراکتور بسیار رقیق (Dilute) است.</label>
+            <label><input type="radio" name="q10"> د) عدم وجود محصولات جانبی (Byproducts).</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a10')">نمایش پاسخ و تحلیل</button>
+        <div id="a10" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                اسلاید "Bioprocesses are special" نکات کلیدی را لیست می‌کند: محصولات حساس هستند (نه مقاوم) و <span class="trap">Product is generally very dilute</span>. همچنین محصولات جانبی زیادی وجود دارد.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">11. میکروارگانیسم <span class="en">Aspergillus niger</span> عمدتاً برای تولید کدام ماده شیمیایی صنعتی استفاده می‌شود؟</div>
+        <div class="options">
+            <label><input type="radio" name="q11"> الف) Ethanol</label>
+            <label><input type="radio" name="q11"> ب) Citric Acid</label>
+            <label><input type="radio" name="q11"> ج) Xylanase</label>
+            <label><input type="radio" name="q11"> د) Penicillin</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a11')">نمایش پاسخ و تحلیل</button>
+        <div id="a11" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                در اسلاید "Industrial Chemicals"، مثال ذکر شده این است: "<span class="concept">organic acids produced from Aspergillus niger, citric acid</span>". زیلاناز برای خمیر چوب استفاده می‌شود اما منبع آن در این خط ذکر نشده است.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">12. در فرآیند تولید پنی‌سیلین نشان داده شده در فلوچارت، اولین مرحله جداسازی پس از تانک تخمیر چیست؟</div>
+        <div class="options">
+            <label><input type="radio" name="q12"> الف) Centrifugal extractor</label>
+            <label><input type="radio" name="q12"> ب) Purification column</label>
+            <label><input type="radio" name="q12"> ج) Rotary filter</label>
+            <label><input type="radio" name="q12"> د) Evaporator</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a12')">نمایش پاسخ و تحلیل</button>
+        <div id="a12" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                نگاه دقیق به "Figure 1.3 Schematic of penicillin production process" نشان می‌دهد که خروجی تانک تخمیر مستقیماً به <span class="process">Rotary filter</span> می‌رود تا زیست‌توده (Biomass/Mycelium) جدا شود. سپس حلال اضافه شده و به Centrifugal extractor می‌رود.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">13. کدام آنزیم در شوینده‌ها استفاده می‌شود و هدف آن چیست؟</div>
+        <div class="options">
+            <label><input type="radio" name="q13"> الف) آمیلاز برای حذف چربی‌ها</label>
+            <label><input type="radio" name="q13"> ب) لیپاز برای حذف نشاسته</label>
+            <label><input type="radio" name="q13"> ج) پروتئاز برای حذف پروتئین‌ها</label>
+            <label><input type="radio" name="q13"> د) سلولاز برای حذف رنگ</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a13')">نمایش پاسخ و تحلیل</button>
+        <div id="a13" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                تطابق آنزیم و سوبسترا:
+                <br>Proteases -> Proteins
+                <br>Amylases -> Starches
+                <br>Lipases -> Lipids (Fats/Oils)
+                <br>گزینه ج صحیح است. گزینه‌های الف و ب جابجا نوشته شده‌اند.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">14. در فرآیند <span class="en">Malting</span> (مالت‌سازی)، هدف اصلی از خشک کردن دانه‌ها پس از جوانه‌زنی چیست؟</div>
+        <div class="options">
+            <label><input type="radio" name="q14"> الف) فعال کردن مخمرها</label>
+            <label><input type="radio" name="q14"> ب) توقف رشد گیاه قبل از اینکه نشاسته مصرف شود</label>
+            <label><input type="radio" name="q14"> ج) تبدیل قند به الکل</label>
+            <label><input type="radio" name="q14"> د) استریلیزاسیون کامل</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a14')">نمایش پاسخ و تحلیل</button>
+        <div id="a14" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                تعریف <span class="process">Malting</span>: دانه‌ها خیسانده می‌شوند تا جوانه بزنند (آنزیم‌ها نشاسته را به قند تبدیل کنند) و سپس خشک می‌شوند "before a plant develops". اگر خشک نشوند، گیاه رشد کرده و قندها را مصرف می‌کند.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">15. محصول <span class="en">Phyto-vanilla(tm)</span> که در بخش کشاورزی ذکر شده، از چه طریقی تولید می‌شود؟</div>
+        <div class="options">
+            <label><input type="radio" name="q15"> الف) استخراج مستقیم از لوبیا وانیل</label>
+            <label><input type="radio" name="q15"> ب) کشت بافت (Tissue culture)</label>
+            <label><input type="radio" name="q15"> ج) سنتز شیمیایی</label>
+            <label><input type="radio" name="q15"> د) تخمیر با E. coli</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a15')">نمایش پاسخ و تحلیل</button>
+        <div id="a15" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                این یک جزئیات ریز است. اسلاید "Agricultural" ذکر می‌کند: "<span class="trap">Phyto-vanilla(tm) flavor derived from tissue culture</span>".
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">16. آنتی‌بادی‌های مونوکلونال (<span class="en">Monoclonal Antibodies</span>) چگونه تولید می‌شوند؟</div>
+        <div class="options">
+            <label><input type="radio" name="q16"> الف) تزریق مستقیم به بیماران فاز سوم</label>
+            <label><input type="radio" name="q16"> ب) غربالگری Hybridomas برای تولید آنتی‌بادی</label>
+            <label><input type="radio" name="q16"> ج) استفاده از مخمر Saccharomyces cerevisiae</label>
+            <label><input type="radio" name="q16"> د) استخراج از گیاهان</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a16')">نمایش پاسخ و تحلیل</button>
+        <div id="a16" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                دیاگرام "Monoclonal Antibody Production" نشان می‌دهد که سلول‌ها ادغام شده و تشکیل <span class="process">Hybridomas</span> می‌دهند که سپس برای تولید آنتی‌بادی غربالگری (Screened) می‌شوند.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">17. کدام مولکول برای تولید اتانول در تخمیر مستقیماً به <span class="en">Acetaldehyde</span> تبدیل می‌شود؟</div>
+        <div class="options">
+            <label><input type="radio" name="q17"> الف) Glucose</label>
+            <label><input type="radio" name="q17"> ب) Pyruvate</label>
+            <label><input type="radio" name="q17"> ج) Acetyl-CoA</label>
+            <label><input type="radio" name="q17"> د) Lactate</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a17')">نمایش پاسخ و تحلیل</button>
+        <div id="a17" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                مسیر واکنش در اسلاید: Glucose -> 2 Pyruvate -> 2 Acetaldehyde + 2 CO2 -> 2 Ethanol.
+                بنابراین <span class="process">Pyruvate</span> پیش‌ساز مستقیم استالدهید است (با از دست دادن CO2).
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">18. طبق اسلایدهای مربوط به بازار دارویی (2005)، داروی <span class="en">Enbrel</span> برای درمان چه بیماری‌هایی استفاده می‌شود؟</div>
+        <div class="options">
+            <label><input type="radio" name="q18"> الف) کم‌خونی (Anemia)</label>
+            <label><input type="radio" name="q18"> ب) لوسمی (Leukemia)</label>
+            <label><input type="radio" name="q18"> ج) آرتریت روماتوئید و پسوریازیس (Rheumatoid arthritis and psoriasis)</label>
+            <label><input type="radio" name="q18"> د) سرطان سینه (Breast cancer)</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a18')">نمایش پاسخ و تحلیل</button>
+        <div id="a18" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                جدول "2005 World market" را چک کنید: Enbrel -> <span class="concept">Rheumatoid arthritis and psoriasis</span>. (داروی Herceptin برای سرطان سینه است).
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">19. کدام گزینه در مورد صنعت "Medical Devices" در کانادا (سال 2000) صحیح است؟</div>
+        <div class="options">
+            <label><input type="radio" name="q19"> الف) بیشتر شرکت‌ها خارجی بودند.</label>
+            <label><input type="radio" name="q19"> ب) 90% شرکت‌ها تحت مالکیت کانادا (Canadian-owned) بودند.</label>
+            <label><input type="radio" name="q19"> ج) درآمد صادراتی صفر بود.</label>
+            <label><input type="radio" name="q19"> د) تعداد کارمندان کمتر از 5000 نفر بود.</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a19')">نمایش پاسخ و تحلیل</button>
+        <div id="a19" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                آمار اسلاید: "800 manufacturing firms in 2000 (<span class="concept">90% Canadian-owned</span>)".
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">20. تعریف <span class="en">Biotechnology</span> در یادداشت‌ها چیست؟</div>
+        <div class="options">
+            <label><input type="radio" name="q20"> الف) استفاده از آنزیم‌ها برای شستشو.</label>
+            <label><input type="radio" name="q20"> ب) استفاده یا توسعه روش‌های دستکاری مستقیم ژنتیکی برای یک هدف مطلوب.</label>
+            <label><input type="radio" name="q20"> ج) مهندسی سیستم‌های بیمارستانی.</label>
+            <label><input type="radio" name="q20"> د) مطالعه آناتومی سلول حیوانی.</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a20')">نمایش پاسخ و تحلیل</button>
+        <div id="a20" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                اسلاید Definitions: "<span class="concept">Biotechnology: use or development of methods of direct genetic manipulation for a desirable goal.</span>"
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">21. آنزیم <span class="en">Xylanase</span> برای چه منظوری استفاده می‌شود؟</div>
+        <div class="options">
+            <label><input type="radio" name="q21"> الف) تولید پنیر</label>
+            <label><input type="radio" name="q21"> ب) تولید اسید سیتریک</label>
+            <label><input type="radio" name="q21"> ج) سفیدگری و خمیر چوب (Wood pulping and bleaching)</label>
+            <label><input type="radio" name="q21"> د) طعم‌دهنده وانیل</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a21')">نمایش پاسخ و تحلیل</button>
+        <div id="a21" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                در بخش Industrial Chemicals: "<span class="process">Xylanase used for wood pulping and bleaching</span>".
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">22. در تولید سوخت اتانول، کدام مرحله برای جداسازی آب از اتانول در انتهای فرآیند استفاده می‌شود؟</div>
+        <div class="options">
+            <label><input type="radio" name="q22"> الف) Fermentation</label>
+            <label><input type="radio" name="q22"> ب) Beer distillation</label>
+            <label><input type="radio" name="q22"> ج) Azeotropic Distillation / Dehydration</label>
+            <label><input type="radio" name="q22"> د) Stripper</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a22')">نمایش پاسخ و تحلیل</button>
+        <div id="a22" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                فلوچارت "Fuel ethanol" نشان می‌دهد که پس از ستون‌های تقطیر اولیه، مرحله نهایی <span class="process">Azeotropic Distillation</span> و <span class="process">Dehydration</span> برای تولید Fuel Grade Ethanol است.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">23. "راکتور درون راکتور" (Reactor inside a reactor) به چه مفهومی اشاره دارد؟</div>
+        <div class="options">
+            <label><input type="radio" name="q23"> الف) استفاده از مخمر در تانک استیل</label>
+            <label><input type="radio" name="q23"> ب) سلول به عنوان بیوراکتور</label>
+            <label><input type="radio" name="q23"> ج) قرار دادن آنزیم‌ها درون کپسول</label>
+            <label><input type="radio" name="q23"> د) استفاده از گرمکن داخلی در فرمانتور</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a23')">نمایش پاسخ و تحلیل</button>
+        <div id="a23" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                اسلاید "Cell as a bioreactor" نموداری را نشان می‌دهد که سلول خود به عنوان یک راکتور عمل می‌کند که در راکتور بزرگتر قرار دارد. مفهوم: <span class="concept">Cell as a bioreactor = Reactor inside a reactor</span>.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">24. کدام فاکتور جزو عوامل موثر بر تخمیر مخمر ذکر <span class="trap">نشده</span> است؟</div>
+        <div class="options">
+            <label><input type="radio" name="q24"> الف) pH</label>
+            <label><input type="radio" name="q24"> ب) ویتامین‌ها</label>
+            <label><input type="radio" name="q24"> ج) فشار اتمسفر (Atmospheric Pressure)</label>
+            <label><input type="radio" name="q24"> د) غلظت گوگرد دی‌اکسید (SO2)</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a24')">نمایش پاسخ و تحلیل</button>
+        <div id="a24" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                لیست فاکتورها: Yeast Species, Temperature, Sugar concentration, pH, Vitamins, Sulfur dioxide. فشار اتمسفر در این لیست نیست.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">25. کیت <span class="en">RIS® Water tests</span> بر چه اساسی کار می‌کند و چه چیزی را تشخیص می‌دهد؟</div>
+        <div class="options">
+            <label><input type="radio" name="q25"> الف) بر پایه DNA، باکتری‌ها را تشخیص می‌دهد</label>
+            <label><input type="radio" name="q25"> ب) بر پایه آنزیم، فلزات سنگین را تشخیص می‌دهد</label>
+            <label><input type="radio" name="q25"> ج) بر پایه آنتی‌بادی، حلال‌هایی مثل بنزن را تشخیص می‌دهد</label>
+            <label><input type="radio" name="q25"> د) بر پایه pH، اسیدیته را می‌سنجد</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a25')">نمایش پاسخ و تحلیل</button>
+        <div id="a25" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                اسلاید Environment: "<span class="process">antibody based kit to detect low level of solvents such as benzene</span>".
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">26. چالش جدید (<span class="en">New challenge</span>) مطرح شده در تولید پروتئین‌های انسانی چیست؟</div>
+        <div class="options">
+            <label><input type="radio" name="q26"> الف) باکتری‌ها و مخمرها نمی‌توانند همیشه پروتئین انسانی را به شکل صحیح (Correctly form) بسازند.</label>
+            <label><input type="radio" name="q26"> ب) کشت سلول‌های حیوانی ارزان‌تر از باکتری است.</label>
+            <label><input type="radio" name="q26"> ج) پروتئین‌های انسانی در باکتری سمی هستند.</label>
+            <label><input type="radio" name="q26"> د) کمبود مواد اولیه.</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a26')">نمایش پاسخ و تحلیل</button>
+        <div id="a26" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه الف</span>
+            <div class="explanation">
+                اسلاید "New challenges": "Increasingly, bacteria and yeast cannot correctly form the human protein". راه حل پیشنهادی استفاده از کشت سلول جانوری (Animal cell culture) است که سخت‌تر است.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">27. در فرآیند <span class="en">Brewing</span> (آبجوسازی)، مایع شیرین حاصل از خیساندن مالت آسیاب شده چه نام دارد؟</div>
+        <div class="options">
+            <label><input type="radio" name="q27"> الف) Ethanol</label>
+            <label><input type="radio" name="q27"> ب) Wort</label>
+            <label><input type="radio" name="q27"> ج) Must</label>
+            <label><input type="radio" name="q27"> د) Lees</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a27')">نمایش پاسخ و تحلیل</button>
+        <div id="a27" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                تعریف <span class="concept">Wort</span>: مایعی که پس از حل شدن قندها، فیلتر شدن دانه‌ها و جوشاندن به دست می‌آید. (Must مربوط به شراب است).
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">28. کدام مورد به عنوان یکی از <span class="trap">مزایای</span> سلول‌ها به عنوان کاتالیست ذکر شده است؟</div>
+        <div class="options">
+            <label><input type="radio" name="q28"> الف) رشد سریع و نرخ واکنش بالا</label>
+            <label><input type="radio" name="q28"> ب) مقاومت در برابر حرارت بالا</label>
+            <label><input type="radio" name="q28"> ج) تبدیل مواد مغذی پایه (مثل ضایعات کشاورزی) به محصولات ارزشمند</label>
+            <label><input type="radio" name="q28"> د) جداسازی بسیار آسان محصول</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a28')">نمایش پاسخ و تحلیل</button>
+        <div id="a28" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                سایر گزینه‌ها در واقع معایب هستند (نرخ رشد کم است، حساس هستند، جداسازی سخت است). مزیت اصلی: "<span class="concept">Cells can turn basic nutrients (agricultural waste) into valuable products</span>".
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">29. کدام هورمون برای افزایش تولید شیر در گاو استفاده می‌شود؟</div>
+        <div class="options">
+            <label><input type="radio" name="q29"> الف) Insulin</label>
+            <label><input type="radio" name="q29"> ب) Recombinant bovine somatotropin (bST)</label>
+            <label><input type="radio" name="q29"> ج) Erythropoietin</label>
+            <label><input type="radio" name="q29"> د) Cellulase</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a29')">نمایش پاسخ و تحلیل</button>
+        <div id="a29" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                در اسلاید کشاورزی (Agricultural): <span class="concept">bST</span> برای افزایش تولید شیر ذکر شده است.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">30. در نمودار آناتومی سلول، <span class="en">Ribosomes</span> چه وظیفه‌ای دارند؟ (بر اساس دانش ضمنی مرتبط با تصویر)</div>
+        <div class="options">
+            <label><input type="radio" name="q30"> الف) تولید انرژی</label>
+            <label><input type="radio" name="q30"> ب) سنتز پروتئین</label>
+            <label><input type="radio" name="q30"> ج) فتوسنتز</label>
+            <label><input type="radio" name="q30"> د) ذخیره چربی</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a30')">نمایش پاسخ و تحلیل</button>
+        <div id="a30" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                اگرچه متن صریحاً تعریف نکرده، اما در تصویر "Anatomy of the Animal Cell" نشان داده شده و در مهندسی بیوشیمی (تولید محصول توسط سلول)، ریبوزوم‌ها کارخانه پروتئین‌سازی هستند. این دانش پایه برای درک اسلایدها ضروری است.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">31. سایز تقریبی آنزیم <span class="en">Acetylcholinesterase</span> در اسلایدها چقدر نشان داده شده است؟</div>
+        <div class="options">
+            <label><input type="radio" name="q31"> الف) چند میکرومتر</label>
+            <label><input type="radio" name="q31"> ب) محدوده نانومتر (nm)</label>
+            <label><input type="radio" name="q31"> ج) 1 میلی‌متر</label>
+            <label><input type="radio" name="q31"> د) قابل دیدن با چشم غیر مسلح</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a31')">نمایش پاسخ و تحلیل</button>
+        <div id="a31" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                اسلاید "Enzyme: Acetylcholinesterase" مقیاس را "<span class="concept">size range in nm</span>" نشان می‌دهد.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">32. فرمول محاسبه Brix چیست؟</div>
+        <div class="options">
+            <label><input type="radio" name="q32"> الف) [g sugar / g water] x 100</label>
+            <label><input type="radio" name="q32"> ب) [g water / (g sugar + g water)] x 100</label>
+            <label><input type="radio" name="q32"> ج) [g sugar / (g sugar + g water)] x 100</label>
+            <label><input type="radio" name="q32"> د) [g sugar / g solution] / 100</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a32')">نمایش پاسخ و تحلیل</button>
+        <div id="a32" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                فرمول دقیق: <span class="concept">Brix = [g sugar/(g sugar + g water)] x 100</span>.
+                این در واقع درصد وزنی قند در محلول است.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">33. در صنعت نساجی، آنزیم‌ها جایگزین چه چیزی شده‌اند؟</div>
+        <div class="options">
+            <label><input type="radio" name="q33"> الف) رنگ Indigo</label>
+            <label><input type="radio" name="q33"> ب) سنگ‌ پا (Pumice stones)</label>
+            <label><input type="radio" name="q33"> ج) کتان (Cotton)</label>
+            <label><input type="radio" name="q33"> د) آب</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a33')">نمایش پاسخ و تحلیل</button>
+        <div id="a33" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                دیاگرام مقایسه: "Traditional: abrasive action of pumice stones" در مقابل "New method: Cellulase enzyme".
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">34. کدام شرکت داروی <span class="en">Rituxan</span> را (طبق جدول) تولید می‌کند و برای چیست؟</div>
+        <div class="options">
+            <label><input type="radio" name="q34"> الف) Amgen - کم‌خونی</label>
+            <label><input type="radio" name="q34"> ب) Genentech/Roche - سرطان سینه</label>
+            <label><input type="radio" name="q34"> ج) Genentech/Roche/Biogen - لوسمی و لنفوم</label>
+            <label><input type="radio" name="q34"> د) Wyeth - آرتریت</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a34')">نمایش پاسخ و تحلیل</button>
+        <div id="a34" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ج</span>
+            <div class="explanation">
+                تطابق جدول: Rituxan -> <span class="concept">Leukemia and non-Hodgkins lymphoma</span> -> Genentech/Roche/Biogen.
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-block">
+        <div class="question">35. چرا در صنعت داروسازی (Pharma)، تغییر فرآیند دشوار است؟</div>
+        <div class="options">
+            <label><input type="radio" name="q35"> الف) چون مهندسان شیمی کافی وجود ندارد.</label>
+            <label><input type="radio" name="q35"> ب) خلوص و کیفیت محصول مانع تغییر فرآیند می‌شود (Product purity and quality impedes process change).</label>
+            <label><input type="radio" name="q35"> ج) چون تجهیزات زنگ می‌زنند.</label>
+            <label><input type="radio" name="q35"> د) چون سود شرکت کم می‌شود.</label>
+        </div>
+        <button class="reveal-btn" onclick="toggleAnswer('a35')">نمایش پاسخ و تحلیل</button>
+        <div id="a35" class="feedback">
+            <span class="correct-answer">پاسخ صحیح: گزینه ب</span>
+            <div class="explanation">
+                در اسلاید "Main Issues": یکی از مسائل اصلی این است که در Pharma، <span class="trap">product purity and quality impedes process change</span>. یعنی وقتی فرآیندی تایید شد، تغییر آن بسیار سخت است چون کیفیت محصول (جان انسان) در خطر است.
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        پایان ماژول. موفق باشید! | Generated based on Dr. Ghadami's Lecture Notes
+    </div>
+</div>
+
+<script>
+    function toggleAnswer(id) {
+        var x = document.getElementById(id);
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

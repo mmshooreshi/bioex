@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Biochemical Engineering - Exam Master Module</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
+
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #2c3e50;
+            --accent-gold: #f39c12; /* Concepts */
+            --bg-gold: #fef9e7;
+            --accent-blue: #2980b9; /* Processes */
+            --bg-blue: #eaf2f8;
+            --accent-red: #c0392b; /* Traps */
+            --bg-red: #f9e1e0;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+            font-weight: 900;
+        }
+
+        h1 { border-bottom: 3px solid #2c3e50; padding-bottom: 15px; margin-bottom: 30px; }
+        h2 { margin-top: 40px; border-right: 5px solid #2c3e50; padding-right: 15px; }
+
+        /* Highlighting System */
+        .concept {
+            background-color: var(--bg-gold);
+            border-bottom: 2px solid var(--accent-gold);
+            font-weight: bold;
+            padding: 0 4px;
+            color: #7f5200;
+        }
+
+        .process {
+            background-color: var(--bg-blue);
+            border-bottom: 2px solid var(--accent-blue);
+            padding: 0 4px;
+            color: #1a5276;
+        }
+
+        .trap {
+            background-color: var(--bg-red);
+            border-bottom: 2px solid var(--accent-red);
+            font-weight: bold;
+            padding: 0 4px;
+            color: #922b21;
+        }
+
+        /* Cheat Sheet Styling */
+        .cheat-sheet {
+            background: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .cheat-sheet ul {
+            list-style-type: none; /* Custom bullets */
+            padding-right: 10px;
+        }
+
+        .cheat-sheet li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-right: 25px;
+        }
+
+        .cheat-sheet li::before {
+            content: "⚡";
+            position: absolute;
+            right: 0;
+            color: var(--accent-gold);
+        }
+
+        /* MCQ Section Styling */
+        .mcq-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-right: 6px solid #95a5a6;
+            transition: all 0.3s ease;
+        }
+
+        .mcq-card:hover {
+            border-right-color: #2c3e50;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .options label:hover {
+            background: #f0f0f0;
+        }
+
+        /* Feedback Hidden by default */
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-top: 2px dashed #bdc3c7;
+            font-size: 0.95em;
+        }
+
+        .correct-answer {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .explanation-title {
+            font-weight: 900;
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .eng {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: ltr;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>جزوه نهایی Biochemical Engineering (Dr. Ghadami)</h1>
+    <p>دانشجوی گرامی، این ماژول برای تسلط بر نکات ظریف و "پشت پرده" اسلایدها طراحی شده است. به سیستم رنگ‌بندی دقت ویژه داشته باشید:</p>
+    <ul style="list-style: none; padding: 0;">
+        <li><span class="concept">رنگ زرد:</span> تعاریف کلیدی و مفاهیم پایه.</li>
+        <li><span class="process">رنگ آبی:</span> فرآیندها، مکانیسم‌ها و روش‌ها.</li>
+        <li><span class="trap">رنگ قرمز:</span> دام‌های امتحانی، استثناها و جزئیات "فریب‌دهنده".</li>
+    </ul>
+
+    <h2>بخش ۱: خلاصه نکات "High-Yield" (تقلب‌نامه ذهنی)</h2>
+    <div class="cheat-sheet">
+        <ul>
+            <li>
+                <strong>تفاوت مهندسی‌ها:</strong> <span class="concept">Biochemical Engineering</span> یعنی بسط اصول مهندسی شیمی در سیستم‌هایی که از <span class="concept">Biocatalyst</span> استفاده می‌کنند. اما <span class="trap">Biomedical Engineering</span> روی سیستم‌های سلامت انسان تمرکز دارد (مهندسی روی بدن).
+            </li>
+            <li>
+                <strong>داستان پنی‌سیلین (اعداد و گونه‌ها):</strong> کشف توسط <span class="eng">Fleming</span> در <span class="trap">1928</span> بود، اما تولید صنعتی (توسط <span class="eng">Florey & Chain</span>) در <span class="trap">دهه 1940</span> انجام شد.
+                <br>نکته مهم: گونه اولیه <span class="trap eng">P. notatum</span> (بازده کم: 1 mg/dm³) بود، اما گونه صنعتی امروزی <span class="trap eng">P. chrysogenum</span> (بازده بالا: 50 g/dm³) است.
+            </li>
+            <li>
+                <strong>متابولیت‌ها:</strong> 
+                <span class="concept">Primary Metabolite</span> (مثل اتانول و اسید سیتریک) در فاز <span class="process">Active Growth</span> تولید می‌شود. 
+                <span class="concept">Secondary Metabolite</span> (مثل پنی‌سیلین و آنتی‌بیوتیک‌ها) در فاز <span class="process">Stationary Phase</span> تولید می‌شود.
+            </li>
+            <li>
+                <strong>کاربرد آنزیم‌ها در صنعت:</strong>
+                <br>نساجی (لی شلوار جین): <span class="process eng">Cellulase</span> (حذف رنگ Indigo).
+                <br>شوینده‌ها: <span class="process eng">Proteases, Amylases, Lipases</span>.
+                <br>چوب و کاغذ: <span class="process eng">Xylanase</span> (برای Pulping/Bleaching).
+            </li>
+            <li>
+                <strong>قانون Brix و الکل:</strong> قانون سرانگشتی: <span class="trap">1 Baume = 1.8 Brix ≈ 1% Potential Alcohol</span>.
+            </li>
+            <li>
+                <strong>مکانیسم پنی‌سیلین:</strong> مهار سنتز <span class="concept eng">Peptidoglycan</span> در دیواره سلولی. فقط روی <span class="process">Gram Positive</span> موثر است (نه روی سلول‌های انسانی چون دیواره ندارند).
+            </li>
+        </ul>
+    </div>
+
+    <h2>بخش ۲: تست‌های چالشی و تحلیلی</h2>
+    <p>سوالات زیر برای شبیه‌سازی "دام‌های" استاد طراحی شده‌اند. قبل از خواندن پاسخ تشریحی، سعی کنید گزینه صحیح را حدس بزنید.</p>
+
+    <div class="mcq-card">
+        <div class="question-text">۱. کدام عبارت دقیق‌ترین تمایز بین <span class="eng">Biomedical Engineering</span> و <span class="eng">Biochemical Engineering</span> را طبق اسلایدهای دکتر قدمی بیان می‌کند؟</div>
+        <div class="options">
+            <label>الف) اولی از اصول مهندسی شیمی استفاده می‌کند، دومی از اصول مهندسی برق.</label>
+            <label>ب) اولی بر روی سیستم‌های کشاورزی تمرکز دارد، دومی بر روی سلامت انسان.</label>
+            <label>ج) Biomedical مهندسی "بر روی" سیستم‌های بیولوژیک برای سلامت است؛ Biochemical استفاده از یک بیوکاتالیست برای تبدیل شیمیایی است.</label>
+            <label>د) Biochemical زیرشاخه‌ای از Biomedical است که فقط روی داروسازی تمرکز دارد.</label>
+        </div>
+        <div class="feedback">
+            <span class="explanation-title">پاسخ تشریحی:</span>
+            گزینه <span class="correct-answer">(ج)</span> صحیح است.
+            <br>
+            طبق اسلایدها، <span class="concept">Biomedical Engineering</span> مهندسی روی سیستم‌ها برای بهبود سلامت انسان است. در مقابل، <span class="concept">Biochemical Engineering</span> بسط اصول مهندسی شیمی است که شرط اصلی آن حضور یک <span class="trap">Biocatalyst</span> برای انجام واکنش شیمیایی مطلوب است.
+            <br>
+            <span class="trap">دام آموزشی:</span> <span class="eng">Biological Engineering</span> (نه Biomedical) است که روی کشاورزی و پزشکی همزمان کار می‌کند.
+        </div>
+    </div>
+
+    <div class="mcq-card">
+        <div class="question-text">۲. در فرآیند "Stonewashing" پارچه جین (Denim)، کدام آنزیم استفاده می‌شود و مکانیسم دقیق آن چیست؟</div>
+        <div class="options">
+            <label>الف) <span class="eng">Amylase</span> – برای شکستن لکه‌های نشاسته‌ای.</label>
+            <label>ب) <span class="eng">Cellulase</span> – هیدرولیز جزئی سطح پنبه (Cotton) برای جدا کردن رنگ Indigo.</label>
+            <label>ج) <span class="eng">Protease</span> – حذف پروتئین‌های موجود در الیاف.</label>
+            <label>د) <span class="eng">Xylanase</span> – سفید کردن (Bleaching) پارچه بدون آسیب به بافت.</label>
+        </div>
+        <div class="feedback">
+            <span class="explanation-title">پاسخ تشریحی:</span>
+            گزینه <span class="correct-answer">(ب)</span> صحیح است.
+            <br>
+            در صنعت نساجی مدرن، به جای سنگ‌شور کردن فیزیکی (Pumice stones)، از آنزیم <span class="process eng">Cellulase</span> استفاده می‌شود. این آنزیم با "هیدرولیز جزئی" سطح الیاف کتان، باعث جدا شدن رنگ <span class="eng">Indigo</span> می‌شود.
+            <br>
+            <span class="trap">نکته انحرافی:</span> <span class="eng">Xylanase</span> در صنعت کاغذ (Wood pulping) کاربرد دارد، نه نساجی.
+        </div>
+    </div>
+
+    <div class="mcq-card">
+        <div class="question-text">۳. با توجه به منحنی رشد میکروبی، کدام گزینه در مورد تولید متابولیت‌ها صحیح است؟ (نمودارهای اسلاید Lecture 2)</div>
+        <div class="options">
+            <label>الف) پنی‌سیلین یک Primary Metabolite است و موازی با رشد سلول (Log Phase) تولید می‌شود.</label>
+            <label>ب) الکل (Ethanol) یک Secondary Metabolite است و بعد از توقف رشد تولید می‌شود.</label>
+            <label>ج) پنی‌سیلین یک Secondary Metabolite است و تولید آن نزدیک به شروع فاز سکون (Stationary Phase) آغاز می‌شود.</label>
+            <label>د) همه آنتی‌بیوتیک‌ها Primary Metabolite هستند چون برای دفاع سلول ضروری‌اند.</label>
+        </div>
+        <div class="feedback">
+            <span class="explanation-title">پاسخ تشریحی:</span>
+            گزینه <span class="correct-answer">(ج)</span> صحیح است.
+            <br>
+            اسلایدها به وضوح نشان می‌دهند که <span class="concept">Primary Metabolites</span> (مثل الکل و اسید سیتریک) در حین <span class="process">Active Cell Growth</span> تولید می‌شوند. اما <span class="concept">Secondary Metabolites</span> (مثل پنی‌سیلین) زمانی تولید می‌شوند که رشد سلول کند شده یا به فاز سکون (<span class="process">Stationary Phase</span>) رسیده است.
+            <br>
+            <span class="trap">تحلیل نمودار:</span> در نمودار پنی‌سیلین، پیک تولید محصول زمانی است که نمودار تعداد سلول‌ها (Biomass) صاف شده است.
+        </div>
+    </div>
+
+    <div class="mcq-card">
+        <div class="question-text">۴. در مورد تاریخچه و توسعه تولید پنی‌سیلین، کدام گزینه حاوی یک غلط علمی/تاریخی است؟</div>
+        <div class="options">
+            <label>الف) الکساندر فلمینگ اثر آن را در سال ۱۹۲۸ مشاهده کرد.</label>
+            <label>ب) فرآیند تولید شیمیایی (Chemical Synthesis) به دلیل پیچیدگی کنار گذاشته شد و مسیر تخمیر (Fermentation) انتخاب شد.</label>
+            <label>ج) تغییر گونه از <span class="eng">P. notatum</span> به <span class="eng">P. chrysogenum</span> بازده را از ۱ میلی‌گرم به ۵۰ گرم در دسی‌متر مکعب رساند.</label>
+            <label>د) پنی‌سیلین اولین محصول تجاری بود که در سیستم "بی‌هوازی سطحی" (Anaerobic Surface Culture) تولید شد.</label>
+        </div>
+        <div class="feedback">
+            <span class="explanation-title">پاسخ تشریحی:</span>
+            گزینه <span class="correct-answer">(د)</span> غلط است (و پاسخ سوال).
+            <br>
+            این یک <span class="trap">دام بزرگ</span> است! اسلایدها تاکید می‌کنند که پنی‌سیلین اولین محصول مهمی بود که در سیستم <span class="process">Aerobic, Submerged Fermentation</span> (هوازی و غوطه‌ور) تولید شد، نه بی‌هوازی سطحی. کپک‌ها معمولاً هوازی هستند.
+            <br>
+            سایر گزینه‌ها کاملاً صحیح هستند. تغییر گونه و سختی سنتز شیمیایی از دلایل اصلی موفقیت مهندسی بیوشیمی در این حوزه بود.
+        </div>
+    </div>
+
+    <div class="mcq-card">
+        <div class="question-text">۵. اگر درجه Brix یک محلول انگور برابر با ۱۸ باشد، پتانسیل الکل تقریبی آن چقدر است؟ (طبق قانون سرانگشتی اسلاید)</div>
+        <div class="options">
+            <label>الف) 18%</label>
+            <label>ب) 10%</label>
+            <label>ج) 1%</label>
+            <label>د) 1.8%</label>
+        </div>
+        <div class="feedback">
+            <span class="explanation-title">پاسخ تشریحی:</span>
+            گزینه <span class="correct-answer">(ب)</span> صحیح است.
+            <br>
+            طبق فرمول داخل اسلاید: <span class="concept">1.8 Brix ≈ 1% Potential Alcohol</span>.
+            <br>بنابراین:
+            $$ \frac{18 \text{ Brix}}{1.8} = 10\% \text{ Alcohol} $$
+            <br>
+            <span class="trap">نکته محاسباتی:</span> دقت کنید که 18 g/L شکر معادل 1% الکل است، اما عدد بریکس (18) باید بر 1.8 تقسیم شود.
+        </div>
+    </div>
+
+    <div class="mcq-card">
+        <div class="question-text">۶. مکانیسم اثر (MOA) آنتی‌بیوتیک‌های خانواده پنی‌سیلین چیست و چرا بر سلول‌های انسان بی‌اثرند؟</div>
+        <div class="options">
+            <label>الف) مهار سنتز پروتئین در ریبوزوم؛ سلول‌های انسان ریبوزوم متفاوت دارند.</label>
+            <label>ب) تخریب غشای سلولی؛ غشای انسان کلسترول دارد و مقاوم است.</label>
+            <label>ج) مهار سنتز <span class="eng">Peptidoglycan</span> (دیواره سلولی)؛ سلول‌های انسان فاقد دیواره سلولی هستند.</label>
+            <label>د) مهار تکثیر DNA؛ آنزیم پلیمراز باکتری با انسان متفاوت است.</label>
+        </div>
+        <div class="feedback">
+            <span class="explanation-title">پاسخ تشریحی:</span>
+            گزینه <span class="correct-answer">(ج)</span> صحیح است.
+            <br>
+            پنی‌سیلین‌ها مشخصاً روی سنتز <span class="process eng">Peptidoglycan</span> اثر می‌گذارند که جزء اصلی "دیواره سلولی" (Cell Wall) باکتری است. از آنجا که سلول‌های انسانی فقط غشا دارند و <span class="concept">Cell Wall</span> ندارند، این دارو برای انسان ایمن است.
+            <br>
+            <span class="trap">نکته تکمیلی:</span> این دارو عمدتاً روی باکتری‌های <span class="eng">Gram Positive</span> موثر است.
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

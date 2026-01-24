@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Exam-Prep: Biochemical Engineering & Enzymology</title>
+    <style>
+        body {
+            font-family: 'Tahoma', 'Segoe UI', sans-serif;
+            line-height: 1.8;
+            background-color: #f4f4f9;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .module-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        /* Highlighting System */
+        .gold {
+            background-color: #fff3cd; /* Soft Gold/Yellow */
+            border-bottom: 2px solid #ffc107;
+            padding: 0 4px;
+            font-weight: bold;
+            color: #856404;
+        }
+        .blue {
+            background-color: #d1ecf1; /* Soft Blue */
+            border-bottom: 2px solid #17a2b8;
+            padding: 0 4px;
+            color: #0c5460;
+        }
+        .red {
+            background-color: #f8d7da; /* Light Red */
+            border-bottom: 2px solid #dc3545;
+            padding: 0 4px;
+            color: #721c24;
+            font-weight: bold;
+        }
+        .english-term {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-weight: bold;
+            direction: ltr;
+            display: inline-block;
+        }
+        .cheat-sheet {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            border-right: 5px solid #2c3e50;
+            margin-bottom: 30px;
+        }
+        .question-block {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .question-text {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .options-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .answer-key {
+            background-color: #f1f8e9;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #c5e1a5;
+            display: none; /* Hidden by default, useful for self-testing */
+        }
+        /* Show answers for this study mode */
+        .answer-key {
+            display: block; 
+        }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .summary-table th, .summary-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .summary-table th {
+            background-color: #2c3e50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="module-container">
+
+    <h1>مدت زمان مطالعه: جلسه نهایی مرور و جمع‌بندی</h1>
+    <p>این ماژول بر اساس یادداشت‌های کلاسی <span class="english-term">Biochemical Engineering</span> و <span class="english-term">Enzymology</span> طراحی شده است.</p>
+
+    <div class="cheat-sheet">
+        <h2>بخش اول: خلاصه نکات طلایی (The Cheat Sheet)</h2>
+        <ul>
+            <li>
+                <strong>تفاوت تعاریف مهندسی:</strong> 
+                <span class="gold">Biochemical Engineering</span> بسط اصول مهندسی شیمی به سیستم‌هایی است که از <span class="gold">Biocatalyst</span> استفاده می‌کنند. در حالی که <span class="gold">Biomedical Engineering</span> روی سیستم‌هایی برای بهبود سلامت انسان تمرکز دارد.
+            </li>
+            <li>
+                <strong>داستان پنی‌سیلین:</strong> کشف توسط <span class="english-term">Alexander Fleming</span> (1928) اما <span class="red">تولید انبوه (Large scale production)</span> توسط <span class="english-term">Florey & Chain</span> در دهه 1940 انجام شد. این اولین محصول تجاری مهم بود که از روش <span class="blue">Aerobic, submerged fermentation</span> تولید شد.
+            </li>
+            <li>
+                <strong>متابولیت‌ها:</strong>
+                <span class="gold">Primary metabolites</span> (مثل اتانول) در فاز رشد فعال (<span class="english-term">Active cell growth</span>) تولید می‌شوند.
+                <span class="gold">Secondary metabolites</span> (مثل آنتی‌بیوتیک‌ها/پنی‌سیلین) در شروع <span class="red">فاز سکون (Stationary phase)</span> تولید می‌شوند.
+            </li>
+            <li>
+                <strong>آمار صنعت کانادا (BioTalent 2018):</strong>
+                درآمد سالانه: <span class="english-term">$54 billion</span> | تعداد شرکت‌ها: حدود 8,000 | کارمندان: بیش از 190,000 نفر.
+            </li>
+            <li>
+                <strong>ساختار آنزیم:</strong>
+                <span class="gold">Apoenzyme</span> (بخش پروتئینی غیرفعال) + <span class="gold">Cofactor</span> = <span class="gold">Holoenzyme</span> (فعال).
+                اگر کوفاکتور محکم چسبیده باشد: <span class="gold">Prosthetic group</span>. اگر سست باشد: <span class="gold">Coenzyme</span>.
+            </li>
+            <li>
+                <strong>سینتیک میکائلیس-منتن (M-M):</strong>
+                فرض اصلی: <span class="blue">Steady-state assumption</span> (نرخ تولید ES = نرخ تجزیه ES).
+                <span class="gold">Km</span>: غلظت سوبسترا در نصف <span class="english-term">Vmax</span>. معیاری از میل ترکیبی (Affinity) است (رابطه عکس).
+            </li>
+            <li>
+                <strong>انواع مهارکننده‌ها (Inhibitors):</strong>
+                <br>
+                1. <span class="english-term">Competitive</span>: اتصال به E. (تاثیر: <span class="red">Vmax ثابت، Km افزایش</span>). نمودارها در محور Y همدیگر را قطع می‌کنند.
+                <br>
+                2. <span class="english-term">Uncompetitive</span>: اتصال به ES. (تاثیر: <span class="red">Vmax کاهش، Km کاهش</span>). نمودارها موازی هستند.
+                <br>
+                3. <span class="english-term">Mixed</span>: اتصال به E و ES. (تاثیر: <span class="red">Vmax کاهش، Km تغییر می‌کند</span>). نمودارها در سمت چپ محور Y قطع می‌شوند.
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>بخش دوم: 35 سوال چهارگزینه‌ای مفهومی (Mastery MCQs)</h2>
+
+    <div class="question-block">
+        <div class="question-text">1. بر اساس تعاریف ارائه شده در کلاس، تفاوت اصلی بین "Biochemical Engineering" و "Biomedical Engineering" چیست؟</div>
+        <ul class="options-list">
+            <li>الف) اولی روی سلامت انسان تمرکز دارد، دومی روی کشاورزی.</li>
+            <li>ب) Biochemical Engineering بسط اصول مهندسی شیمی به سیستم‌های دارای Biocatalyst است.</li>
+            <li>ج) Biomedical Engineering از میکروارگانیسم‌ها برای تولید مواد شیمیایی استفاده می‌کند.</li>
+            <li>د) هیچ تفاوتی ندارند و مترادف هستند.</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            <span class="gold">تعریف دقیق:</span> در اسلایدها، Biochemical Engineering به عنوان بسط اصول مهندسی شیمی تعریف شده است. <span class="red">دام امتحانی:</span> Biomedical Engineering روی سیستم‌هایی برای بهبود سلامت انسان (Health) تمرکز دارد، نه فرایندهای شیمیایی صنعتی.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">2. در داستان تاریخی پنی‌سیلین، نقش Florey و Chain چه بود؟</div>
+        <ul class="options-list">
+            <li>الف) کشف قارچ Penicillium notatum در سال 1928.</li>
+            <li>ب) عکاسی از پلیت‌های باکتریایی آلوده.</li>
+            <li>ج) توسعه فرآیند تولید انبوه (Mass production) در دهه 1940.</li>
+            <li>د) سنتز شیمیایی پنی‌سیلین به جای تخمیر.</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            <span class="english-term">Fleming</span> کاشف بود (1928)، اما <span class="blue">Florey & Chain</span> مسئول توسعه پروسه و تولید انبوه در زمان جنگ جهانی دوم بودند. <span class="red">نکته انحرافی:</span> سنتز شیمیایی پنی‌سیلین "بسیار دشوار" (too difficult) ارزیابی شد و مسیر تخمیر انتخاب گردید.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">3. کدام یک از موارد زیر ویژگی "Bioprocesses" در مقایسه با پردازش شیمیایی معمولی نیست؟</div>
+        <ul class="options-list">
+            <li>الف) محصولات معمولاً در محیط راکتور بسیار رقیق (Dilute) هستند.</li>
+            <li>ب) سلول‌ها به شرایط محیطی مثل دما و pH حساس هستند.</li>
+            <li>ج) ریسک آلودگی (Contamination) وجود دارد.</li>
+            <li>د) محصولات به راحتی و با غلظت بالا (High concentration) در خروجی به دست می‌آیند.</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: د</strong><br>
+            طبق اسلایدها، یکی از چالش‌های اصلی بیوپروسس این است که <span class="gold">Product is generally very dilute</span>. گزینه‌های الف، ب و ج همگی چالش‌های صحیح ذکر شده هستند.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">4. بر اساس گزارش BioTalent Canada (2018) که در اسلایدها آمده، درآمد سالانه صنعت Biotech کانادا چقدر بوده است؟</div>
+        <ul class="options-list">
+            <li>الف) 1.9 میلیارد دلار</li>
+            <li>ب) 30.2 میلیارد دلار</li>
+            <li>ج) 54 میلیارد دلار</li>
+            <li>د) 400 میلیون دلار</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            <span class="red">دام عددی:</span> عدد 1.9 میلیارد مربوط به آمار سال 1999 است. عدد 30.2 مربوط به صنعت مواد شیمیایی در سال 2000 است. آمار به‌روز شده 2018 عدد <span class="gold">$54 billion</span> را نشان می‌دهد.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">5. برای تخمین پتانسیل الکل در شراب‌سازی، قاعده سرانگشتی (Rule of thumb) برای مقیاس Brix چیست؟</div>
+        <ul class="options-list">
+            <li>الف) 1.8 Brix = 1% الکل</li>
+            <li>ب) 1 Brix = 1.8% الکل</li>
+            <li>ج) 18 Brix = 1% الکل</li>
+            <li>د) 1 Brix = 18% الکل</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: الف</strong><br>
+            فرمول ذکر شده: <span class="blue">1 Baume = 1.8 Brix = 18 g/L sugar = 1% potential alcohol</span>. پس 1.8 بریکس معادل 1 درصد الکل است.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">6. متابولیت‌های ثانویه (Secondary Metabolites) معمولاً در کدام فاز رشد تولید می‌شوند؟</div>
+        <ul class="options-list">
+            <li>الف) فاز تاخیر (Lag phase)</li>
+            <li>ب) فاز رشد فعال (Active growth/Log phase)</li>
+            <li>ج) شروع فاز سکون (Onset of stationary phase)</li>
+            <li>د) فاز مرگ (Death phase)</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            <span class="gold">Primary metabolites</span> در فاز رشد فعال تولید می‌شوند، اما <span class="gold">Secondary metabolites</span> (مانند آنتی‌بیوتیک‌ها) نزدیک به شروع <span class="english-term">Stationary phase</span> تولید می‌شوند.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">7. کدام آنتی‌بیوتیک توسط میکروارگانیسم Streptomyces griseus تولید می‌شود؟</div>
+        <ul class="options-list">
+            <li>الف) Penicillin</li>
+            <li>ب) Streptomycin</li>
+            <li>ج) Erythromycin</li>
+            <li>د) Tetracycline</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            طبق جدول اسلایدها:
+            <span class="english-term">Penicillin -> P. chrysogenum</span>
+            <span class="english-term">Erythromycin -> S. erythreus</span>
+            <span class="english-term">Streptomycin -> S. griseus</span>.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">8. مکانیسم اثر (MOA) پنی‌سیلین چیست؟</div>
+        <ul class="options-list">
+            <li>الف) مهار سنتز پروتئین در ریبوزوم</li>
+            <li>ب) تداخل در سنتز DNA</li>
+            <li>ج) مهار سنتز پپتیدوگلیکان (Peptidoglycan) در دیواره سلولی</li>
+            <li>د) تخریب غشای سلولی</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            اسلایدها صریحاً بیان می‌کنند: <span class="gold">Inhibit synthesis of peptidoglycan</span>. به همین دلیل روی سلول‌های انسانی (که دیواره سلولی ندارند) اثر نمی‌گذارد.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">9. عدد Turnover Number یا kcat بیانگر چیست؟</div>
+        <ul class="options-list">
+            <li>الف) تعداد مولکول‌های آنزیم در راکتور</li>
+            <li>ب) تعداد مولکول‌های سوبسترا که توسط یک آنزیم در واحد زمان به محصول تبدیل می‌شوند</li>
+            <li>ج) نصف سرعت ماکسیمم واکنش</li>
+            <li>د) غلظت سوبسترا در حالت اشباع</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            تعریف <span class="english-term">kcat</span>: تعداد مولکول‌های سوبسترا که در هر ثانیه توسط <span class="red">یک مولکول آنزیم</span> متابولیزه می‌شوند (زمانی که آنزیم اشباع است).
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">10. در نام‌گذاری آنزیم‌ها (EC Number)، عدد سوم (c در a.b.c.d) نشان‌دهنده چیست؟</div>
+        <ul class="options-list">
+            <li>الف) کلاس اصلی (Main class)</li>
+            <li>ب) زیرکلاس (Subclass) - نوع گروه درگیر</li>
+            <li>ج) زیر-زیرکلاس (Sub-subclass) - نوع واکنش</li>
+            <li>د) شماره سریال (Serial number)</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            ساختار: 1. Main class, 2. Subclass (type of compound), 3. <span class="gold">Sub-subclass (type of reaction)</span>, 4. Serial number.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">11. کوفاکتوری که به صورت محکم یا دائمی به آنزیم متصل است، چه نامیده می‌شود؟</div>
+        <ul class="options-list">
+            <li>الف) Coenzyme</li>
+            <li>ب) Activator</li>
+            <li>ج) Prosthetic group</li>
+            <li>د) Apoenzyme</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            <span class="gold">Prosthetic group</span>: Tightly or permanently associated.
+            <span class="english-term">Coenzyme</span>: Loosely bound organic molecule (often vitamins).
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">12. کدام کلاس آنزیمی واکنش‌های "حذف گروه برای تشکیل پیوند دوگانه" (Group elimination to form double bonds) را کاتالیز می‌کند؟</div>
+        <ul class="options-list">
+            <li>الف) Hydrolases</li>
+            <li>ب) Ligases</li>
+            <li>ج) Transferases</li>
+            <li>د) Lyases</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: د</strong><br>
+            <span class="red">دام امتحانی:</span> Hydrolases پیوندها را با آب می‌شکنند. <span class="gold">Lyases</span> پیوندها را می‌شکنند (یا تشکیل می‌دهند) و منجر به تشکیل پیوند دوگانه یا حلقه می‌شوند (بدون هیدرولیز یا اکسیداسیون).
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">13. مدل "Induced Fit" (تطبیق القایی) چه تفاوتی با مدل "Lock and Key" دارد؟</div>
+        <ul class="options-list">
+            <li>الف) جایگاه فعال صلب (Rigid) است.</li>
+            <li>ب) آنزیم و جایگاه فعال انعطاف‌پذیرند و تغییر شکل می‌دهند تا با سوبسترا فیت شوند.</li>
+            <li>ج) فقط یک سوبسترا می‌تواند متصل شود.</li>
+            <li>د) مدل Induced Fit قدیمی‌تر است.</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            مدل <span class="english-term">Lock and Key</span> جایگاه فعال را صلب (Rigid) در نظر می‌گیرد. مدل <span class="gold">Induced Fit</span> می‌گوید ساختار آنزیم <span class="blue">Flexible</span> است و شکل خود را تنظیم می‌کند.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">14. در معادله میکائلیس-منتن، فرضیه حالت پایدار (Steady-State Assumption) به چه معناست؟</div>
+        <ul class="options-list">
+            <li>الف) غلظت سوبسترا [S] تغییر نمی‌کند.</li>
+            <li>ب) غلظت محصول [P] ثابت است.</li>
+            <li>ج) نرخ تشکیل کمپلکس [ES] برابر با نرخ تجزیه آن است (غلظت [ES] ثابت است).</li>
+            <li>د) واکنش در تعادل ترمودینامیکی است ($k_{-1} \gg k_2$).</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            این مهم‌ترین فرض در استخراج معادله است: <span class="blue">d[ES]/dt = 0</span>. یعنی سرعت تشکیل برابر سرعت مصرف است. گزینه (د) مربوط به فرض تعادلی (Assumption of equilibrium) است که مدلی ساده‌تر و متفاوت است.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">15. اگر $k_2 \ll k_{-1}$ باشد، پارامتر $K_M$ نشان‌دهنده چیست؟</div>
+        <ul class="options-list">
+            <li>الف) حداکثر سرعت واکنش</li>
+            <li>ب) ثابت تفکیک (Dissociation constant) برای کمپلکس ES و معیاری برای میل ترکیبی (Affinity).</li>
+            <li>ج) Turnover number</li>
+            <li>د) انرژی فعال‌سازی</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            در این شرایط $K_M \approx K_s$. هرچه <span class="gold">$K_M$ کمتر</span> باشد، <span class="gold">Affinity (میل ترکیبی) بیشتر</span> است.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">16. در نمودار Lineweaver-Burk، عرض از مبدأ (Y-intercept) برابر با چیست؟</div>
+        <ul class="options-list">
+            <li>الف) $-1/K_M$</li>
+            <li>ب) $K_M/V_{max}$</li>
+            <li>ج) $1/V_{max}$</li>
+            <li>د) $V_{max}$</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            معادله خطی شده: $1/v_0 = (K_M/V_{max})(1/[S]) + 1/V_{max}$.
+            <br>
+            شیب = $K_M/V_{max}$
+            <br>
+            عرض از مبدأ = <span class="gold">$1/V_{max}$</span>
+            <br>
+            طول از مبدأ (X-intercept) = <span class="red">$-1/K_M$</span>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">17. نسبت $k_{cat}/K_M$ معیاری برای چیست؟</div>
+        <ul class="options-list">
+            <li>الف) پایداری آنزیم</li>
+            <li>ب) کارایی کاتالیزوری (Catalytic efficiency)</li>
+            <li>ج) غلظت آنزیم</li>
+            <li>د) نوع مهارکننده</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            این نسبت مشخص می‌کند آنزیم چقدر کارآمد است، به خصوص در غلظت‌های پایین سوبسترا ($[S] \ll K_M$).
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">18. در مهار رقابتی (Competitive Inhibition)، مهارکننده به کجا متصل می‌شود و چه تاثیری روی پارامترها دارد؟</div>
+        <ul class="options-list">
+            <li>الف) به جایگاه فعال (Active site)؛ $V_{max}$ کاهش، $K_M$ ثابت.</li>
+            <li>ب) به جایگاه فعال؛ $V_{max}$ ثابت، $K_M$ افزایش.</li>
+            <li>ج) به کمپلکس ES؛ $V_{max}$ کاهش، $K_M$ کاهش.</li>
+            <li>د) به جایگاه آلوستریک؛ $V_{max}$ کاهش، $K_M$ افزایش.</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            در مهار رقابتی، مهارکننده با سوبسترا رقابت می‌کند. با افزایش غلظت سوبسترا می‌توان اثر آن را خنثی کرد، پس <span class="gold">$V_{max}$ تغییر نمی‌کند</span>. اما چون اتصال ظاهری سخت‌تر شده، <span class="red">$K_M$ افزایش می‌یابد (به اندازه ضریب $\alpha$)</span>.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">19. در کدام نوع مهار، خطوط در نمودار Lineweaver-Burk با هم "موازی" هستند؟</div>
+        <ul class="options-list">
+            <li>الف) Competitive</li>
+            <li>ب) Non-competitive</li>
+            <li>ج) Uncompetitive</li>
+            <li>د) Mixed</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            در <span class="english-term">Uncompetitive inhibition</span>، مهارکننده فقط به کمپلکس ES متصل می‌شود. این باعث می‌شود هم شیب و هم عرض از مبدأ تغییر کنند به طوری که خطوط <span class="blue">Parallel (موازی)</span> باقی می‌مانند.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">20. یک آنزیم با مکانیسم "Ping-Pong" چه ویژگی سینتیکی در نمودار Double-reciprocal دارد؟</div>
+        <ul class="options-list">
+            <li>الف) خطوط متقاطع (Intersecting lines)</li>
+            <li>ب) خطوط موازی (Parallel lines)</li>
+            <li>ج) یک خط منحنی</li>
+            <li>د) خطوطی که در مبدأ به هم می‌رسند</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            برای واکنش‌های دو سوبسترایی (Bisubstrate):
+            <span class="gold">Ternary complex</span> $\rightarrow$ خطوط متقاطع.
+            <span class="gold">Ping-Pong</span> $\rightarrow$ <span class="blue">Parallel lines</span> (چون محصول اول قبل از اتصال سوبسترای دوم آزاد می‌شود).
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">21. در مهار Mixed، پارامترهای $V_{max}$ و $K_M$ چگونه تغییر می‌کنند؟</div>
+        <ul class="options-list">
+            <li>الف) $V_{max}$ کاهش، $K_M$ تغییر می‌کند (افزایش یا کاهش).</li>
+            <li>ب) $V_{max}$ ثابت، $K_M$ افزایش.</li>
+            <li>ج) $V_{max}$ کاهش، $K_M$ ثابت.</li>
+            <li>د) $V_{max}$ افزایش، $K_M$ کاهش.</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: الف</strong><br>
+            در مهار Mixed، مهارکننده هم به E و هم به ES متصل می‌شود (با میل ترکیبی متفاوت). بنابراین <span class="red">$V_{max}$ همیشه کاهش می‌یابد</span>، اما $K_M$ بسته به مقادیر $\alpha$ و $\alpha'$ می‌تواند افزایش یا کاهش یابد.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">22. واحد اندازه‌گیری "Specific Activity" چیست؟</div>
+        <ul class="options-list">
+            <li>الف) $\mu mol/min$</li>
+            <li>ب) $min^{-1}$</li>
+            <li>ج) $\mu mol$ محصول در دقیقه به ازای میلی‌گرم آنزیم ($\mu mol \cdot min^{-1} \cdot mg^{-1}$)</li>
+            <li>د) $mg/ml$</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            <span class="gold">Specific activity</span> خلوص آنزیم را نشان می‌دهد: مقدار فعالیت (μmol/min) تقسیم بر جرم پروتئین (mg).
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">23. اثر دما بر فعالیت آنزیم چگونه است؟</div>
+        <ul class="options-list">
+            <li>الف) رابطه خطی صعودی تا بی‌نهایت.</li>
+            <li>ب) فعالیت در دماهای پایین کم است، در دمای بهینه (Optimum) ماکسیمم است، و در دماهای بالا به دلیل دناتوراسیون به شدت سقوط می‌کند.</li>
+            <li>ج) دما تاثیری بر فعالیت آنزیم ندارد.</li>
+            <li>د) با افزایش دما، فعالیت همیشه کاهش می‌یابد.</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            آنزیم‌ها ساختار پروتئینی دارند. افزایش دما ابتدا سرعت برخوردها را زیاد می‌کند (افزایش فعالیت)، اما از حد مشخصی (Optimum) که بگذرد، ساختار سوم پروتئین تخریب (<span class="red">Denaturation</span>) شده و فعالیت از دست می‌رود.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">24. کدام دانشمند فرضیه "Lack and Key" را در سال 1894 پیشنهاد داد؟</div>
+        <ul class="options-list">
+            <li>الف) Koshland</li>
+            <li>ب) Pasteur</li>
+            <li>ج) Fischer</li>
+            <li>د) Buchner</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            <span class="english-term">Fischer</span> (1894) مدل قفل و کلید را پیشنهاد داد. <span class="english-term">Koshland</span> (1958) مدل <span class="blue">Induced fit</span> را اصلاح کرد.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">25. ریبوزیم‌ها (Ribozymes) چه مولکول‌هایی هستند؟</div>
+        <ul class="options-list">
+            <li>الف) آنزیم‌هایی که قند ریبوز را تجزیه می‌کنند.</li>
+            <li>ب) مولکول‌های RNA که خاصیت کاتالیزوری دارند.</li>
+            <li>ج) آنتی‌بادی‌های کاتالیزوری.</li>
+            <li>د) آنزیم‌های مصنوعی ساخته شده در آزمایشگاه.</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            یک استثنا در قاعده "همه آنزیم‌ها پروتئین هستند": <span class="red">Ribozymes مولکول‌های RNA هستند</span> که فعالیت کاتالیزوری دارند (مثل RNAse P).
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">26. در تولید پروتئین‌های نوترکیب (Recombinant)، "Glutathione S-transferase" (GST) معمولاً چه نقشی دارد؟</div>
+        <ul class="options-list">
+            <li>الف) به عنوان سوبسترا</li>
+            <li>ب) به عنوان Fusion partner برای خالص‌سازی آسان (Affinity tag)</li>
+            <li>ج) برای افزایش حلالیت پروتئین نامحلول</li>
+            <li>د) گزینه‌های ب و ج</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: د</strong><br>
+            در اسلایدها (بخش Recombinant Protein)، از GST و His-tag برای <span class="blue">Easy purification</span> و گاهی افزایش حلالیت استفاده می‌شود.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">27. کاربرد آنزیم "Xylanase" در صنعت چیست؟</div>
+        <ul class="options-list">
+            <li>الف) تولید پنیر</li>
+            <li>ب) سفید کردن کاغذ و خمیر چوب (Wood pulping and bleaching)</li>
+            <li>ج) شوینده‌های لباس</li>
+            <li>د) تولید شربت ذرت</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            طبق اسلاید "Industrial Chemicals": آنزیم <span class="english-term">Xylanase</span> برای <span class="gold">Wood pulping and bleaching</span> استفاده می‌شود.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">28. در فرایند تولید پارچه جین (Denim)، جایگزین کردن سنگ‌شور (Pumice stones) با آنزیم سلولاز چه مزیتی ندارد؟</div>
+        <ul class="options-list">
+            <li>الف) زمان تیمار کوتاه‌تر</li>
+            <li>ب) آسیب کمتر به ماشین‌آلات</li>
+            <li>ج) کاهش استحکام پارچه (Weakens the fabric)</li>
+            <li>د) ایجاد ظاهر جدید (New looks)</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            <span class="red">دقت کنید:</span> سوال پرسیده کدام "مزیت" نیست. استفاده از سلولاز باعث <span class="red">Weakens the fabric</span> می‌شود که یک عیب است، نه مزیت. سایر موارد مزایای روش آنزیمی هستند.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">29. کدام گزینه درباره سینتیک مرتبه صفر (Zero order kinetics) در واکنش‌های آنزیمی صحیح است؟</div>
+        <ul class="options-list">
+            <li>الف) وقتی رخ می‌دهد که غلظت سوبسترا بسیار کم است.</li>
+            <li>ب) سرعت واکنش مستقل از غلظت سوبسترا است (در غلظت‌های بالا).</li>
+            <li>ج) سرعت واکنش به صورت خطی با غلظت سوبسترا افزایش می‌یابد.</li>
+            <li>د) مربوط به زمانی است که آنزیم هنوز اشباع نشده است.</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            زمانی که $[S]$ بسیار زیاد است (High concentration)، تمام جایگاه‌های فعال پر شده‌اند (اشباع). اضافه کردن سوبسترای بیشتر سرعت را زیاد نمی‌کند. این یعنی <span class="gold">Zero order</span>.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">30. در معادله میکائلیس-منتن، اگر $[S] = K_M$ باشد، سرعت واکنش $v_0$ چقدر خواهد بود؟</div>
+        <ul class="options-list">
+            <li>الف) $V_{max}$</li>
+            <li>ب) $0.5 V_{max}$</li>
+            <li>ج) $0.1 V_{max}$</li>
+            <li>د) $2 V_{max}$</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            جایگذاری در فرمول: $v_0 = \frac{V_{max}[S]}{K_M + [S]}$.
+            اگر $[S]=K_M$ $\rightarrow$ $v_0 = \frac{V_{max}[S]}{2[S]} = 0.5 V_{max}$.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">31. آنزیم‌های مورد استفاده در شوینده‌ها (Detergents) عمدتاً شامل کدام گروه هستند؟</div>
+        <ul class="options-list">
+            <li>الف) Proteases, Amylases, Lipases</li>
+            <li>ب) Isomerases, Ligases</li>
+            <li>ج) Polymerases</li>
+            <li>د) Oxidase</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: الف</strong><br>
+            شوینده‌ها باید پروتئین (خون/تخم‌مرغ)، نشاسته و چربی را پاک کنند. پس به <span class="english-term">Proteases, Amylases, Lipases</span> نیاز دارند. این صنعت 25-30% کل فروش آنزیم‌ها را دارد.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">32. ساختار چهارم (Quaternary Structure) پروتئین مربوط به چیست؟</div>
+        <ul class="options-list">
+            <li>الف) توالی آمینواسیدها</li>
+            <li>ب) ساختار مارپیچ آلفا و صفحه بتا</li>
+            <li>ج) تاشدگی سه بعدی یک زنجیره پپتیدی</li>
+            <li>د) تجمع و اتصال چندین زنجیره پپتیدی (Subunits) به یکدیگر</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: د</strong><br>
+            <span class="gold">Quaternary structure</span>: Clustering of several individual peptide chains.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">33. انرژی فعال‌سازی (Activation Energy) در حضور آنزیم چه تغییری می‌کند؟</div>
+        <ul class="options-list">
+            <li>الف) افزایش می‌یابد.</li>
+            <li>ب) تغییری نمی‌کند، فقط تعادل جابجا می‌شود.</li>
+            <li>ج) کاهش می‌یابد و مسیر واکنش تغییر می‌کند.</li>
+            <li>د) انرژی محصولات را افزایش می‌دهد.</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ج</strong><br>
+            نقش کاتالیزور (آنزیم): <span class="gold">Lowering the activation energy</span> و ایجاد یک مسیر انرژی پایین‌تر برای تبدیل سوبسترا به محصول. آنزیم $\Delta G$ کلی واکنش را تغییر نمی‌دهد.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">34. در استخراج پنی‌سیلین (در فلوچارت تولید)، از چه حلالی برای جداسازی استفاده می‌شود؟</div>
+        <ul class="options-list">
+            <li>الف) آب مقطر</li>
+            <li>ب) حلال آلی (Organic Solvent) در مرحله Centrifugal extractor</li>
+            <li>ج) اسید سولفوریک</li>
+            <li>د) اتانول خالص</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            در نمودار <span class="english-term">Schematic of penicillin production</span>، مرحله‌ای به نام <span class="blue">Solvent / Centrifugal extractor</span> وجود دارد که برای خالص‌سازی استفاده می‌شود.
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-text">35. چرا استفاده از آنزیم‌های "Thermostable" (مقاوم به گرما) در صنعت مهم است؟</div>
+        <ul class="options-list">
+            <li>الف) چون ارزان‌تر هستند.</li>
+            <li>ب) چون اجازه می‌دهند واکنش در دمای بالاتر انجام شود که سرعت واکنش را زیاد می‌کند و ریسک آلودگی میکروبی را کم می‌کند.</li>
+            <li>ج) چون در دمای بالا pH تغییر نمی‌کند.</li>
+            <li>د) چون این آنزیم‌ها نیاز به آب ندارند.</li>
+        </ul>
+        <div class="answer-key">
+            <strong>پاسخ صحیح: ب</strong><br>
+            در اسلایدها ذکر شده: <span class="gold">Higher reaction rate</span> و <span class="gold">Less contamination</span> در دماهای بالاتر از مزایای فرایندهای گرم (مثل استفاده در شوینده‌ها یا بیوراکتورهای خاص) است.
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
