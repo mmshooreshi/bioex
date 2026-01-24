@@ -5,6 +5,9 @@
     <title>Bio-Engineering & Enzyme Kinetics: Master Study Module</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazir-font@30.1.0/dist/font-face.min.css">
     <style>
+        h1{
+            margin: 0px;
+        }
         *{
             font-family: 'Vazir';
         }
@@ -14,13 +17,13 @@
             color: #333;
             line-height: 1.8;
             margin: 0;
-            padding: 20px;
+            /* padding: 20px; */
         }
         .container {
             max-width: 900px;
             margin: 0 auto;
             background: #fff;
-            padding: 40px;
+            /* padding: 40px; */
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
@@ -1313,34 +1316,377 @@
 
 </div>
 
-</body>
+<button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰ FILES</button>
+
+<div id="mySidebar" class="sidebar">
+    <div style="padding: 20px; color: white; font-weight: bold; font-family: monospace; border-bottom: 1px solid #444;">
+        // NAVIGATION
+    </div>
+    <a href="#file1" onclick="toggleSidebar()">01. Intro to Bio-Eng</a>
+    <a href="#file2" onclick="toggleSidebar()">02. Microorganisms</a>
+    <a href="#file3" onclick="toggleSidebar()">03. Enzymes History</a>
+    <a href="#file4" onclick="toggleSidebar()">04. Cofactors</a>
+    <a href="#file5" onclick="toggleSidebar()">05. Kinetics I</a>
+    <a href="#file6" onclick="toggleSidebar()">06. Kinetics Math</a>
+    <a href="#file7" onclick="toggleSidebar()">07. Inhibition</a>
+</div>
+
+<div id="sectionIndicator" class="section-indicator hidden">00</div>
+
+
+
+<div id="geekyPdfModal" class="pdf-modal-overlay">
+    <div class="pdf-modal-container">
+        
+        <div id="pdfSidebar" class="pdf-sidebar">
+            <div class="sidebar-header">
+                <span>// FILES_DB</span>
+                <button class="mobile-close-sidebar" onclick="toggleSidebar()">×</button>
+            </div>
+            <div class="file-list" id="fileListContainer">
+                </div>
+        </div>
+
+        <div class="pdf-main-area">
+            <div class="pdf-modal-header">
+                <div class="header-left">
+                    <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+                    <div class="header-info">
+                        <span class="status-dot"></span>
+                        <span id="pdfFileName" class="mono-text">SYSTEM_READY</span>
+                    </div>
+                </div>
+                
+                <div class="header-controls">
+                    <button class="tool-btn" onclick="adjustZoom(-0.1)">[-]</button>
+                    <span id="zoomLevelDisplay" class="mono-text" style="font-size:12px; margin:0 5px;">100%</span>
+                    <button class="tool-btn" onclick="adjustZoom(0.1)">[+]</button>
+                    <span class="separator">::</span>
+                    <button class="close-btn" onclick="closePdfViewer()">[ESC]</button>
+                </div>
+            </div>
+
+            <div class="pdf-frame-wrapper" id="pdfWrapper">
+                <iframe id="pdfViewerFrame" src="" type="application/pdf"></iframe>
+                
+                <!-- <div id="floatingPageIndicator" class="floating-page-box">
+                    PG <span id="floatingPageNum">--</span>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* --- Layout & Overlay --- */
+    .pdf-modal-overlay {
+        display: none;
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: rgba(5, 10, 20, 0.95);
+        backdrop-filter: blur(8px);
+        z-index: 10000;
+        animation: fadeIn 0.2s ease-out;
+    }
+
+    .pdf-modal-container {
+        display: flex;
+        width: 95%; height: 95%;
+        margin: 1.5% auto;
+        background: #000;
+        border: 1px solid #333;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* --- Sidebar --- */
+    .pdf-sidebar {
+        width: 250px;
+        background-color: #0f0f0f;
+        border-right: 1px solid #333;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar-header {
+        padding: 15px;
+        font-family: 'Courier New', monospace;
+        color: #1abc9c;
+        font-weight: bold;
+        border-bottom: 1px solid #222;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .mobile-close-sidebar { display: none; background:none; border:none; color:#fff; font-size:20px; cursor:pointer;}
+
+    .file-list {
+        overflow-y: auto;
+        flex-grow: 1;
+    }
+
+    .file-item {
+        padding: 12px 15px;
+        color: #777;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        font-size: 13px;
+        cursor: pointer;
+        border-bottom: 1px solid #1a1a1a;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+    }
+    .file-item:hover { background-color: #111; color: #fff; }
+    .file-item.active {
+        background-color: #1abc9c;
+        color: #000;
+        font-weight: bold;
+    }
+    .file-item::before { content: '>'; margin-right: 8px; opacity: 0.5; }
+
+    /* --- Main Area --- */
+    .pdf-main-area {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    /* --- Header --- */
+    .pdf-modal-header {
+        height: 45px;
+        background-color: #1a1a1a;
+        border-bottom: 1px solid #333;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+        font-family: 'Courier New', monospace;
+    }
+
+    .header-left, .header-controls { display: flex; align-items: center; gap: 10px; }
+    
+    .hamburger-btn {
+        display: none; /* Hidden on desktop */
+        background: none; border: 1px solid #333; color: #aaa;
+        padding: 2px 8px; cursor: pointer;
+    }
+
+    .status-dot {
+        width: 8px; height: 8px;
+        background-color: #00ff00;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #00ff00;
+        display: inline-block;
+        margin-right: 8px;
+    }
+
+    .mono-text { color: #ccc; font-size: 14px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .tool-btn {
+        background: #222; border: 1px solid #444; color: #fff;
+        padding: 4px 8px; cursor: pointer; font-family: monospace;
+    }
+    .tool-btn:hover { background: #444; }
+    .close-btn {
+        background: #c0392b; border: none; color: #fff;
+        padding: 4px 10px; font-weight: bold; cursor: pointer;
+    }
+
+    /* --- Viewer Frame --- */
+    .pdf-frame-wrapper {
+        flex-grow: 1;
+        background-color: #525659;
+        position: relative;
+        overflow: auto; /* Allow scrolling if zoomed in */
+        display: flex;
+        justify-content: center;
+    }
+
+    iframe {
+        border: none;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.2s ease;
+        transform-origin: top center;
+    }
+
+    /* --- Floating Page Indicator --- */
+    .floating-page-box {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        background: rgba(0, 0, 0, 0.4); /* Low Opacity */
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 4px;
+        font-family: 'Courier New', monospace;
+        font-size: 24px;
+        font-weight: bold;
+        pointer-events: none; /* Let clicks pass through */
+        border: 1px solid rgba(255,255,255,0.2);
+        z-index: 20;
+    }
+
+    /* --- Mobile Responsive --- */
+    @media (max-width: 768px) {
+        .pdf-modal-container { width: 100%; height: 100%; margin: 0; border: none; }
+        .pdf-sidebar {
+            position: absolute;
+            z-index: 50;
+            height: 100%;
+            transform: translateX(100%); /* Hide by default */
+        }
+        .pdf-sidebar.open { transform: translateX(0); }
+        .hamburger-btn { display: block; }
+        .mobile-close-sidebar { display: block; }
+        .mono-text { font-size: 11px; max-width: 100px; }
+        .floating-page-box { bottom: 10px; right: 10px; font-size: 16px; padding: 5px 10px; }
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Select all elements with the class 'cite'
-        const citations = document.querySelectorAll('.cite');
+    // Configuration
+    const fileList = [
+        "1_21062552633.pdf",
+        "2_21371935465.pdf",
+        "3_21791327493.pdf",
+        "4_22778230086.pdf",
+        "5_21932032263.pdf",
+        "6_22778238753.pdf",
+        "7_23119325970.pdf"
+    ];
 
+    let currentZoom = 1.0;
+    let currentFile = "";
+    let currentPage = 1;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Initialize Citation Triggers
+        const citations = document.querySelectorAll('.cite');
         citations.forEach(span => {
             const text = span.innerHTML;
-            console.log(text)
-            
-            // Regex to extract the filename and page number
-            // Matches format: "Source: [filename], Page [number]"
             const match = text.match(/Source:\s*(.*?),\s*Page\s*(\d+)/);
-
             if (match) {
-                const filename = match[1].trim();
-                const pageNum = match[2].trim();
-                
-                // Construct the path to the PDF with the specific page anchor
-                // Note: #page=N is a standard parameter supported by most PDF viewers (Chrome, Edge, Firefox)
-                const pdfPath = `inputs/${filename}#page=${pageNum}`;
-
-                // Replace the text with a clickable link
-                // target="_blank" ensures it opens in a new tab so you don't lose your place in the quiz
-                span.innerHTML = `<a href="${pdfPath}" target="_blank" title="Open PDF at Page ${pageNum}" style="text-decoration: underline; color: inherit; cursor: pointer;">${text}</a>`;
+                const fName = match[1].trim();
+                const pNum = match[2].trim();
+                // Create Geeky Trigger
+                span.innerHTML = `<span 
+                    onclick="openGeekyViewer('${fName}', '${pNum}')" 
+                    class="geeky-link"
+                    style="text-decoration: underline; color: #2980b9; cursor: pointer; font-family: monospace; font-weight: bold;">
+                    [OPEN: ${pNum}]
+                </span> <span style="font-size: 0.85em; color: #7f8c8d;">(${fName})</span>`;
             }
         });
+
+        // 2. Build Sidebar List
+        const listContainer = document.getElementById('fileListContainer');
+        fileList.forEach((file, index) => {
+            const div = document.createElement('div');
+            div.className = 'file-item';
+            div.innerText = `[FILE ${index + 1}] ...${file.substring(file.length-10)}`; // Shorten name
+            div.title = file;
+            div.onclick = () => switchFile(file);
+            div.id = `file-btn-${file}`;
+            listContainer.appendChild(div);
+        });
+
+        // 3. Close Events
+        document.addEventListener('keydown', (e) => { if(e.key === "Escape") closePdfViewer(); });
+        document.getElementById('geekyPdfModal').addEventListener('click', function(e) {
+            if (e.target === this) closePdfViewer();
+        });
     });
+
+    // --- Core Functions ---
+
+    function openGeekyViewer(filename, page) {
+        currentFile = filename;
+        currentPage = page;
+        
+        const modal = document.getElementById('geekyPdfModal');
+        const titleEl = document.getElementById('pdfFileName');
+        // const pageInd = document.getElementById('floatingPageNum');
+
+        // Reset Zoom
+        currentZoom = 1.0;
+        updateZoomUI();
+
+        // Update UI
+        titleEl.innerText = filename;
+        // pageInd.innerText = page.padStart(2, '0');
+        
+        // Highlight active file in sidebar
+        document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
+        const activeBtn = document.getElementById(`file-btn-${filename}`);
+        if(activeBtn) activeBtn.classList.add('active');
+
+        // Load PDF
+        loadPdfSrc(filename, page);
+        
+        modal.style.display = 'flex';
+        
+        // Close sidebar on mobile if open
+        document.getElementById('pdfSidebar').classList.remove('open');
+    }
+
+    function switchFile(filename) {
+        // Switch to page 1 by default when clicking sidebar
+        openGeekyViewer(filename, '1');
+    }
+
+    function loadPdfSrc(filename, page) {
+        const iframe = document.getElementById('pdfViewerFrame');
+        // Construct standard URL params for clean view
+        // Note: #page=N works in Chrome/Edge/Firefox native viewers
+        const src = `inputs/${filename}#page=${page}&view=FitH&pagemode=none&toolbar=0&navpanes=0`;
+        iframe.src = src;
+    }
+
+    function adjustZoom(delta) {
+        const iframe = document.getElementById('pdfViewerFrame');
+        currentZoom += delta;
+        
+        // Clamp zoom
+        if(currentZoom < 0.5) currentZoom = 0.5;
+        if(currentZoom > 3.0) currentZoom = 3.0;
+
+        updateZoomUI();
+        
+        // Apply CSS Transform Scale
+        // Note: We scale the iframe, but we must ensure wrapper handles scroll
+        iframe.style.transform = `scale(${currentZoom})`;
+        
+        // Adjust width to prevent horizontal scroll issues when zooming out
+        if(currentZoom < 1) {
+            iframe.style.width = `${100 / currentZoom}%`;
+            iframe.style.height = `${100 / currentZoom}%`;
+        } else {
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+        }
+    }
+
+    function updateZoomUI() {
+        document.getElementById('zoomLevelDisplay').innerText = Math.round(currentZoom * 100) + "%";
+    }
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById('pdfSidebar');
+        sidebar.classList.toggle('open');
+    }
+
+    function closePdfViewer() {
+        document.getElementById('geekyPdfModal').style.display = 'none';
+        document.getElementById('pdfViewerFrame').src = "";
+    }
 </script>
+
+</body>
+
 </html>
