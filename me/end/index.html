@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next-Level Systemic Exam Cheat Sheet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazir-font@30.1.0/dist/font-face.min.css">
+
+    <style>
+        :root {
+            --bg: #0f172a; 
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --primary: #10b981; /* Emerald */
+            --danger: #ef4444; /* Red */
+            --warning: #f59e0b; /* Amber */
+            --info: #3b82f6; /* Blue */
+            --purple: #8b5cf6; /* Violet */
+            --highlight-bg: rgba(255, 255, 255, 0.05);
+        }
+        
+        body {
+            font-family: 'Vazir', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--info);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 { color: var(--warning); font-size: 2.2rem; margin: 0; text-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); }
+        .header p { color: #94a3b8; font-size: 1.1rem; margin-top: 10px; }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        .flash-card {
+            background: var(--card-bg);
+            border-right: 6px solid var(--info);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        h2 { margin-top: 0; font-size: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; display: flex; align-items: center; gap: 10px;}
+        
+        ul { list-style-type: none; padding: 0; margin: 0; }
+        li { margin-bottom: 12px; font-size: 1.05rem; background: var(--highlight-bg); padding: 12px; border-radius: 8px; border-right: 3px solid rgba(255,255,255,0.1); transition: 0.2s; }
+        li:hover { background: rgba(255,255,255,0.08); transform: translateX(-5px); }
+
+        /* GUIDELINE BOX */
+        .guideline-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 2px dashed var(--warning);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .guideline-box h3 { color: var(--warning); margin-top: 0; font-size: 1.2rem; }
+
+        /* NEON HIGHLIGHTS */
+        .hl-red { color: #fca5a5; font-weight: 900; background: rgba(239, 68, 68, 0.2); padding: 2px 6px; border-radius: 4px; }
+        .hl-yellow { color: #fde047; font-weight: 900; background: rgba(245, 158, 11, 0.2); padding: 2px 6px; border-radius: 4px; }
+        .hl-cyan { color: #67e8f9; font-weight: 900; background: rgba(59, 130, 246, 0.2); padding: 2px 6px; border-radius: 4px; }
+
+        /* PREDICTED QUESTION (INTERACTIVE) */
+        details {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        summary {
+            font-weight: bold;
+            font-size: 1.15rem;
+            color: var(--primary);
+            outline: none;
+            list-style: none; /* Hide default arrow */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '🔻 کلیک برای پاسخ'; font-size: 0.9rem; background: var(--primary); color: #000; padding: 4px 8px; border-radius: 6px; }
+        details[open] summary::after { content: '🔺 بستن'; }
+        
+        .answer-box {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--primary);
+            color: #fff;
+            font-size: 1.05rem;
+        }
+
+        .diagram-container { text-align: center; margin: 20px 0; background: #fff; padding: 10px; border-radius: 12px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>🚀 گایدلاین نهایی: بیماری‌های سیستمیک</h1>
+            <p>ادغام کامل مطالب + ۳ دستورالعمل طلایی + پیش‌بینی سوالات</p>
+        </div>
+
+        <div class="flash-card" style="border-right-color: var(--info);">
+            <h2 style="color: var(--info);">🧪 بخش ۱: آزمایشات پزشکی (Labs)</h2>
+            <ul>
+                <li>🩸 <strong>کم‌خونی‌ها:</strong> میکرسیتیک ⬅️ فقر آهن (چک Ferritin, TIBC). ماکروسیتیک ⬅️ فقر B12/فولات (چک Schilling test). <span class="hl-red">عوارض: تاخیر ترمیم و مخاط رنگ‌پریده.</span></li>
+                <li>🍬 <strong>دیابت:</strong> علائم کلاسیک ⬅️ پرنوشی، پرادراری (Polyuria)، تاری دید، کاهش وزن. حد تشخیص FBS <span class="hl-red">≥ ۱۲۶</span>.</li>
+                <li>🦠 <strong>ویروس‌ها:</strong> در هپاتیت B حضور همزمان <span class="hl-cyan">HBs Ag و IgM Anti-HBc</span> یعنی عفونت کاملاً فعال است. برای HIV مارکر <span class="hl-cyan">CD4+ count</span> حیاتی است.</li>
+            </ul>
+            
+            <div class="guideline-box">
+                <h3>📋 ۳ دستورالعمل طلایی (Guidelines)</h3>
+                <ol>
+                    <li>برای تست‌های غربالگری خونریزی، علاوه بر CBC و انعقاد، بررسی <strong>ECG، عملکرد تیروئید (TSH) و الکترولیت‌ها</strong> نیز الزامی است.</li>
+                    <li>محدوده خطر <strong>وارفارین (PT/INR)</strong> برای جراحی دندانپزشکی <span class="hl-red">INR > 3.5</span> است.</li>
+                    <li>محدوده خطر <strong>پلاکت‌ها (Thrombocytopenia)</strong> برای جراحی زیر <span class="hl-red">۵۰,۰۰۰ /µL</span> است (نرمال: ۱۴۰ تا ۴۰۰ هزار).</li>
+                </ol>
+            </div>
+
+            <details>
+                <summary>🔮 پیش‌بینی سوال امتحان</summary>
+                <div class="answer-box">
+                    <strong>سوال:</strong> بیماری که به دلیل سابقه ترومبوز داروی هپارین مصرف می‌کند، نیازمند جراحی فک است. برای ارزیابی وضعیت انعقادی این بیمار کدام تست آزمایشگاهی و با چه محدوده نرمالی باید درخواست شود؟<br><br>
+                    <strong>پاسخ دقیق:</strong> تست <strong>aPTT (مسیر داخلی)</strong>. محدوده نرمال آن <span class="hl-yellow">۲۵ تا ۳۵ ثانیه</span> است. (تله: PT/INR برای وارفارین است، نه هپارین).
+                </div>
+            </details>
+        </div>
+
+        <div class="flash-card" style="border-right-color: var(--warning);">
+            <h2 style="color: var(--warning);">🔍 بخش ۲: سرطان دهان</h2>
+            <ul>
+                <li>🚬 <strong>ویروس و آفتاب:</strong> ویروس HPV از طریق رابطه دهانی به شدت در ایجاد سرطان نقش دارد. نور آفتاب مشخصاً عامل درگیری <strong>لب‌ها و صورت</strong> است.</li>
+                <li>🚩 <strong>شایع‌ترین نوع:</strong> کارسینوم سلول سنگفرشی (SCC) که از سلول‌های پوششی دهان منشأ می‌گیرد.</li>
+            </ul>
+
+            <div class="guideline-box">
+                <h3>📋 ۳ دستورالعمل طلایی (Guidelines)</h3>
+                <ol>
+                    <li>ترکیب مصرف همزمان <strong>سیگار + الکل</strong> یک اثر هم‌افزایی دارد و خطر ابتلا را <span class="hl-red">۳۰ برابر</span> می‌کند.</li>
+                    <li><span class="hl-yellow">قانون ۳ هفته:</span> هرگونه زخم، تورم یا تغییر رنگ که پس از حذف عامل محرک <strong>بیش از ۳ هفته</strong> باقی بماند، باید بیوپسی شود.</li>
+                    <li>هدف تیم چندتخصصی در جراحی، تنها زنده ماندن نیست، بلکه <span class="hl-cyan">حفظ توانایی تکلم، بلع و زیبایی ظاهری</span> است.</li>
+                </ol>
+            </div>
+            
+            
+
+            <details>
+                <summary>🔮 پیش‌بینی سوال امتحان</summary>
+                <div class="answer-box">
+                    <strong>سوال:</strong> مردی ۵۵ ساله با سابقه مصرف طولانی‌مدت تنباکو و الکل با یک زخم بدون درد در کناره طرفی زبان مراجعه کرده است. بیمار می‌گوید این زخم از حدود یک ماه پیش وجود دارد. مهم‌ترین اقدام و دلیل آن چیست؟<br><br>
+                    <strong>پاسخ دقیق:</strong> ارجاع فوری برای <strong>بیوپسی (نمونه‌برداری)</strong>. زیرا طبق <span class="hl-yellow">قانون ۳ هفته</span>، هر زخم بدون دردی که بالای ۳ هفته بهبود نیابد، قویاً مشکوک به بدخیمی (سرطان) است. ضمناً ترکیب سیگار و الکل ریسک او را ۳۰ برابر کرده است.
+                </div>
+            </details>
+        </div>
+
+        <div class="flash-card" style="border-right-color: var(--purple);">
+            <h2 style="color: var(--purple);">💧 بخش ۳: سندرم شوگرن</h2>
+            <ul>
+                <li>👥 <strong>اپیدمیولوژی:</strong> <span class="hl-red">۹۰٪ درگیران زنان هستند</span> (بازه سنی ۴۰ تا ۶۰ سال). انواع آن اولیه (تک‌علامتی) و ثانویه (همراه با لوپوس، RA یا اسکلرودرمی) است.</li>
+                <li>⚙️ <strong>درگیری خارج غده‌ای:</strong> در ۳۰٪ بیماران رخ می‌دهد (شامل نارسایی کلیه، فیبروز ریوی و آرتریت).</li>
+                <li>🧪 <strong>تست چشم:</strong> تست شایمر (Schirmer's) برای حجم اشک، و Rose Bengal برای بررسی آسیب قرنیه.</li>
+            </ul>
+
+            <div class="guideline-box">
+                <h3>📋 ۳ دستورالعمل طلایی (Guidelines)</h3>
+                <ol>
+                    <li>تشخیص قطعی نیازمند مارکرهای خونی <span class="hl-cyan">Anti-SSA / Anti-SSB</span> و انجام <strong>Lip biopsy</strong> (برای دیدن لنفوسیت‌ها در غدد بزاقی فرعی) است.</li>
+                    <li>خطرناک‌ترین عارضه شوگرن که پایش مادام‌العمر می‌طلبد، احتمال ۵ درصدی تبدیل به <span class="hl-red">لنفوم غیرهوچکینی MALT</span> است.</li>
+                    <li>برای تحریک ترشح بزاق از داروهای کولینرژیک یعنی <strong>پیلوکارپین یا سوگلیمین (Cevimeline)</strong> استفاده می‌شود.</li>
+                </ol>
+            </div>
+
+            <details>
+                <summary>🔮 پیش‌بینی سوال امتحان</summary>
+                <div class="answer-box">
+                    <strong>سوال:</strong> خانم ۵۰ ساله‌ای با شکایت از خشکی شدید چشم و دهان و پوسیدگی‌های دندانی وسیع مراجعه کرده است. برای تأیید تشخیص قطعی بیماری (Gold Standard)، کدام تست پاتولوژیک باید انجام شود و چه یافته‌ای در آن انتظار می‌رود؟<br><br>
+                    <strong>پاسخ دقیق:</strong> انجام <strong>بیوپسی لب (Lip Biopsy)</strong>. یافته مورد انتظار: مشاهده <span class="hl-yellow">ارتشاح (نفوذ) لنفوسیت‌ها</span> در غدد بزاقی فرعی که در حال تخریب بافت غده هستند.
+                </div>
+            </details>
+        </div>
+
+        <div class="flash-card" style="border-right-color: var(--danger);">
+            <h2 style="color: var(--danger);">🔥 بخش ۴: سندرم سوزش دهان (BMS)</h2>
+            <ul>
+                <li>👅 <strong>تظاهرات:</strong> درگیری معمولاً دوطرفه در <strong>دوسوم قدامی زبان</strong>. همراه با حس ناخوشایند مزه (دیس‌گوزیا: تلخ یا فلزی).</li>
+                <li>❄️ <strong>الگو:</strong> درد در طول روز بدتر می‌شود اما با <span class="hl-cyan">مصرف مایعات و غذاهای سرد</span> موقتاً تسکین می‌یابد.</li>
+                <li>🧠 <strong>اتیولوژی:</strong> کاهش الیاف عصبی اپی‌تلیال و ایجاد یک نوروپاتی محیطی در عصب تری‌ژمینال.</li>
+            </ul>
+
+            <div class="guideline-box">
+                <h3>📋 ۳ دستورالعمل طلایی (Guidelines)</h3>
+                <ol>
+                    <li><span class="hl-red">قانون حذف:</span> برای تشخیص BMS اولیه، مخاط دهان باید <strong>کاملاً سالم و بدون هیچ ضایعه‌ای</strong> باشد. درد باید بیش از ۲ ساعت در روز و بالای ۳ ماه طول کشیده باشد.</li>
+                    <li>آزمایشات (آهن، B12، روی، FBS، تیروئید) منحصراً برای <strong>رد کردن BMS ثانویه</strong> درخواست می‌شوند.</li>
+                    <li>درمان دارویی شامل کنترل عصبی با <strong>کلونازپام، گاباپنتین و کپساسین</strong> است (موفقیت دارویی زیر ۵۰٪ است).</li>
+                </ol>
+            </div>
+
+            <details>
+                <summary>🔮 پیش‌بینی سوال امتحان</summary>
+                <div class="answer-box">
+                    <strong>سوال:</strong> چرا در بیماری که با شکایت سوزش زبان (بدون هیچ ضایعه بالینی) مراجعه کرده است، دندانپزشک آزمایشاتی نظیر CBC، فریتین، ویتامین B12 و FBS درخواست می‌کند؟<br><br>
+                    <strong>پاسخ دقیق:</strong> سندرم سوزش دهان اولیه (Primary BMS) یک <span class="hl-yellow">تشخیص حذفی</span> است. دندانپزشک این آزمایشات را درخواست می‌کند تا <strong>علل سیستمیک (BMS ثانویه)</strong> مانند کم‌خونی فقر آهن/ویتامین یا دیابت کنترل‌نشده را <span class="hl-red">رد (Rule out)</span> کند.
+                </div>
+            </details>
+        </div>
+
+        <div class="flash-card" style="border-right-color: var(--primary);">
+            <h2 style="color: var(--primary);">🦴 بخش ۵: استئونکروز فک (MRONJ)</h2>
+            <ul>
+                <li>💊 <strong>داروها:</strong> علاوه بر بیس‌فسفونات‌ها (قوی‌ترین: Zoledronic acid) و دنوسوماب (ضدجذب)، داروهای ضدآنژیوژنز (مثل <span class="hl-cyan">Sunitinib و Bevacizumab</span>) نیز مقصرند.</li>
+                <li>🔢 <strong>استیج‌بندی:</strong> از Stage 0 (بدون استخوان اکسپوز، فقط درد) تا Stage 3 (درگیری سینوس/شکستگی پاتولوژیک).</li>
+                <li>⚠️ <strong>نکته کلیدی:</strong> کشیدن دندانی که در استخوانِ از قبل نکروزه قرار دارد، باعث بدتر شدن شرایط استخوان <strong>نمی‌شود</strong> (چون بافت از قبل مرده است).</li>
+            </ul>
+
+            <div class="guideline-box">
+                <h3>📋 ۳ دستورالعمل طلایی (Guidelines)</h3>
+                <ol>
+                    <li>برای تشخیص قطعی، استخوان اکسپوز باید <span class="hl-red">بیشتر از ۸ هفته</span> باقی بماند و بیمار <strong>نباید</strong> سابقه رادیوتراپی فک داشته باشد.</li>
+                    <li>پنجره کم‌خطر (Window Period) در بیماران پوکی استخوان <span class="hl-cyan">تا ۴ سال اول</span> است، اما در بیماران سرطانی (تزریقی دوز بالا) <span class="hl-red">فقط تا ۳ ماه اول</span> است.</li>
+                    <li>تمام دندان‌های غیرقابل نگهداری باید <strong>پیش از شروع درمان دارویی</strong> کشیده شوند.</li>
+                </ol>
+            </div>
+            
+            
+
+            <details>
+                <summary>🔮 پیش‌بینی سوال امتحان</summary>
+                <div class="answer-box">
+                    <strong>سوال:</strong> بیمار مبتلا به سرطان پروستات با متاستاز استخوانی که تحت درمان وریدی Zoledronic acid است، دچار استخوان اکسپوز در ناحیه فک پایین شده است که ۲ ماه (۸ هفته) طول کشیده است. وی سابقه رادیوتراپی سروگردن <u>دارد</u>. تشخیص نهایی چیست؟<br><br>
+                    <strong>پاسخ دقیق:</strong> تشخیص <strong>ORN (استئورادیونکروز)</strong> است، <span class="hl-red">نه MRONJ</span>! یکی از شروط اصلی تشخیص MRONJ این است که بیمار مطلقاً نباید سابقه رادیوتراپی ناحیه فک را داشته باشد. (این یک تله امتحانی بسیار معروف است).
+                </div>
+            </details>
+        </div>
+
+        <div class="flash-card" style="border-right-color: var(--info);">
+            <h2 style="color: var(--info);">🎗️ بخش ۶: مراقبت بیماران سرطانی</h2>
+            <ul>
+                <li>🦷 <strong>مراقبت حین رادیوتراپی:</strong> استفاده از مسواک نرم، خمیردندان فلورایددار، و دهانشویه <strong>کلرهگزیدین ۰/۱۲ درصد</strong> (در صورت بیماری لثه).</li>
+                <li>🔥 <strong>عوارض حاد و دیررس:</strong> موکوزیت (التهاب مخاط)، خشکی دهان، عفونت کاندیدا، تریسموس (محدودیت باز کردن فک)، و سیاآلدنیت (التهاب غدد بزاقی).</li>
+            </ul>
+
+            <div class="guideline-box">
+                <h3>📋 ۳ دستورالعمل طلایی (Guidelines)</h3>
+                <ol>
+                    <li>تمام جراحی‌ها و کشیدن دندان‌ها باید <span class="hl-red">حداقل ۷ تا ۱۰ روز قبل</span> از شروع درمان سرطان (شیمی‌درمانی/رادیوتراپی) انجام شوند.</li>
+                    <li>هرگونه تورم یا توده بدون درد که <span class="hl-yellow">بیشتر از ۲ هفته</span> تداوم داشته باشد، نیازمند مراجعه فوری و ارزیابی است.</li>
+                    <li>برای مرطوب‌سازی دهان خشک باید مرتباً از آب به شکل جرعه‌جرعه، سرم نمکی (سالین) و جایگزین‌های بزاقی استفاده کرد.</li>
+                </ol>
+            </div>
+
+            <details>
+                <summary>🔮 پیش‌بینی سوال امتحان</summary>
+                <div class="answer-box">
+                    <strong>سوال:</strong> چرا دندانپزشک تأکید دارد که دندان‌های دارای پروگنوز ضعیف بیمار کاندید رادیوتراپی، باید حتماً بین ۷ تا ۱۰ روز پیش از شروع اولین جلسه درمان کشیده شوند؟<br><br>
+                    <strong>پاسخ دقیق:</strong> زیرا بافت لثه و استخوان ساکت دندانی (Socket) برای ترمیم اولیه، ایجاد لخته پایدار و اپیتلیالیزاسیون به <span class="hl-cyan">حداقل ۷ تا ۱۰ روز زمان</span> نیاز دارد. اگر درمان سرطان (که جریان خون را کم و ایمنی را سرکوب می‌کند) زودتر شروع شود، زخم هرگز ترمیم نمی‌شود و خطر عفونت و استئورادیونکروز به شدت بالا می‌رود.
+                </div>
+            </details>
+        </div>
+
+        <div class="flash-card" style="border-right-color: var(--warning);">
+            <h2 style="color: var(--warning);">🫀 بخش ۷: پروفیلاکسی قلب (AHA 2021)</h2>
+            <ul>
+                <li>🦠 <strong>عامل عفونت:</strong> استرپتوکوک‌های گروه ویریدنس <span class="hl-cyan">(VGS)</span> که به طور طبیعی در دهان هستند.</li>
+                <li>🦷 <strong>کدام درمان‌ها؟</strong> فقط کارهایی که باعث <strong>دستکاری لثه، ناحیه پری‌آپیکال، یا سوراخ شدن مخاط</strong> شوند (عکس‌برداری و بی‌حسی معمولی نیاز ندارند).</li>
+            </ul>
+
+            <div class="guideline-box">
+                <h3>📋 ۳ دستورالعمل طلایی (Guidelines)</h3>
+                <ol>
+                    <li>فقط بیماران در بالاترین خطر نیاز به پروفیلاکسی دارند: <strong>دریچه مصنوعی، سابقه قبلی IE، قلب مادرزادی (CHD) سیانوتیک، و پیوند قلب با مشکل دریچه</strong>.</li>
+                    <li>بیماران با خطر متوسط مانند <span class="hl-red">تب روماتیسمی</span> یا ناهنجاری‌های دریچه‌ای (مثل پرولاپس میترال)، دیگر به پروفیلاکسی <strong>نیاز ندارند</strong>!</li>
+                    <li>داروی <strong>کلیندامایسین</strong> به دلیل عوارض جانبی (C.diff) از دستورالعمل AHA حذف شده است. زمان مصرف داروها <span class="hl-yellow">۳۰ تا ۶۰ دقیقه قبل</span> از کار است.</li>
+                </ol>
+            </div>
+            
+            
+
+            <details>
+                <summary>🔮 پیش‌بینی سوال امتحان</summary>
+                <div class="answer-box">
+                    <strong>سوال:</strong> بیمار ۳۵ ساله‌ای با سابقه "تب روماتیسمی" در کودکی برای جراحی افزایش طول تاج (دستکاری لثه) مراجعه کرده است. بیمار به پنی‌سیلین حساسیت دارد. طبق آپدیت ۲۰۲۱ گایدلاین AHA، بهترین داروی پروفیلاکسی برای وی چیست؟<br><br>
+                    <strong>پاسخ دقیق:</strong> <span class="hl-red">هیچ دارویی لازم نیست!</span> طبق گایدلاین جدید، تب روماتیسمی در گروه "خطر متوسط" قرار دارد و دیگر نیازی به پروفیلاکسی آنتی‌بیوتیک در دندانپزشکی <u>ندارد</u>. (اگر بیمار دریچه مصنوعی داشت، جایگزین پنی‌سیلین، آزیترومایسین بود نه کلیندامایسین).
+                </div>
+            </details>
+        </div>
+
+        <div class="flash-card" style="border-right-color: var(--danger);">
+            <h2 style="color: var(--danger);">💊 بخش ۸: نسخه‌نویسی و داروها</h2>
+            <ul>
+                <li>📝 <strong>اختصارات:</strong> PRN (در صورت نیاز)، PO (خوراکی)، q6h (هر ۶ ساعت)، a.c. (قبل غذا)، p.c. (بعد غذا).</li>
+                <li>💉 <strong>بی‌حسی موضعی:</strong> حداکثر دوز لیدوکائین ۲٪ بر اساس وزن، <span class="hl-cyan">4.4 mg/kg</span> است (سقف مطلق: 300mg برای بزرگسال).</li>
+                <li>👶 <strong>دوز اطفال:</strong> آموکسی‌سیلین 20-40 mg/kg. استامینوفن 10-15 mg/kg. ایبوپروفن 4-10 mg/kg.</li>
+            </ul>
+
+            <div class="guideline-box">
+                <h3>📋 ۳ دستورالعمل طلایی (Guidelines)</h3>
+                <ol>
+                    <li><span class="hl-red">ممنوعیت‌های مطلق:</span> مصرف همزمان الکل با <strong>مترونیدازول</strong> (واکنش دی‌سولفیرام) | مصرف <strong>تتراسایکلین‌ها</strong> در بارداری و کودکان زیر ۸ سال.</li>
+                    <li>ترکیب آنتی‌بیوتیک <strong>باکتری‌سیدال</strong> (مثل پنی‌سیلین) با <strong>باکتریواستاتیک</strong> (مثل تتراسایکلین) ممنوع است (اثر خنثی‌کننده/Antagonistic دارند).</li>
+                    <li>برای درد متوسط التهابی، به جای تجویز مخدرها، باید از اثر <strong>هم‌افزایی (Synergy) ترکیب ایبوپروفن + استامینوفن</strong> (با فاصله ۳ ساعت از هم) استفاده کرد. مخدرها باید زیر ۳ روز تجویز شوند.</li>
+                </ol>
+            </div>
+
+            <details>
+                <summary>🔮 پیش‌بینی سوال امتحان</summary>
+                <div class="answer-box">
+                    <strong>سوال:</strong> در درمان یک آبسه دندانی موضعی، دندانپزشک همزمان آموکسی‌سیلین و تتراسایکلین تجویز کرده است. خطای فارماکولوژیک در این نسخه چیست؟<br><br>
+                    <strong>پاسخ دقیق:</strong> ترکیب یک آنتی‌بیوتیک <strong>Bactericidal (باکتری‌کش)</strong> مانند آموکسی‌سیلین با یک آنتی‌بیوتیک <strong>Bacteriostatic (متوقف‌کننده رشد)</strong> مانند تتراسایکلین <span class="hl-red">ممنوع</span> است. زیرا پنی‌سیلین‌ها فقط روی باکتری‌های در حال تکثیر اثر می‌گذارند و تتراسایکلین با توقف تکثیر، اثر پنی‌سیلین را خنثی (Antagonistic) می‌کند.
+                </div>
+            </details>
+        </div>
+
+        <div class="flash-card" style="border-right-color: var(--purple);">
+            <h2 style="color: var(--purple);">🧠 بخش ۹: ذهن و دهان (تظاهرات استرس)</h2>
+            <ul>
+                <li>🦠 <strong>انواع آفت (RAS):</strong> مینور (<10mm)، ماژور (>10mm با اسکار)، هرپتی‌فرم (سوزنی و متعدد). آفت‌ها <strong>هاله قرمز</strong> دارند، در حالی که زخم تروماتیک استرسی <strong>حاشیه سفید کراتوتیک</strong> (به خاطر گاز گرفتن) دارد.</li>
+                <li>🦷 <strong>براکسیزم:</strong> دندان‌قروچه باعث خط سفید گونه (Linea alba) و زبان دندانه‌دار (Scalloping) می‌شود.</li>
+                <li>📉 <strong>ترمیم زخم:</strong> استرس اپیتلیالیزاسیون را مختل کرده و ترمیم را به تاخیر می‌اندازد.</li>
+            </ul>
+
+            <div class="guideline-box">
+                <h3>📋 ۳ دستورالعمل طلایی (Guidelines)</h3>
+                <ol>
+                    <li>تشخیص استرس در دندانپزشکی یک <span class="hl-yellow">تشخیص حذفی (Diagnosis of Exclusion)</span> است؛ یعنی تنها زمانی مجاز است که تمام علل جسمانی و پاتولوژیک رد شده باشند.</li>
+                    <li>در <strong>خشکی دهان استرسی (Subjective Xerostomia)</strong>، حجم جریان بزاق <span class="hl-cyan">کاملاً نرمال</span> است، اما به دلیل غلبه سمپاتیک، بزاق <span class="hl-yellow">چسبناک و کف‌آلود</span> می‌شود.</li>
+                    <li>مشخصه اصلی <strong>ANUG (ژنژیویت استرسی/Trench Mouth)</strong>: <span class="hl-red">پاپی‌های بین‌دندانی سرخریده (Punched-out)</span> + غشای خاکستری + بوی بد + ارتباط با استرس حاد.</li>
+                </ol>
+            </div>
+            
+            
+
+            <details>
+                <summary>🔮 پیش‌بینی سوال امتحان</summary>
+                <div class="answer-box">
+                    <strong>سوال:</strong> دانشجویی در شب‌های متوالی امتحان دچار درد ناگهانی لثه، بوی بد دهان و طعم فلزی شده است. در معاینه بالینی، لثه بین دندانی از بین رفته و حالت "سرخریده" پیدا کرده است. تشخیص کلینیکی و ریسک فاکتورهای اصلی چیست؟<br><br>
+                    <strong>پاسخ دقیق:</strong> تشخیص <strong>ANUG (ژنژیویت اولسراتیو نکروزان)</strong> است. کلیدواژه طلایی آن در معاینه <span class="hl-red">Punched-out papillae (پاپی‌های سرخریده)</span> است. ریسک فاکتورهای اصلی آن ترکیب <strong>استرس حاد روانی</strong> و <strong>بهداشت ضعیف</strong> می‌باشد.
+                </div>
+            </details>
+        </div>
+
+        <div style="background-color: var(--primary); color: #000; padding: 25px; border-radius: 16px; margin-top: 50px; text-align: center; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);">
+            <h2 style="margin: 0 0 10px 0; color: #000; font-weight: 900;">🎓 پایان مسیر (۲۵٪ تضمینی)</h2>
+            <p style="font-size: 1.15rem; margin: 0; font-weight: bold;">تمام ۹ بخش با پیش‌بینی سوالات تکمیل شد. حالا فقط روی دکمه‌های "کلیک برای پاسخ" تمرین کنید تا مغزتان این تله‌ها را برای همیشه ثبت کند. موفق باشید!</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

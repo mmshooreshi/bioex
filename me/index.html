@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systemic Diseases - Fast Track Prep</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazir-font@30.1.0/dist/font-face.min.css">
+
+    <style>
+        /* CORE VARIABLES */
+        :root {
+            --bg-color: #f4f7f6;
+            --primary: #1e3799; /* Deep medical blue */
+            --accent: #eb2f06; /* Alert red */
+            --card-bg: #ffffff;
+            --success: #079992;
+            --text-main: #2f3640;
+            --hl-yellow: #fff200;
+            --hl-cyan: #81ecec;
+            --hl-red: #ff7675;
+        }
+        
+        body {
+            font-family: 'Vazir','Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* LAYOUT & NAVIGATION */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        header h1 { margin: 0; font-size: 1.5rem; }
+        header p { margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9; }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        nav {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--primary);
+            white-space: nowrap;
+            /* Hide scrollbar for cleaner look */
+            scrollbar-width: none; 
+        }
+        nav::-webkit-scrollbar { display: none; }
+
+        .topic-tab {
+            background: #dcdde1;
+            padding: 10px 20px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 800;
+            color: #718093;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .topic-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* CHEAT SHEET STYLING (3-Color System) */
+        .cheat-sheet {
+            background: #ffffff;
+            border: 3px solid var(--primary);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 25px;
+            box-shadow: 4px 4px 0px var(--primary);
+        }
+        .cheat-sheet h3 {
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 5px;
+        }
+        
+        /* THE HIGHLIGHTERS */
+        .hl-yellow { background-color: var(--hl-yellow); padding: 2px 4px; border-radius: 3px; font-weight: bold; color: #000; }
+        .hl-cyan { background-color: var(--hl-cyan); padding: 2px 4px; border-radius: 3px; font-weight: bold; color: #000; }
+        .hl-red { background-color: var(--hl-red); padding: 2px 4px; border-radius: 3px; font-weight: bold; color: #000; }
+        
+        .def { font-style: italic; color: #555; font-size: 0.9em; } /* Fast definition class */
+
+        .cheat-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        @media(min-width: 768px) { .cheat-grid { grid-template-columns: 1fr 1fr; } }
+        
+        .cheat-box {
+            background: #f8f9fa;
+            padding: 12px;
+            border-left: 5px solid var(--primary);
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        /* QUESTION CARDS */
+        .q-card {
+            background: var(--card-bg);
+            border-left: 6px solid var(--primary);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .q-card.high-yield { border-left: 6px solid var(--accent); }
+        
+        .question-text { font-size: 1.1rem; font-weight: 800; margin-bottom: 15px; }
+        
+        .options { list-style: none; padding: 0; }
+        .options li {
+            background: #f1f2f6;
+            margin: 8px 0;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid #dfe4ea;
+            font-weight: 500;
+        }
+
+        .keyword {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            font-weight: 900;
+        }
+
+        /* INTERACTIVITY */
+        .reveal-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .reveal-btn:active { background-color: #152668; transform: scale(0.98); }
+
+        .answer-section {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f1fef9;
+            border-radius: 8px;
+            border: 2px dashed var(--success);
+        }
+
+        .context-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            border-radius: 4px;
+        }
+
+        /* DIAGRAM CONTAINER */
+        .diagram-container {
+            text-align: center;
+            margin: 20px 0;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🦷 Systemic Diseases Exam Prep</h1>
+        <p>Topic 1/9: Medical Lab Tests & Oral Health</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a class="topic-tab active" href="#topic1">#1 Labs & Blood</a>
+            <a class="topic-tab" href="#topic2">#2</a>
+            <a class="topic-tab" href="#topic3">#3</a>
+            <a class="topic-tab" href="#topic4">#4</a>
+            <a class="topic-tab" href="#topic5">#5</a>
+            <a class="topic-tab" href="#topic6">#6</a>
+            <a class="topic-tab" href="#topic7">#7</a>
+            <a class="topic-tab" href="#topic8">#8</a>
+            <a class="topic-tab" href="#topic9">#9</a>
+        </nav>
+
+        <div class="content-area" id="topic1">
+            
+            <h2>Topic 1: Essential Medical Lab Tests 🧪</h2>
+
+            <div class="cheat-sheet">
+                <h3>🚀 Pre-Flight Cheat Sheet</h3>
+                <p style="font-size: 0.85rem; margin-top: -10px; color: #666;">
+                    Legend: <span class="hl-yellow">Core Concept</span> | <span class="hl-cyan">Key Number/Test</span> | <span class="hl-red">Danger Zone</span>
+                </p>
+                
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-left-color: #9b59b6;">
+                        <strong>🩸 Diabetes & Sugars</strong><br>
+                        • <span class="def">(FBS = Fasting Blood Sugar. HbA1c = 3-month average sugar)</span><br>
+                        • <strong>Normal:</strong> FBS <span class="hl-cyan">70-100 mg/dL</span> | HbA1c <span class="hl-cyan">< 5.7%</span><br>
+                        • <strong>Diabetes:</strong> FBS <span class="hl-red">≥ 126 mg/dL</span> | HbA1c <span class="hl-red">≥ 6.5%</span><br>
+                        • <span class="hl-yellow">Symptoms:</span> Polyuria <span class="def">(peeing a lot)</span>, extreme thirst, weight loss, blurred vision, numbness.
+                    </div>
+
+                    <div class="cheat-box" style="border-left-color: #3498db;">
+                        <strong>🩸 Anemia Types </strong><span class="def">(Low O2 transport = Delayed Healing)</span><br>
+                        • <span class="hl-yellow">Microcytic</span> <span class="def">(Small cells)</span>: Iron Deficiency. Check Serum Iron, Ferritin, TIBC <span class="def">(Total Iron Binding Capacity - how hungry blood is for iron)</span>.<br>
+                        • <span class="hl-yellow">Macrocytic</span> <span class="def">(Large, fragile cells)</span>: Folate or Pernicious <span class="def">(Vit B12)</span> deficiency. Check Serum Vit B12, Folate, Schilling test <span class="def">(tests B12 absorption)</span>.
+                    </div>
+
+                    <div class="cheat-box" style="border-left-color: #2ecc71;">
+                        <strong>⚙️ Organ Function (Liver vs. Kidney)</strong><br>
+                        • <strong>Liver:</strong> <span class="hl-cyan">ALT & AST</span>. Liver damage = altered drug metabolism <span class="def">(careful with local anesthetics/acetaminophen)</span>.<br>
+                        • <strong>Kidneys:</strong> <span class="hl-cyan">Creatinine & eGFR</span> <span class="def">(filtration rate)</span>. Poor filtration = drug buildup <span class="def">(<span class="hl-red">Extreme caution with NSAIDs</span>)</span>.<br>
+                        • <strong>Electrolytes:</strong> Na+, K+ <span class="def">(Vital for hydration & cardiac rhythm stability)</span>.
+                    </div>
+
+                    <div class="cheat-box" style="border-left-color: #f39c12;">
+                        <strong>🦠 Viral Markers</strong><br>
+                        • <strong>HIV:</strong> Monitor <span class="hl-cyan">CD4 count</span>. Check ESR/CRP <span class="def">(inflammation markers)</span>.<br>
+                        • <strong>Hep B:</strong> <span class="hl-red">HBs Ag + IgM Anti-HBc</span> = Active/Acute infection.<br>
+                        • <strong>Hep C:</strong> Check Anti-HCV & HCV RNA.<br>
+                        • <span class="hl-yellow">Bleeding Screening Panel:</span> ECG, CBC, FBS, Lytes, TSH, Creatinine, Lipids, Urinalysis.
+                    </div>
+                </div>
+            </div>
+
+            <div class="diagram-container">
+                
+
+[Image of blood coagulation cascade extrinsic intrinsic pathways]
+
+                <p class="def" style="margin-top: 5px;">Visualizing the cascade helps you remember: Warfarin affects the Extrinsic side, Heparin affects Intrinsic.</p>
+            </div>
+
+            <h3 style="margin-top: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">🧠 Active Recall: Test Your Knowledge</h3>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ Q1: A patient taking <span class="keyword">Warfarin</span> (blood thinner) needs a tooth extraction. Which lab test monitors this, and at what value should you delay the procedure?
+                </div>
+                <ul class="options">
+                    <li>A) aPTT; delay if > 35s</li>
+                    <li>B) PT/INR; delay if INR > 3.5</li>
+                    <li>C) TT; delay if > 13s</li>
+                    <li>D) Platelets; delay if < 140,000</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('ans1')">Reveal Answer & Context</button>
+                <div id="ans1" class="answer-section">
+                    <p><strong>Correct Answer: B) PT/INR; delay if INR > 3.5</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 The "Why":</strong> Warfarin affects the <strong>Extrinsic</strong> pathway, measured by <strong>PT/INR</strong> (Normal PT: 11-15s). A normal INR is ~1.0. For dental procedures, an <span class="hl-red">INR > 3.5 is a severe bleeding risk</span>.<br>
+                        <em>Hint:</em> <strong>W</strong>arfarin = <strong>P</strong>ro<strong>T</strong>hrombin time (PT). <strong>Heparin</strong> = <strong>aPTT</strong> (Intrinsic pathway, 25-35s).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card">
+                <div class="question-text">
+                    Q2: What is the normal range for Platelet count, and at what threshold does a patient enter the severe risk zone for <span class="keyword">Thrombocytopenia</span> (spontaneous bleeding)?
+                </div>
+                <ul class="options">
+                    <li>A) Normal: 140k-400k /µL | Severe Risk: < 50,000 /µL</li>
+                    <li>B) Normal: 50k-100k /µL | Severe Risk: < 10,000 /µL</li>
+                    <li>C) Normal: 200k-500k /µL | Severe Risk: < 100,000 /µL</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('ans2')">Reveal Answer & Context</button>
+                <div id="ans2" class="answer-section">
+                    <p><strong>Correct Answer: A) Normal: 140,000–400,000 /µL | Severe Risk: < 50,000 /µL</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 The "Why":</strong> While anything under 140k is technically "low", the critical dental threshold where you risk unmanageable bleeding during scaling or extractions is <span class="hl-red">< 50,000 /µL</span>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ Q3: You want to prescribe <span class="keyword">NSAIDs</span> (like Ibuprofen) for post-op pain. Which lab values MUST you check to ensure the drug won't cause organ damage?
+                </div>
+                <ul class="options">
+                    <li>A) ALT and AST (Liver)</li>
+                    <li>B) Creatinine and eGFR (Kidneys)</li>
+                    <li>C) T3, T4, TSH (Thyroid)</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('ans3')">Reveal Answer & Context</button>
+                <div id="ans3" class="answer-section">
+                    <p><strong>Correct Answer: B) Creatinine and eGFR</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 The "Why":</strong> NSAIDs are excreted by the kidneys and can be nephrotoxic. <span class="hl-cyan">Creatinine and eGFR</span> show how well the kidneys are filtering.<br>
+                        <em>Contrast:</em> You would check <strong>ALT/AST (Liver)</strong> if you were prescribing drugs metabolized by the liver (like Acetaminophen/Paracetamol or Amides Local Anesthetics).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card">
+                <div class="question-text">
+                    Q4: A patient presents with a smooth, beefy red tongue and delayed healing. Blood work shows <span class="keyword">Macrocytic anemia</span>. Which tests differentiate the cause?
+                </div>
+                <ul class="options">
+                    <li>A) Serum Iron, Ferritin, and TIBC</li>
+                    <li>B) PT, aPTT, and Platelet Count</li>
+                    <li>C) Serum Vit B12, Schilling test, and Serum Folate</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('ans4')">Reveal Answer & Context</button>
+                <div id="ans4" class="answer-section">
+                    <p><strong>Correct Answer: C) Serum Vit B12, Schilling test, and Serum Folate</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 The "Why":</strong> Macrocytic (large cell) anemia is caused by either <strong>Folate deficiency</strong> or <strong>Pernicious anemia (Vit B12 deficiency)</strong>. The Schilling test specifically checks B12 absorption.<br>
+                        <em>Contrast:</em> Option A is for <span class="hl-yellow">Microcytic</span> (Iron deficiency) anemia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ Q5: Which lab markers indicate a patient currently has an <span class="keyword">Active/Acute Hepatitis B</span> infection?
+                </div>
+                <ul class="options">
+                    <li>A) Anti-HCV and HCV RNA</li>
+                    <li>B) HBs Ag and IgM Anti-HBc</li>
+                    <li>C) High CD4 count</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('ans5')">Reveal Answer & Context</button>
+                <div id="ans5" class="answer-section">
+                    <p><strong>Correct Answer: B) HBs Ag and IgM Anti-HBc</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 The "Why":</strong> <span class="hl-cyan">HBs Ag</span> (Hepatitis B surface Antigen) means the virus is physically present *now*. <span class="hl-cyan">IgM Anti-HBc</span> indicates the body is actively fighting an acute/recent infection.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card">
+                <div class="question-text">
+                    Q6: A patient reports excessive thirst and frequent urination. You suspect Diabetes. What lab values would confirm this diagnosis?
+                </div>
+                <ul class="options">
+                    <li>A) FBS ≥ 100 mg/dL OR HbA1c ≥ 5.7%</li>
+                    <li>B) FBS ≥ 126 mg/dL OR HbA1c ≥ 6.5%</li>
+                    <li>C) FBS > 70 mg/dL OR HbA1c > 5.0%</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('ans6')">Reveal Answer & Context</button>
+                <div id="ans6" class="answer-section">
+                    <p><strong>Correct Answer: B) FBS ≥ 126 mg/dL OR HbA1c ≥ 6.5%</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 The "Why":</strong> Normal FBS is 70-100. Normal HbA1c is < 5.7%. The threshold for diagnosing diabetes is hitting that <span class="hl-red">126 for FBS</span> or <span class="hl-red">6.5% for HbA1c</span>.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="content-area" id="topic2" dir="rtl" style="text-align: right;">
+            <h2>بخش ۲: آگاهی از سرطان دهان و معاینه در خانه 🔍</h2>
+
+            <div class="cheat-sheet">
+                <h3>🚀 تقلب‌نامه سریع (Cheat Sheet)</h3>
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-right: 5px solid #e74c3c; border-left: none;">
+                        <strong>⚠️ عوامل خطر اصلی</strong><br>
+                        • <span class="hl-yellow">دخانیات و الکل:</span> افرادی که هم سیگار می‌کشند و هم الکل مصرف می‌کنند، <span class="hl-red">۳۰ برابر</span> بیشتر در معرض ابتلا هستند.<br>
+                        • <span class="hl-yellow">ویروس HPV:</span> از طریق رابطه جنسی و دهانی منتقل می‌شود.<br>
+                        • <span class="hl-yellow">آفتاب:</span> می‌تواند باعث سرطان پوست شود که لب‌ها و صورت را نیز درگیر می‌کند.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #f1c40f; border-left: none;">
+                        <strong>🚩 نشانه‌های خطر در معاینه</strong><br>
+                        • منشأ: شایع‌ترین نوع این سرطان از <span class="hl-cyan">سلول‌های پوششی دهان</span> ایجاد می‌شود.<br>
+                        • <span class="hl-red">قانون ۳ هفته:</span> در معاینه لثه‌ها به دنبال زخمی باشید که <span class="hl-red">۳ هفته</span> وجود دارد و بهبود پیدا نمی‌کند.<br>
+                        • اهمیت تشخیص: اگرچه در مراحل اولیه قابل تشخیص است، اما بسیاری از افراد زمانی مراجعه می‌کنند که بیماری <span class="hl-yellow">پیشرفت کرده است</span>.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #3498db; border-left: none;">
+                        <strong>🛠️ درمان و هدف آن</strong><br>
+                        • درمان اصلی: معمولاً <span class="hl-cyan">جراحی</span> است (گاهی همراه با پرتودرمانی/شیمی‌درمانی).<br>
+                        • <strong>هدف درمان:</strong> فقط از بین بردن سرطان نیست! بلکه <span class="hl-yellow">حفظ ظاهر، توانایی صحبت کردن، بلع</span> و کیفیت زندگی بیمار اهمیت زیادی دارد (توسط تیم چندتخصصی).
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">🧠 یادآوری فعال (Active Recall)</h3>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۱: ترکیب مصرف همزمان کدام دو عامل، خطر ابتلا به سرطان دهان را به طور قابل توجهی (تا ۳۰ برابر) افزایش می‌دهد؟
+                </div>
+                <ul class="options">
+                    <li>الف) ویروس HPV و نور آفتاب</li>
+                    <li>ب) مصرف سیگار (دخانیات) و مصرف الکل</li>
+                    <li>ج) تغذیه نامناسب و محرومیت اجتماعی</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t2q1')">مشاهده پاسخ و نکات</button>
+                <div id="t2q1" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) مصرف سیگار (دخانیات) و مصرف الکل</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> ترکیب دخانیات و الکل خطر را <span class="hl-red">۳۰ برابر</span> می‌کند. اساتید همیشه روی این عدد تاکید دارند!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۲: در معاینه لثه‌ها و داخل دهان بیمار، وجود یک زخم تا چه مدت زمانی زنگ خطر محسوب شده و نیازمند پیگیری جدی است؟
+                </div>
+                <ul class="options">
+                    <li>الف) زخمی که ۱ هفته وجود دارد</li>
+                    <li>ب) زخمی که ۳ هفته وجود دارد و بهبود پیدا نمی‌کند</li>
+                    <li>ج) زخمی که ۲ ماه متوالی خونریزی دارد</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t2q2')">مشاهده پاسخ و نکات</button>
+                <div id="t2q2" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) زخمی که ۳ هفته وجود دارد و بهبود پیدا نمی‌کند</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> در تمام مراحل معاینه (لب، لثه، گونه، زبان، سقف و کف دهان) به دنبال برآمدگی، لکه‌های قرمز یا سفید و به ویژه <span class="hl-red">زخم‌های ۳ هفته‌ای</span> باشید.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area" id="topic3" dir="rtl" style="text-align: right;">
+            <h2>بخش ۳: سندرم شوگرن 💧</h2>
+
+            <div class="cheat-sheet">
+                <h3>🚀 تقلب‌نامه سریع (Cheat Sheet)</h3>
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-right: 5px solid #9b59b6; border-left: none;">
+                        <strong>👥 اپیدمیولوژی و پاتوفیزیولوژی</strong><br>
+                        • <strong>شیوع:</strong> ۰٫۵ تا ۱٪ جمعیت | <strong>جنسیت:</strong> <span class="hl-red">۹۰٪ زنان</span> | <strong>سن شروع:</strong> ۴۰ تا ۶۰ سال.<br>
+                        • حمله سلول‌های ایمنی (T و B) به غدد برون‌ریز (بزاقی و اشکی) ⬅️ <span class="hl-yellow">گزروستومیا (خشکی دهان) و گزروفتالمیا (خشکی چشم)</span>.<br>
+                        • <strong>انواع:</strong> اولیه (تنها شوگرن) | ثانویه (همراه با RA، SLE، اسکلرودرمی).
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #3498db; border-left: none;">
+                        <strong>🔬 تست‌های تشخیصی و آزمایشگاهی</strong><br>
+                        • یافته‌های خون: افزایش ESR و حضور آنتی‌بادی‌های <span class="hl-cyan">Anti-SSA و Anti-SSB</span>.<br>
+                        • چشم: <strong>تست شایمر (Schirmer)</strong> برای ترشح اشک، و رنگ‌آمیزی (Rose Bengal) برای آسیب قرنیه.<br>
+                        • قطعی‌ترین تست: <strong>Lip biopsy</strong> <span class="hl-cyan">(مشاهده لنفوسیت‌های ارتشاحی در غدد بزاقی فرعی)</span>.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #e74c3c; border-left: none;">
+                        <strong>🚨 عوارض و درگیری‌ها</strong><br>
+                        • شایع‌ترین عارضه: <span class="hl-yellow">پوسیدگی دندان (Dental caries)</span> و کراتیت.<br>
+                        • درگیری خارج‌غده‌ای (۳۰٪ بیماران): نارسایی کلیه، فیبروز ریوی، آرترالژی.<br>
+                        • <span class="hl-red">خطرناک‌ترین عارضه نادر:</span> توسعه <strong>لنفوم غیرهوچکینی از نوع MALT</strong> (خطر ۵٪ - نیازمند پایش منظم).
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #2ecc71; border-left: none;">
+                        <strong>💊 درمان (عمدتاً حمایتی)</strong><br>
+                        • خشکی چشم: اشک مصنوعی، سیکلوسپورین.<br>
+                        • خشکی دهان: مایعات، آدامس بدون قند، و داروهای محرک ترشح مثل <span class="hl-cyan">پیلُکارپین یا سوگلیمین</span>.<br>
+                        • سیستمیک: هیدروکسی‌کلروکین، کورتیکواستروئیدها.
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">🧠 یادآوری فعال (Active Recall)</h3>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۱: در بررسی‌های آزمایشگاهی یک بیمار مشکوک به سندرم شوگرن، حضور کدام آنتی‌بادی‌های اختصاصی و کدام روش نمونه‌برداری برای تأیید تشخیص کلیدی هستند؟
+                </div>
+                <ul class="options">
+                    <li>الف) Anti-dsDNA / بیوپسی از غده پاروتید</li>
+                    <li>ب) Anti-SSA و Anti-SSB / بیوپسی لب (Lip biopsy)</li>
+                    <li>ج) Rheumatoid Factor / بیوپسی از زبان</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t3q1')">مشاهده پاسخ و نکات</button>
+                <div id="t3q1" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) Anti-SSA و Anti-SSB / بیوپسی لب</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> بیوپسی لب (Lip biopsy) برای دیدن <span class="hl-cyan">لنفوسیت‌های ارتشاحی در غدد بزاقی فرعی</span> انجام می‌شود. تست شایمر (Schirmer) هم برای ارزیابی ترشح اشک استفاده می‌شود.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۲: یکی از عوارض نادر اما بسیار مهم در سندرم شوگرن که خطر آن حدود ۵٪ است و نیازمند پایش منظم بیماران می‌باشد، چیست؟
+                </div>
+                <ul class="options">
+                    <li>الف) لنفوم غیرهوچکینی از نوع MALT</li>
+                    <li>ب) کارسینوم سلول سنگفرشی (SCC) دهان</li>
+                    <li>ج) نارسایی حاد کبد</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t3q2')">مشاهده پاسخ و نکات</button>
+                <div id="t3q2" class="answer-section">
+                    <p><strong>پاسخ صحیح: الف) لنفوم غیرهوچکینی از نوع MALT</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> با اینکه پیش‌آگهی کلی بیماری خوب است، اما همیشه باید به احتمال بروز این <span class="hl-red">لنفوم (MALT)</span> توجه داشت. (شایع‌ترین عوارض معمولی، پوسیدگی دندان و کراتیت هستند).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card">
+                <div class="question-text">
+                    سوال ۳: برای کنترل خشکی دهان در بیماران مبتلا به سندرم شوگرن، استفاده از کدام داروهای سیستمیک توصیه می‌شود؟
+                </div>
+                <ul class="options">
+                    <li>الف) پیلُکارپین یا سوگلیمین</li>
+                    <li>ب) سیکلوسپورین</li>
+                    <li>ج) هیدروکسی‌کلروکین</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t3q3')">مشاهده پاسخ و نکات</button>
+                <div id="t3q3" class="answer-section">
+                    <p><strong>پاسخ صحیح: الف) پیلُکارپین یا سوگلیمین</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> پیلوکارپین و سوگلیمین ترشح بزاق را تحریک می‌کنند. دقت کنید که <span class="def">سیکلوسپورین</span> برای خشکی چشم، و <span class="def">هیدروکسی‌کلروکین</span> برای درگیری‌های سیستمیک تجویز می‌گردند.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area" id="topic4" dir="rtl" style="text-align: right;">
+            <h2>بخش ۴: سندرم سوزش دهان (BMS) 🔥</h2>
+
+            <div class="cheat-sheet">
+                <h3>🚀 تقلب‌نامه سریع (Cheat Sheet)</h3>
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-right: 5px solid #e67e22; border-left: none;">
+                        <strong>📖 تعاریف و اپیدمیولوژی</strong><br>
+                        • <strong>BMS اولیه:</strong> درد ایدیوپاتیک دهان با احساس سوزش (دیس‌استزی) که روزانه <span class="hl-cyan">بیش از ۲ ساعت</span> و به مدت <span class="hl-red">بیش از ۳ ماه</span> تکرار می‌شود و <strong>بدون ضایعات قابل‌شناسایی</strong> است.<br>
+                        • <strong>BMS ثانویه:</strong> ناشی از علت موضعی/سیستمیک (کمبود آهن/روی/فولات، داروها، دیابت، شوگرن، کاندیدا).<br>
+                        • افراد درگیر: بیشتر <span class="hl-yellow">خانم‌ها و افراد بالای ۵۰ سال</span>.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #9b59b6; border-left: none;">
+                        <strong>👅 خصوصیات بالینی</strong><br>
+                        • محل درگیری: بیشتر <span class="hl-yellow">دو سوم قدامی زبان</span>. معمولاً دوطرفه و متقارن.<br>
+                        • الگوی درد: در طی روز <span class="hl-red">بدتر می‌شود</span>. غذاهای تند/اسیدی آن را تشدید می‌کنند.<br>
+                        • تسکین: <strong>سرما</strong> ممکن است به تسکین درد کمک کند.<br>
+                        • علائم همراه: خشکی دهان، و درک ناخوشایند مزه (<span class="hl-cyan">مزه فلزی/تلخ/نامطبوع</span> در نیمی از بیماران).
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #34495e; border-left: none;">
+                        <strong>🧠 اتیولوژی و درمان</strong><br>
+                        • اتیولوژی: کاهش الیاف عصبی اپی‌تلیال ⬅️ <span class="hl-yellow">نوروپاتی محیطی عصب تری‌ژمینال</span>.<br>
+                        • آزمایشات (CBC، آهن، قند خون، تست تیروئید): همگی فقط برای <strong>رد کردن BMS ثانویه</strong> انجام می‌شوند.<br>
+                        • درمان: پاسخ درمانی محدود است. رایج‌ترین داروها: <span class="hl-cyan">کلونازپام، گاباپنتین، کپساسین</span> (همراه با روان‌درمانی برای استرس).
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">🧠 یادآوری فعال (Active Recall)</h3>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۱: شرط اصلی و کلیدی برای تشخیص "سندرم سوزش دهان اولیه (Primary BMS)" کدام است؟
+                </div>
+                <ul class="options">
+                    <li>الف) احساس سوزش همراه با ضایعات اریتماتوز (قرمز) در دهان</li>
+                    <li>ب) درد و سوزش بیش از ۲ ساعت در روز و بیش از ۳ ماه، بدون هیچگونه ضایعات قابل‌شناسایی</li>
+                    <li>ج) سوزش شبانه زبان که بیش از ۶ ماه طول کشیده باشد</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t4q1')">مشاهده پاسخ و نکات</button>
+                <div id="t4q1" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) درد و سوزش بیش از ۲ ساعت در روز و بیش از ۳ ماه، بدون هیچگونه ضایعات قابل‌شناسایی</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> کلمه کلیدی در اینجا <span class="hl-yellow">"بدون ضایعات قابل‌شناسایی"</span> است. اگر زخم یا عفونتی (مثل کاندیدا) ببینید، آنگاه BMS ثانویه است، نه اولیه!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card">
+                <div class="question-text">
+                    سوال ۲: شایع‌ترین محل درگیری در سندرم سوزش دهان کجاست و چه عاملی معمولاً به تسکین درد کمک می‌کند؟
+                </div>
+                <ul class="options">
+                    <li>الف) کام نرم / تسکین با غذاهای گرم</li>
+                    <li>ب) دو سوم قدامی زبان / تسکین با سرما</li>
+                    <li>ج) مخاط باکال (گونه‌ها) / تسکین با مسواک زدن</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t4q2')">مشاهده پاسخ و نکات</button>
+                <div id="t4q2" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) دو سوم قدامی زبان / تسکین با سرما</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> درگیری معمولاً دوطرفه و متقارن در <span class="hl-cyan">دو سوم قدامی زبان</span> است. درد در طی روز بدتر می‌شود و <span class="hl-yellow">سرما</span> می‌تواند آن را تسکین دهد.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۳: با توجه به اینکه BMS اولیه یک بیماری ایدیوپاتیک و نوروپاتیک است، چرا آزمایشاتی نظیر CBC، آهن، روی، ویتامین‌های B و قند خون برای بیمار درخواست می‌شود؟
+                </div>
+                <ul class="options">
+                    <li>الف) برای تأیید درگیری عصب تری‌ژمینال</li>
+                    <li>ب) جهت اینکه ثانویه بودن بیماری (BMS ثانویه) رد شود</li>
+                    <li>ج) برای بررسی تحمل کبد قبل از تجویز کلونازپام</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t4q3')">مشاهده پاسخ و نکات</button>
+                <div id="t4q3" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) جهت اینکه ثانویه بودن بیماری رد شود</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> کمبود آهن، روی، فولات، یا دیابت کنترل‌نشده می‌توانند علائم کاملاً مشابهی ایجاد کنند (BMS ثانویه). شما باید با این آزمایشات، علل ثانویه را <span class="hl-red">رد (Rule out)</span> کنید تا بتوانید تشخیص BMS اولیه بگذارید و سراغ درمان‌هایی مثل <span class="hl-cyan">کلونازپام یا گاباپنتین</span> بروید.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area" id="topic5" dir="rtl" style="text-align: right;">
+            <h2>بخش ۵: استئونکروز فک ناشی از داروها (MRONJ) 🦴</h2>
+
+            <div class="cheat-sheet">
+                <h3>🚀 تقلب‌نامه سریع (Cheat Sheet)</h3>
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-right: 5px solid #e74c3c; border-left: none;">
+                        <strong>⚠️ تعریف و شروط اصلی تشخیص</strong><br>
+                        • <span class="hl-red">استخوان اکسپوز</span> (یا قابل پروب از طریق فیستول) که <span class="hl-red">بیش از ۸ هفته</span> باقی بماند.<br>
+                        • بیمار <strong>سابقه رادیوتراپی فک</strong> یا متاستاز استخوانی <span class="hl-cyan">نداشته باشد</span>.<br>
+                        • سابقه مصرف داروهای ضدجذب یا ضدآنژیوژنز.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #3498db; border-left: none;">
+                        <strong>💊 داروهای مقصر (حفظ کنید!)</strong><br>
+                        • <strong>ضدجذب‌ها:</strong> بیس‌فسفونات‌ها (مخصوصاً <span class="hl-cyan">Zoledronic acid</span> که قوی‌ترین است) و <span class="hl-cyan">Denosumab</span> (مهارکننده RANKL).<br>
+                        • <strong>ضدآنژیوژنیک‌ها:</strong> Bevacizumab, Sunitinib (ترکیب اینها با ضدجذب‌ها ریسک را چند برابر می‌کند).<br>
+                        • <span class="def">نکته: داروهای آنابولیک (مثل تری‌پاراتاید) باعث MRONJ <strong>نمی‌شوند</strong>.</span>
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #f1c40f; border-left: none;">
+                        <strong>⏳ پنجره کم‌خطر (Window Period)</strong><br>
+                        • در درمان استئوپروز (پوکی استخوان): <span class="hl-yellow">تا ۴ سال اول مصرف دوز پایین</span>، ریسک خیلی کم است.<br>
+                        • در بیماران سرطانی (تزریقی دوز بالا): فقط <span class="hl-yellow">تا ۳ ماه اول</span>.<br>
+                        • مهمترین عامل خطر: <span class="hl-red">دوز و مدت زمان مصرف (اثر تجمعی)</span>.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #2ecc71; border-left: none;">
+                        <strong>🛠️ پیشگیری و درمان</strong><br>
+                        • <span class="hl-yellow">قانون طلایی:</span> کشیدن دندان‌های غیرقابل نگهداری <strong>قبل</strong> از شروع داروها.<br>
+                        • <strong>Stage 0:</strong> بدون استخوان اکسپوز (فقط درد/تغییر رادیوگرافی).<br>
+                        • آیا کشیدن دندان در استخوان نکروزه وضعیت را بدتر می‌کند؟ <span class="hl-cyan">خیر</span> (چون استخوان از قبل مرده است).
+                    </div>
+                </div>
+            </div>
+
+            <div class="diagram-container">
+                
+                <p class="def" style="margin-top: 5px;">نمای بالینی استخوان اکسپوز شده در مندیبل (بیشتر از ۸ هفته) که مشخصه اصلی MRONJ است.</p>
+            </div>
+
+            <h3 style="margin-top: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">🧠 یادآوری فعال (Active Recall)</h3>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۱: برای قطعی شدن تشخیص MRONJ، استخوان اکسپوز شده در فک حداقل باید چه مدت زمانی در دهان بیمار باقی مانده باشد و کدام سابقه پزشکی باید در بیمار <u>رد شود</u>؟
+                </div>
+                <ul class="options">
+                    <li>الف) ۴ هفته / سابقه دیابت</li>
+                    <li>ب) ۸ هفته / سابقه رادیوتراپی فک</li>
+                    <li>ج) ۱۲ هفته / سابقه مصرف کورتیکواستروئید</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t5q1')">مشاهده پاسخ و نکات</button>
+                <div id="t5q1" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) ۸ هفته / سابقه رادیوتراپی فک</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> اگر بیمار سابقه رادیوتراپی داشته باشد، تشخیص بیماری ORN (Osteoradionecrosis) خواهد بود، نه MRONJ. زمان طلایی تشخیص هم <span class="hl-red">بیش از ۸ هفته</span> است.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۲: یک بیمار مبتلا به پوکی استخوان (استئوپروز) به تازگی مصرف بیس‌فسفونات خوراکی با دوز پایین را شروع کرده است. "پنجره کم‌خطر" (Window period) برای انجام جراحی‌های دندانی مثل ایمپلنت در این بیمار تا چه زمانی است؟
+                </div>
+                <ul class="options">
+                    <li>الف) تا ۳ ماه اول</li>
+                    <li>ب) تا ۱ سال اول</li>
+                    <li>ج) تا ۴ سال اول</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t5q2')">مشاهده پاسخ و نکات</button>
+                <div id="t5q2" class="answer-section">
+                    <p><strong>پاسخ صحیح: ج) تا ۴ سال اول</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> برای بیماران <strong>پوکی استخوان</strong>، تا <span class="hl-cyan">۴ سال اول</span> ریسک بسیار پایین است. اما دقت کنید اگر بیمار <strong>سرطانی</strong> باشد (تزریق وریدی دوز بالا)، پنجره کم‌خطر فقط <span class="hl-red">۳ ماه اول</span> است!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area" id="topic6" dir="rtl" style="text-align: right;">
+            <h2>بخش ۶: مراقبت‌های دهان در بیماران کاندید درمان سرطان 🎗️</h2>
+
+            <div class="cheat-sheet">
+                <h3>🚀 تقلب‌نامه سریع (Cheat Sheet)</h3>
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-right: 5px solid #9b59b6; border-left: none;">
+                        <strong>⏳ اقدامات قبل از شروع درمان</strong><br>
+                        • <span class="hl-yellow">کشیدن دندان‌های غیرقابل نگهداری:</span> باید <strong>حداقل ۷ تا ۱۰ روز قبل</strong> از شروع درمان سرطان انجام شود.<br>
+                        • دندان‌ها: فلورایدتراپی و حذف پوسیدگی‌ها.<br>
+                        • مخاط: حذف عوامل تحریک‌کننده (دندان شکسته، دست‌دندان نامناسب).
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #3498db; border-left: none;">
+                        <strong>🚨 عوارض رادیوتراپی سر و گردن</strong><br>
+                        • <strong>موکوزیت</strong> <span class="def">(التهاب شدید مخاط دهان)</span>.<br>
+                        • <strong>خشکی دهان</strong> و عفونت‌های قارچی (کاندیدا).<br>
+                        • <strong>تریسموس</strong> <span class="def">(محدودیت شدید باز کردن دهان)</span>.<br>
+                        • <strong>سیاآلدنیت</strong> <span class="def">(التهاب غدد بزاقی)</span> و تغییرات استخوانی.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #e74c3c; border-left: none;">
+                        <strong>🚩 چه زمانی مراجعه فوری نیاز است؟</strong><br>
+                        • <span class="hl-red">تورم یا توده بدون درد</span> که بیش از <strong>۲ هفته</strong> تداوم داشته باشد.<br>
+                        • درد شدید، خونریزی غیرطبیعی، زخم‌های ماندگار، یا تب پایدار.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #2ecc71; border-left: none;">
+                        <strong>🪥 دستورالعمل مراقبت پایه</strong><br>
+                        • مسواک نرم ۲ تا ۳ بار در روز + نخ دندان ۱ بار + خمیردندان فلورایددار.<br>
+                        • دهانشویه: <span class="hl-cyan">کلرهگزیدین ۰/۱۲ درصد</span> (در صورت بیماری لثه) و شوینده‌های ملایم مثل سالین (آب‌نمک) برای مرطوب‌سازی.
+                    </div>
+                </div>
+            </div>
+
+            <div class="diagram-container">
+                
+                <p class="def" style="margin-top: 5px;">موکوزیت (التهاب و زخم مخاط دهان) یکی از شایع‌ترین و دردناک‌ترین عوارض حاد شیمی‌درمانی و رادیوتراپی است.</p>
+            </div>
+
+            <h3 style="margin-top: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">🧠 یادآوری فعال (Active Recall)</h3>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۱: در آماده‌سازی دهان بیمار قبل از شروع درمان سرطان، کشیدن دندان‌های غیرقابل نگهداری باید حداقل چه مدت قبل از شروع رادیوتراپی/شیمی‌درمانی انجام شود؟
+                </div>
+                <ul class="options">
+                    <li>الف) ۲ تا ۳ روز قبل</li>
+                    <li>ب) حداقل ۷ تا ۱۰ روز قبل</li>
+                    <li>ج) حداقل ۱ ماه قبل</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t6q1')">مشاهده پاسخ و نکات</button>
+                <div id="t6q1" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) حداقل ۷ تا ۱۰ روز قبل</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> بافت لثه و ساکت دندانی به زمان نیاز دارد تا قبل از سرکوب سیستم ایمنی و کاهش جریان خون توسط درمان‌های سرطان، یک ترمیم اولیه پیدا کند (<span class="hl-cyan">قانون ۷ تا ۱۰ روز</span>).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card">
+                <div class="question-text">
+                    سوال ۲: کدام‌یک از علائم زیر در بیمار تحت درمان سرطان، یک زنگ خطر (Red flag) محسوب شده و نیازمند <u>مراجعه فوری</u> به دندانپزشک است؟
+                </div>
+                <ul class="options">
+                    <li>الف) خشکی دهان و تغییر حس مزه</li>
+                    <li>ب) محدودیت خفیف در باز کردن دهان هنگام صبح</li>
+                    <li>ج) تورم یا توده بدون درد با تداوم بیش از ۲ هفته</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t6q2')">مشاهده پاسخ و نکات</button>
+                <div id="t6q2" class="answer-section">
+                    <p><strong>پاسخ صحیح: ج) تورم یا توده بدون درد با تداوم بیش از ۲ هفته</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> خشکی دهان، موکوزیت و تریسموس (محدودیت باز کردن دهان) جزو عوارض مورد انتظار هستند، اما یک <span class="hl-red">توده بدون درد که بالای ۲ هفته بماند</span> احتمال بدخیمی ثانویه یا مشکلات جدی‌تر را مطرح می‌کند.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area" id="topic7" dir="rtl" style="text-align: right;">
+            <h2>بخش ۷: پروفیلاکسی آنتی‌بیوتیک (AP) و آندوکاردیت عفونی (IE) 🫀</h2>
+
+            <div class="cheat-sheet">
+                <h3>🚀 تقلب‌نامه سریع (Cheat Sheet)</h3>
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-right: 5px solid #e74c3c; border-left: none;">
+                        <strong>⚠️ چه کسانی پروفیلاکسی می‌خواهند؟ (بیماران پرخطر)</strong><br>
+                        • دریچه‌های قلبی مصنوعی (Prosthetic valves).<br>
+                        • <span class="hl-red">سابقه قبلی</span> آندوکاردیت عفونی (IE).<br>
+                        • بیماری مادرزادی قلب (CHD) <span class="hl-cyan">سیانوتیک ترمیم‌نشده</span>.<br>
+                        • CHD کاملاً ترمیم شده با پروتز (فقط در <span class="hl-yellow">۶ ماه اول</span> بعد از جراحی).<br>
+                        • پیوند قلب همراه با مشکل دریچه‌ای (والولوپاتی).
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #2ecc71; border-left: none;">
+                        <strong>✅ چه کسانی پروفیلاکسی <u>نمی‌خواهند</u>؟</strong><br>
+                        • <span class="hl-yellow">گروه خطر متوسط (Moderate Risk):</span> مانند تب روماتیسمی، یا ناهنجاری‌های دریچه‌ای مادرزادی.<br>
+                        • بیماران دارای پیس‌میکر (دستگاه ضربان‌ساز) و دفیبریلاتور.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #3498db; border-left: none;">
+                        <strong>🦷 در کدام درمان‌های دندانپزشکی AP نیاز است؟</strong><br>
+                        • فقط درمان‌هایی که باعث: دستکاری لثه، دستکاری ناحیه پری‌آپیکال، یا <span class="hl-cyan">سوراخ کردن مخاط</span> شوند.<br>
+                        • <span class="def">نیازی نیست برای:</span> تزریق بی‌حسی (در بافت سالم)، عکس‌برداری، قالب‌گیری، و افتادن دندان شیری.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #f1c40f; border-left: none;">
+                        <strong>💊 زمان‌بندی و تغییرات جدید (AHA 2021)</strong><br>
+                        • زمان تجویز: تک‌دوز، <span class="hl-yellow">۳۰ تا ۶۰ دقیقه قبل</span> از درمان (اگر فراموش شد، تا ۲ ساعت بعد هم مجاز است).<br>
+                        • عامل عفونت: استرپتوکوک‌های گروه ویریدنس <span class="hl-cyan">(VGS)</span>.<br>
+                        • <span class="hl-red">حذف کلیندامایسین:</span> به دلیل عوارض جانبی شدید، از دستورالعمل AHA حذف شده است!
+                    </div>
+                </div>
+            </div>
+
+            <div class="diagram-container">
+                
+                <p class="def" style="margin-top: 5px;">ورود باکتری‌های VGS به جریان خون (باکتریمی گذرا) طی دستکاری لثه می‌تواند باعث ایجاد کلونی روی دریچه‌های مصنوعی قلب شود.</p>
+            </div>
+
+            <h3 style="margin-top: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">🧠 یادآوری فعال (Active Recall)</h3>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۱: طبق آپدیت جدید دستورالعمل AHA (2021)، کدام آنتی‌بیوتیک به دلیل عوارض جانبی نامطلوب از لیست داروهای پروفیلاکسی آندوکاردیت عفونی (IE) <u>حذف</u> شده است؟
+                </div>
+                <ul class="options">
+                    <li>الف) آموکسی‌سیلین</li>
+                    <li>ب) سفالوسپورین‌ها</li>
+                    <li>ج) کلیندامایسین</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t7q1')">مشاهده پاسخ و نکات</button>
+                <div id="t7q1" class="answer-section">
+                    <p><strong>پاسخ صحیح: ج) کلیندامایسین</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> این یکی از مهم‌ترین آپدیت‌های جدید گایدلاین است. <span class="hl-red">کلیندامایسین</span> دیگر توصیه نمی‌شود. برای بیماران حساس به پنی‌سیلین، گزینه‌های جایگزین دیگری (مثل آزیترومایسین یا کلاریترومایسین) وجود دارد.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۲: یک بیمار با سابقه "تب روماتیسمی" و نقص دریچه‌ای متوسط، برای کشیدن دندان به شما مراجعه می‌کند. آیا تجویز پروفیلاکسی آنتی‌بیوتیک (AP) قبل از کشیدن دندان برای وی الزامی است؟
+                </div>
+                <ul class="options">
+                    <li>الف) بله، تب روماتیسمی جزو بالاترین خطرات است.</li>
+                    <li>ب) خیر، تب روماتیسمی در گروه خطر متوسط (Moderate Risk) است و نیازی به AP ندارد.</li>
+                    <li>ج) بله، فقط در صورتی که دندان عفونی باشد.</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t7q2')">مشاهده پاسخ و نکات</button>
+                <div id="t7q2" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) خیر، تب روماتیسمی در گروه خطر متوسط است و نیازی به AP ندارد.</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> گایدلاین AHA فقط برای بیماران <span class="hl-red">بسیار پرخطر</span> (مثل دریچه مصنوعی، سابقه قبلی IE، و قلب مادرزادی سیانوتیک) AP را ضروری می‌داند.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card">
+                <div class="question-text">
+                    سوال ۳: زمان طلایی و ایده‌آل برای تجویز تک‌دوز پروفیلاکسی آنتی‌بیوتیک چه زمانی است، و اگر فراموش شود چه باید کرد؟
+                </div>
+                <ul class="options">
+                    <li>الف) شب قبل از درمان / در صورت فراموشی کاری نمی‌توان کرد.</li>
+                    <li>ب) ۳۰ تا ۶۰ دقیقه قبل از درمان / تا ۲ ساعت پس از درمان نیز قابل تجویز است.</li>
+                    <li>ج) ۲۴ ساعت قبل از درمان / تا ۱ روز بعد از درمان قابل تجویز است.</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t7q3')">مشاهده پاسخ و نکات</button>
+                <div id="t7q3" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) ۳۰ تا ۶۰ دقیقه قبل از درمان / تا ۲ ساعت پس از درمان نیز قابل تجویز است.</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> هدف ما این است که در لحظه انجام کار (باکتریمی گذرا ناشی از VGS)، غلظت دارو در خون ماکسیمم باشد. به همین دلیل <span class="hl-cyan">۳۰ تا ۶۰ دقیقه قبل</span> بهترین زمان است.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area" id="topic8" dir="rtl" style="text-align: right;">
+            <h2>بخش ۸: اصول نسخه‌نویسی، مدیریت درد و داروها 💊</h2>
+
+            <div class="cheat-sheet">
+                <h3>🚀 تقلب‌نامه سریع (Cheat Sheet)</h3>
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-right: 5px solid #e74c3c; border-left: none;">
+                        <strong>⚠️ هشدارهای حیاتی دارویی (FDA & Warnings)</strong><br>
+                        • <span class="hl-red">Metronidazole (مترونیدازول):</span> مصرف الکل تا ۴۸ ساعت بعد کاملاً ممنوع! (واکنش دی‌سولفیرام).<br>
+                        • <span class="hl-red">Clindamycin (کلیندامایسین):</span> خطر عفونت گوارشی C. diff.<br>
+                        • <strong>تتراسایکلین‌ها:</strong> در بارداری، شیردهی و کودکان زیر ۸ سال <span class="hl-red">ممنوع (گروه D/X)</span> ⬅️ تغییر رنگ دندان.<br>
+                        • <strong>NSAIDs (ایبوپروفن):</strong> در سه‌ماهه سوم بارداری اجتناب شود.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #3498db; border-left: none;">
+                        <strong>💊 پروتکل پله‌ای مدیریت درد</strong><br>
+                        • <strong>درد خفیف (Level 1):</strong> تک‌درمانی (Monotherapy) ⬅️ ایبوپروفن (Max: 2400mg) <u>یا</u> استامینوفن (Max: 4000mg).<br>
+                        • <strong>درد متوسط (Level 2):</strong> درمان ترکیبی و هم‌افزایی (Synergy) ⬅️ <span class="hl-cyan">ایبوپروفن + استامینوفن</span> (با فاصله ۳ ساعت).<br>
+                        • <strong>درد شدید (Level 3):</strong> مخدرها (Oxycodone/APAP) ⬅️ اصل طلایی: <span class="hl-yellow">تجویز کمتر از ۳ روز</span>.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #f1c40f; border-left: none;">
+                        <strong>📝 اختصارات طلایی نسخه‌نویسی</strong><br>
+                        • <span class="hl-yellow">PRN:</span> در صورت نیاز (As needed) / <span class="hl-yellow">PO:</span> خوراکی (Oral).<br>
+                        • <span class="hl-cyan">q6h:</span> هر ۶ ساعت / <span class="hl-cyan">BID:</span> دو بار در روز / <span class="hl-cyan">TID:</span> سه بار در روز.<br>
+                        • <strong>a.c.</strong> = قبل از غذا / <strong>p.c.</strong> = بعد از غذا.<br>
+                        • کنترل/تکرار نسخه (Refill): برای آنتی‌بیوتیک و مخدر <span class="hl-red">ممنوع</span> است.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #2ecc71; border-left: none;">
+                        <strong>💉 دوزهای بی‌حسی و آنتی‌بیوتیک‌ها</strong><br>
+                        • حداکثر دوز لیدوکائین ۲٪: <span class="hl-cyan">4.4 mg/kg</span> (Max مطلق: 300mg).<br>
+                        • عفونت موضعی: آموکسی‌سیلین ➔ اگر جواب نداد: مترونیدازول.<br>
+                        • ترکیب <strong>باکتری‌سیدال + باکتریواستاتیک</strong> (مثل پنی‌سیلین + تتراسایکلین) <span class="hl-red">ممنوع است (Antagonistic)</span>.
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">🧠 یادآوری فعال (Active Recall)</h3>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۱: بیمار دندانپزشکی دچار "درد متوسط التهابی" (Moderate Inflammatory Pain) پس از درمان ریشه شده است. طبق پروتکل پله‌ای، بهترین استراتژی دارویی کدام است؟
+                </div>
+                <ul class="options">
+                    <li>الف) تجویز بلافاصله یک داروی مخدر (Opioid) برای ۳ روز</li>
+                    <li>ب) درمان ترکیبی و هم‌افزایی (Synergy) با ایبوپروفن و استامینوفن متناوب</li>
+                    <li>ج) تک‌درمانی با دوز بالای استامینوفن (بیش از ۴۰۰۰ میلی‌گرم)</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t8q1')">مشاهده پاسخ و نکات</button>
+                <div id="t8q1" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) درمان ترکیبی و هم‌افزایی (Synergy) با ایبوپروفن و استامینوفن</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> ترکیب NSAIDها (ضدالتهاب) با استامینوفن (مرکزی)، <span class="hl-cyan">اثر سینرژیستیک (هم‌افزایی)</span> دارد و بیمار را از مصرف مخدرها (Opioids) بی‌نیاز می‌کند. مخدرها فقط برای دردهای شدید حاد و کمتر از ۳ روز تجویز می‌شوند.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۲: برای بیماری که به پنی‌سیلین حساسیت دارد، کلیندامایسین ۳۰۰ میلی‌گرم تجویز کرده‌اید. باید به بیمار در مورد کدام عارضه/خطر حیاتی این دارو هشدار دهید؟
+                </div>
+                <ul class="options">
+                    <li>الف) واکنش شدید در صورت مصرف همزمان با الکل (شبیه دی‌سولفیرام)</li>
+                    <li>ب) تغییر رنگ دائمی دندان‌ها</li>
+                    <li>ج) خطر بروز عفونت گوارشی C. difficile (اسهال شدید)</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t8q2')">مشاهده پاسخ و نکات</button>
+                <div id="t8q2" class="answer-section">
+                    <p><strong>پاسخ صحیح: ج) خطر بروز عفونت گوارشی C. difficile</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> کلیندامایسین ریسک بالای <span class="hl-red">کلوستریدیوم دیفیسیل</span> دارد. دقت کنید که گزینه "الف" مربوط به <strong>مترونیدازول</strong> است، و گزینه "ب" مربوط به <strong>تتراسایکلین</strong> می‌باشد.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card">
+                <div class="question-text">
+                    سوال ۳: در یک نسخه دندانپزشکی عبارت زیر نوشته شده است: `Sig: One q6h PRN pain`. معنی دقیق این دستور چیست؟
+                </div>
+                <ul class="options">
+                    <li>الف) یک عدد هر ۶ ساعت به همراه غذا</li>
+                    <li>ب) یک عدد هر ۶ ساعت در صورت وجود درد</li>
+                    <li>ج) یک عدد در روز در صورت وجود درد</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t8q3')">مشاهده پاسخ و نکات</button>
+                <div id="t8q3" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) یک عدد هر ۶ ساعت در صورت وجود درد</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> <span class="hl-cyan">q6h</span> یعنی هر ۶ ساعت. <span class="hl-yellow">PRN</span> یعنی As needed (در صورت نیاز/در صورت وجود درد).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area" id="topic9" dir="rtl" style="text-align: right;">
+            <h2>بخش ۹: ذهن و دهان (تظاهرات دهانی استرس) 🧠👄</h2>
+
+            <div class="cheat-sheet">
+                <h3>🚀 تقلب‌نامه سریع (Cheat Sheet)</h3>
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-right: 5px solid #9b59b6; border-left: none;">
+                        <strong>⚖️ قاعده بالینی طلایی (Clinical Rules)</strong><br>
+                        • تشخیص استرس یک <span class="hl-yellow">تشخیص حذفی (Diagnosis of Exclusion)</span> است؛ یعنی اول باید تمام علل جسمانی رد شوند.<br>
+                        • عدم تطابق میزان درد با پاتولوژی، نشانه <span class="hl-cyan">منشاء عصبی (نوروپاتیک)</span> است، نه لزوماً روانی!<br>
+                        • طبیعی بودن معاینه بالینی، بیماری‌های مرتبط با استرس را رد نمی‌کند.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #e74c3c; border-left: none;">
+                        <strong>🦠 زخم‌ها و التهابات (Ulcers & NUG)</strong><br>
+                        • <strong>آفت (RAS):</strong> زخم با هاله قرمز (Red Halo). اولسرهای بالای ۱۴ روز ⬅️ <span class="hl-red">بیوپسی برای رد بدخیمی!</span><br>
+                        • <strong>زخم تروماتیک ناشی از استرس:</strong> حاشیه کراتوتیک (سفید) ناشی از گاز گرفتن گونه (Morsicatio).<br>
+                        • <strong>NUG / ANUG:</strong> پاپی‌های سرخریده (Punched-out)، غشای خاکستری، بوی بد دهان (مرتبط با استرس حاد + بهداشت ضعیف).
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #3498db; border-left: none;">
+                        <strong>💧 بزاق و اعصاب (Salivary & Neuropathic)</strong><br>
+                        • <strong>خشکی دهان استرسی (Subjective Xerostomia):</strong> حجم بزاق <span class="hl-cyan">نرمال</span> است، اما کیفیت آن تغییر کرده (بزاق چسبناک و کف‌آلود). ناشی از غلبه سمپاتیک.<br>
+                        • <strong>BMS (سندرم سوزش دهان):</strong> درد و سوزش با مخاط کاملاً نرمال. نوع ۲ آن مستقیماً با استرس مرتبط است.
+                    </div>
+
+                    <div class="cheat-box" style="border-right: 5px solid #f1c40f; border-left: none;">
+                        <strong>🦷 پارافانکشن و پریودنتال</strong><br>
+                        • <strong>براکسیزم (دندان‌قروچه):</strong> سایش دندانی، خط سفید گونه (Linea alba)، لبه دندانه‌دار زبان (Scalloping).<br>
+                        • <strong>پریودنتال:</strong> استرس یک <span class="hl-yellow">ریسک فاکتور مستقل</span> است که باعث تخریب سریع اتصال و بالا رفتن سطح IL-1β می‌شود.<br>
+                        • ترمیم بافت: استرس اپیتلیالیزاسیون را مختل و ترمیم را به تاخیر می‌اندازد.
+                    </div>
+                </div>
+            </div>
+
+            <div class="diagram-container">
+                
+                <p class="def" style="margin-top: 5px;">نمای کلاسیک ANUG: از بین رفتن پاپی‌های بین‌دندانی (Punched-out papillae) که معمولاً به دنبال استرس‌های حاد (مثل فصل امتحانات یا سربازی) ظاهر می‌شود.</p>
+            </div>
+
+            <h3 style="margin-top: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">🧠 یادآوری فعال (Active Recall)</h3>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۱: در مورد تظاهرات دهانی استرس، کدام‌یک از "قواعد بالینی" زیر کاملاً صحیح است؟
+                </div>
+                <ul class="options">
+                    <li>الف) استرس اولین تشخیصی است که باید در دردهای مزمن فکی مطرح شود.</li>
+                    <li>ب) تشخیص "استرس" تنها زمانی مجاز است که تمام علل جسمانی و سیستمیک رد شده باشند (تشخیص حذفی).</li>
+                    <li>ج) اگر معاینه بالینی مخاط دهان نرمال باشد، بیماری‌های مرتبط با استرس کاملاً رد می‌شوند.</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t9q1')">مشاهده پاسخ و نکات</button>
+                <div id="t9q1" class="answer-section">
+                    <p><strong>پاسخ صحیح: ب) تشخیص "استرس" تنها زمانی مجاز است که تمام علل جسمانی رد شده باشند.</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> هیچ‌گاه در نگاه اول درد بیمار را به "اعصاب و روان" ربط ندهید. استرس یک Diagnosis of Exclusion است. همچنین دقت کنید که <span class="hl-yellow">نرمال بودن بافت</span>، اتفاقاً نشانه بسیاری از دردهای نوروپاتیک استرسی (مثل BMS) است!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card high-yield">
+                <div class="question-text">
+                    ⭐ سوال ۲: بیماری با استرس حاد مراجعه کرده و از بوی بد دهان، طعم فلزی و درد ناگهانی لثه‌ها شکایت دارد. در معاینه، پاپی‌های بین‌دندانی حالت سرخریده (Punched-out) با غشای خاکستری دارند. تشخیص چیست؟
+                </div>
+                <ul class="options">
+                    <li>الف) لیکن پلان دهانی (OLP)</li>
+                    <li>ب) ژنژیویت دскваماتیو (Desquamative Gingivitis)</li>
+                    <li>ج) ژنژیویت/پریودنتیت اولسراتیو نکروزان (NUG / ANUG)</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t9q2')">مشاهده پاسخ و نکات</button>
+                <div id="t9q2" class="answer-section">
+                    <p><strong>پاسخ صحیح: ج) ژنژیویت اولسراتیو نکروزان (ANUG)</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> کلمات کلیدی برای امتحان: <span class="hl-red">پاپی سرخریده (Punched-out)</span> + <span class="hl-cyan">استرس حاد (Trench Mouth)</span> + <span class="hl-yellow">بوی بد/طعم فلزی</span> مساوی است با ANUG.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="q-card">
+                <div class="question-text">
+                    سوال ۳: در "خشکی دهان ناشی از استرس" (Stress-induced Xerostomia)، یافته بالینی غالب چیست و حجم جریان بزاق چه تغییری می‌کند؟
+                </div>
+                <ul class="options">
+                    <li>الف) بزاق چسبناک و کف‌آلود می‌شود، اما حجم کلی جریان بزاق (Flow Rate) معمولاً نرمال است.</li>
+                    <li>ب) غدد بزاقی متورم شده و ترشح بزاق به طور کامل متوقف می‌شود.</li>
+                    <li>ج) بزاق به شدت رقیق (سروزی) شده و حجم آن افزایش می‌یابد.</li>
+                </ul>
+                <button class="reveal-btn" onclick="toggleAnswer('t9q3')">مشاهده پاسخ و نکات</button>
+                <div id="t9q3" class="answer-section">
+                    <p><strong>پاسخ صحیح: الف) بزاق چسبناک و کف‌آلود می‌شود، اما حجم جریان بزاق نرمال است.</strong></p>
+                    <div class="context-box">
+                        <p><strong>🧠 نکته کلیدی:</strong> در استرس، سیستم <span class="hl-cyan">سمپاتیک</span> غلبه می‌کند که باعث افزایش ترشح پروتئین (موسین) و در نتیجه <span class="hl-yellow">کف‌آلود و چسبناک شدن بزاق</span> می‌گردد، اما جالب اینجاست که در تست‌ها، حجم کلی بزاق بیمار معمولاً <span class="hl-cyan">طبیعی (نرمال)</span> ارزیابی می‌شود!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background-color: var(--primary); color: white; padding: 20px; border-radius: 8px; margin-top: 40px; text-align: center;">
+                <h2 style="margin: 0;">یوهو 🎓 پایان مطالعه</h2>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            var element = document.getElementById(id);
+            var btn = element.previousElementSibling;
+            if (element.style.display === "block") {
+                element.style.display = "none";
+                btn.innerHTML = "Reveal Answer & Context";
+                btn.style.backgroundColor = "var(--primary)";
+            } else {
+                element.style.display = "block";
+                btn.innerHTML = "Hide Answer";
+                btn.style.backgroundColor = "#718093";
+            }
+        }
+    </script>
+</body>
+</html>

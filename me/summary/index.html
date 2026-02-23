@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systemic Diseases - Ultimate Master Cheat Sheet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazir-font@30.1.0/dist/font-face.min.css">
+
+    <style>
+        /* CORE VARIABLES */
+        :root {
+            --bg-color: #f4f7f6;
+            --primary: #1e3799; /* Deep medical blue */
+            --accent: #eb2f06; /* Alert red */
+            --success: #079992;
+            --text-main: #2f3640;
+            --hl-yellow: #fff200;
+            --hl-cyan: #81ecec;
+            --hl-red: #ff7675;
+        }
+        
+        body {
+            font-family: 'Vazir', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* LAYOUT & NAVIGATION */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        header h1 { margin: 0; font-size: 1.6rem; letter-spacing: 0.5px; }
+        header p { margin: 5px 0 0 0; font-size: 1rem; opacity: 0.9; font-weight: bold; color: var(--hl-yellow); }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        nav {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding: 10px 0;
+            margin-bottom: 30px;
+            border-bottom: 4px solid var(--primary);
+            white-space: nowrap;
+            scrollbar-width: none; 
+        }
+        nav::-webkit-scrollbar { display: none; }
+
+        .topic-tab {
+            background: #dcdde1;
+            padding: 12px 20px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 800;
+            color: #2f3640;
+            text-decoration: none;
+            transition: 0.2s;
+            border: 2px solid transparent;
+            border-bottom: none;
+        }
+        
+        .topic-tab:hover { background: #c8d6e5; }
+        .topic-tab.active { background: var(--primary); color: white; }
+
+        /* CHEAT SHEET STYLING (The Core Engine) */
+        .content-area {
+            margin-bottom: 60px;
+            scroll-margin-top: 100px; /* Accounts for sticky header */
+        }
+
+        .content-area h2 {
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 25px;
+        }
+
+        .cheat-sheet {
+            background: #ffffff;
+            border: 3px solid var(--primary);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 6px 6px 0px var(--primary);
+        }
+
+        /* THE 3-COLOR HIGHLIGHT SYSTEM */
+        .hl-yellow { background-color: var(--hl-yellow); padding: 2px 6px; border-radius: 4px; font-weight: 900; color: #000; box-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        .hl-cyan { background-color: var(--hl-cyan); padding: 2px 6px; border-radius: 4px; font-weight: 900; color: #000; box-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        .hl-red { background-color: var(--hl-red); padding: 2px 6px; border-radius: 4px; font-weight: 900; color: #000; box-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        
+        .def { font-style: italic; color: #555; font-size: 0.9em; background: #f1f2f6; padding: 2px 5px; border-radius: 4px;} 
+
+        /* GRID LAYOUT FOR SCANNING */
+        .cheat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .cheat-box {
+            background: #f8f9fa;
+            padding: 18px;
+            border-top: 5px solid var(--primary);
+            border-radius: 8px;
+            font-size: 1.05rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .cheat-box:hover { transform: translateY(-3px); box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+        .cheat-box strong { color: var(--primary); font-size: 1.15rem; display: block; margin-bottom: 8px; border-bottom: 1px dashed #ccc; padding-bottom: 5px;}
+        .cheat-box ul { padding-left: 20px; margin: 0; }
+        .cheat-box li { margin-bottom: 8px; }
+
+        .diagram-container {
+            text-align: center;
+            margin: 25px 0;
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 2px dashed #bdc3c7;
+        }
+        
+        .rtl-box { direction: rtl; text-align: right; }
+        .rtl-box ul { padding-right: 20px; padding-left: 0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🦷 Systemic Diseases - Master Exam Guide</h1>
+        <p>Zero Fluff. Pure High-Yield Facts.</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a class="topic-tab" href="#topic1">1. Labs</a>
+            <a class="topic-tab" href="#topic2">2. Oral Cancer</a>
+            <a class="topic-tab" href="#topic3">3. Sjögren's</a>
+            <a class="topic-tab" href="#topic4">4. BMS</a>
+            <a class="topic-tab" href="#topic5">5. MRONJ</a>
+            <a class="topic-tab" href="#topic6">6. Cancer Care</a>
+            <a class="topic-tab" href="#topic7">7. AHA Prophylaxis</a>
+            <a class="topic-tab" href="#topic8">8. Rx & Pain</a>
+            <a class="topic-tab" href="#topic9">9. Stress & Oral</a>
+        </nav>
+
+        <div class="content-area" id="topic1">
+            <h2>Topic 1: Essential Medical Lab Tests 🧪</h2>
+            <div class="cheat-sheet">
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-top-color: #e74c3c;">
+                        <strong>🩸 Coagulation & Bleeding Risks</strong>
+                        <ul>
+                            <li><strong>Warfarin:</strong> Affects <span class="hl-yellow">Extrinsic</span> pathway ➡️ Measured by <strong>PT/INR</strong>. <br><span class="hl-red">DANGER: Delay procedure if INR > 3.5</span></li>
+                            <li><strong>Heparin:</strong> Affects <span class="hl-yellow">Intrinsic</span> pathway ➡️ Measured by <strong>aPTT</strong> (Normal: 25-35s).</li>
+                            <li><strong>Platelets:</strong> Normal is 140k-400k. <span class="hl-red">Severe Bleeding Risk: < 50,000 /µL</span>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #3498db;">
+                        <strong>🩸 Anemia & Healing</strong>
+                        <ul>
+                            <li><span class="def">Low Hb/Hct = Poor O2 transport = Delayed Healing.</span></li>
+                            <li><span class="hl-yellow">Microcytic Anemia:</span> Iron deficiency. Check Ferritin, Serum Iron, TIBC.</li>
+                            <li><span class="hl-yellow">Macrocytic Anemia:</span> Vit B12 or Folate deficiency. Causes smooth beefy tongue. Check Schilling test.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #9b59b6;">
+                        <strong>🍬 Diabetes & Metabolism</strong>
+                        <ul>
+                            <li><strong>Normal:</strong> FBS <span class="hl-cyan">70-100 mg/dL</span> | HbA1c <span class="hl-cyan">< 5.7%</span></li>
+                            <li><strong>Diabetes Dx:</strong> FBS <span class="hl-red">≥ 126 mg/dL</span> | HbA1c <span class="hl-red">≥ 6.5%</span></li>
+                            <li><span class="hl-yellow">Organ Function:</span> <strong>Liver</strong> (ALT/AST) alters drug metabolism. <strong>Kidneys</strong> (Creatinine/eGFR) filter drugs ➡️ <span class="hl-cyan">Caution with NSAIDs!</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #f39c12;">
+                        <strong>🦠 Viral & Infection Markers</strong>
+                        <ul>
+                            <li><strong>Hepatitis B:</strong> Active/Acute infection confirmed by <span class="hl-red">HBs Ag + IgM Anti-HBc</span>.</li>
+                            <li><strong>Hepatitis C:</strong> Check Anti-HCV & HCV RNA.</li>
+                            <li><strong>HIV:</strong> Monitor immune status with <span class="hl-cyan">CD4+ count</span> and inflammation with ESR/CRP.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="diagram-container">
+                
+
+[Image of blood coagulation cascade extrinsic intrinsic pathways]
+
+                <p class="def">Visual mnemonic: Extrinsic is shorter (PT/Warfarin), Intrinsic is longer (aPTT/Heparin).</p>
+            </div>
+        </div>
+
+        <div class="content-area rtl-box" id="topic2">
+            <h2>بخش ۲: سرطان دهان و معاینه 🔍</h2>
+            <div class="cheat-sheet">
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-top-color: #e74c3c;">
+                        <strong>⚠️ عوامل خطر (Risk Factors)</strong>
+                        <ul>
+                            <li><span class="hl-yellow">قانون طلایی:</span> مصرف همزمان <strong>سیگار + الکل</strong> خطر ابتلا را <span class="hl-red">۳۰ برابر</span> می‌کند.</li>
+                            <li>ویروس <strong>HPV</strong> (انتقال از رابطه دهانی/جنسی) عامل مهم سرطان‌های اوروفارنکس.</li>
+                            <li>نور آفتاب ⬅️ سرطان پوست و لب‌ها.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #f1c40f;">
+                        <strong>🚩 زنگ خطرهای بالینی</strong>
+                        <ul>
+                            <li>شایع‌ترین منشأ: <span class="hl-cyan">سلول‌های سنگفرشی پوششی (SCC)</span>.</li>
+                            <li><span class="hl-red">قانون ۳ هفته:</span> هرگونه زخم، لکه قرمز یا سفید که <strong>بیش از ۳ هفته</strong> بماند و خوب نشود، نیازمند ارجاع و بیوپسی است!</li>
+                            <li>مشکل اصلی: مراجعه دیرهنگام بیماران در مراحل پیشرفته بیماری.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #3498db;">
+                        <strong>🛠️ درمان و هدف آن</strong>
+                        <ul>
+                            <li>درمان اصلی معمولاً <span class="hl-cyan">جراحی</span> است (در کنار رادیوتراپی/شیمی‌درمانی).</li>
+                            <li><strong>هدف تیم پزشکی:</strong> فقط زنده ماندن نیست؛ بلکه <span class="hl-yellow">حفظ ظاهر، توانایی تکلم و بلع</span> برای کیفیت زندگی بیمار است.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="diagram-container">
+                
+                <p class="def">زخم‌های بدون درد در کناره‌های طرفی زبان (Lateral border) یکی از شایع‌ترین و خطرناک‌ترین نواحی برای SCC هستند.</p>
+            </div>
+        </div>
+
+        <div class="content-area rtl-box" id="topic3">
+            <h2>بخش ۳: سندرم شوگرن 💧</h2>
+            <div class="cheat-sheet">
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-top-color: #9b59b6;">
+                        <strong>👥 اصول بیماری و تشخیص</strong>
+                        <ul>
+                            <li><span class="hl-red">۹۰٪ بیماران زن هستند</span> (سن ۴۰-۶۰ سال).</li>
+                            <li>حمله سلول‌های T و B به غدد بزاقی و اشکی ⬅️ خشکی چشم و دهان.</li>
+                            <li>مارکرهای خونی: بالا رفتن ESR، <span class="hl-cyan">Anti-SSA (Ro)</span> و <span class="hl-cyan">Anti-SSB (La)</span>.</li>
+                            <li>استاندارد طلایی تشخیص: <span class="hl-yellow">Lip Biopsy</span> (نمونه‌برداری از لب برای دیدن ارتشاح لنفوسیت‌ها).</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #e74c3c;">
+                        <strong>🚨 عوارض و خطرات</strong>
+                        <ul>
+                            <li>عوارض معمول: <span class="hl-yellow">پوسیدگی دندان شدید</span> و کراتیت (آسیب قرنیه).</li>
+                            <li>درگیری سیستمیک (۳۰٪): نارسایی کلیه، فیبروز ریه.</li>
+                            <li><span class="hl-red">خطرناک‌ترین عارضه:</span> ۵٪ ریسک ابتلا به <strong>لنفوم غیرهوچکینی MALT</strong> (باید دائماً پایش شوند).</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #2ecc71;">
+                        <strong>💊 مدیریت و درمان</strong>
+                        <ul>
+                            <li>دهان: مصرف مایعات، آدامس بدون قند. داروهای ترشح‌کننده بزاق: <span class="hl-cyan">پیلُکارپین یا سوگلیمین</span>.</li>
+                            <li>چشم: اشک مصنوعی، قطره <strong>سیکلوسپورین</strong>.</li>
+                            <li>سیستمیک: کورتون، <strong>هیدروکسی‌کلروکین</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="diagram-container">
+                
+                <p class="def">تجمع لنفوسیت‌ها (نقاط آبی تیره) در اطراف مجاری غدد بزاقی فرعی در بیوپسی لب.</p>
+            </div>
+        </div>
+
+        <div class="content-area rtl-box" id="topic4">
+            <h2>بخش ۴: سندرم سوزش دهان (BMS) 🔥</h2>
+            <div class="cheat-sheet">
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-top-color: #e67e22;">
+                        <strong>📖 تعریف و تشخیص BMS اولیه</strong>
+                        <ul>
+                            <li>درد و سوزش <span class="hl-cyan">بیش از ۲ ساعت در روز</span> و <span class="hl-red">بیش از ۳ ماه</span> متوالی.</li>
+                            <li><span class="hl-yellow">شرط اساسی:</span> <strong>بدون هیچ‌گونه ضایعه قابل شناسایی</strong> در دهان! (مخاط کاملاً سالم است).</li>
+                            <li>بیشتر در خانم‌های بالای ۵۰ سال.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #9b59b6;">
+                        <strong>👅 علائم بالینی</strong>
+                        <ul>
+                            <li>محل درد: معمولاً دوطرفه در <span class="hl-yellow">دو سوم قدامی زبان</span>.</li>
+                            <li>روند درد: در طول روز <span class="hl-red">بدتر می‌شود</span>.</li>
+                            <li>عوامل تسکین‌دهنده: خوردن/آشامیدن <strong>چیزهای سرد</strong> درد را کاهش می‌دهد.</li>
+                            <li>تغییر حس چشایی: <span class="hl-cyan">مزه فلزی یا تلخ</span> (دیس‌گِوزیا).</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #34495e;">
+                        <strong>🧠 علت و درمان</strong>
+                        <ul>
+                            <li>منشأ عصبی: <span class="hl-cyan">نوروپاتی محیطی عصب تری‌ژمینال</span>.</li>
+                            <li>علت آزمایش خون (آهن، قند، ویتامین‌ها): فقط برای <span class="hl-red">رد کردن BMS ثانویه</span> (علل سیستمیک).</li>
+                            <li>درمان‌های دارویی: <span class="hl-cyan">کلونازپام، گاباپنتین، کپساسین</span> + روان‌درمانی.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area rtl-box" id="topic5">
+            <h2>بخش ۵: استئونکروز فک ناشی از داروها (MRONJ) 🦴</h2>
+            <div class="cheat-sheet">
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-top-color: #e74c3c;">
+                        <strong>⚠️ معیارهای قطعی تشخیص</strong>
+                        <ul>
+                            <li>استخوان اکسپوز یا قابل پروب که <span class="hl-red">بیشتر از ۸ هفته</span> در فک باقی بماند.</li>
+                            <li>سابقه مصرف داروهای ضدجذب یا ضدآنژیوژنز.</li>
+                            <li><span class="hl-yellow">بیمار نباید:</span> سابقه رادیوتراپی سر و گردن داشته باشد (در آن صورت ORN است).</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #3498db;">
+                        <strong>💊 داروهای مقصر</strong>
+                        <ul>
+                            <li><strong>ضدجذب‌ها:</strong> بیس‌فسفونات‌ها (قوی‌ترین: <span class="hl-cyan">Zoledronic acid</span>) و <strong>Denosumab</strong> (مهارکننده RANKL).</li>
+                            <li><strong>ضدآنژیوژنیک‌ها:</strong> Sunitinib, Bevacizumab (جلوی رگ‌سازی را می‌گیرند).</li>
+                            <li><span class="def">مهم: داروهای آنابولیک مثل <strong>تری‌پاراتاید</strong> باعث MRONJ نمی‌شوند و حتی کمک‌کننده‌اند.</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #f1c40f;">
+                        <strong>⏳ پنجره کم‌خطر و مدیریت</strong>
+                        <ul>
+                            <li>بیماران پوکی استخوان (دوز پایین): <span class="hl-cyan">تا ۴ سال اول</span> ریسک کم است.</li>
+                            <li>بیماران سرطانی (دوز بالا وریدی): فقط <span class="hl-red">تا ۳ ماه اول</span> ریسک کم است.</li>
+                            <li><strong>اقدام طلایی:</strong> کشیدن دندان‌های عفونی <strong>قبل</strong> از شروع داروها. کشیدن دندان در استخوانی که از قبل نکروز شده، وضعیت را بدتر نمی‌کند.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="diagram-container">
+                
+                <p class="def">استخوان اکسپوز در مندیبل (شایع‌ترین محل) به دلیل کاهش جریان خون و مهار بازسازی استخوانی.</p>
+            </div>
+        </div>
+
+        <div class="content-area rtl-box" id="topic6">
+            <h2>بخش ۶: مراقبت دهان در بیماران کاندید درمان سرطان 🎗️</h2>
+            <div class="cheat-sheet">
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-top-color: #9b59b6;">
+                        <strong>⏳ قبل از شروع درمان</strong>
+                        <ul>
+                            <li>کشیدن دندان‌های غیرقابل نگهداری باید <span class="hl-red">حداقل ۷ تا ۱۰ روز قبل</span> از شروع رادیوتراپی/شیمی‌درمانی انجام شود تا بافت فرصت ترمیم اولیه داشته باشد.</li>
+                            <li>حذف تمام عوامل تحریک‌کننده (دندان شکسته، دست‌دندان لق).</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #3498db;">
+                        <strong>🚨 عوارض طول درمان</strong>
+                        <ul>
+                            <li><span class="hl-yellow">موکوزیت:</span> التهاب و زخم شدید و دردناک مخاط دهان.</li>
+                            <li><span class="hl-yellow">تریسموس:</span> محدودیت شدید در باز کردن دهان.</li>
+                            <li>سیاآلدنیت (التهاب غدد بزاقی) و عفونت‌های کاندیدا (قارچی).</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #e74c3c;">
+                        <strong>🚩 زنگ خطر (مراجعه فوری)</strong>
+                        <ul>
+                            <li>پیدایش هرگونه <span class="hl-red">تورم یا توده بدون درد</span> که بیش از <strong>۲ هفته</strong> طول بکشد!</li>
+                            <li>شستشوی دهان: استفاده از کلرهگزیدین ۰/۱۲ درصد (برای لثه) و سرم نمکی (سالین) برای مرطوب‌سازی.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="diagram-container">
+                
+                <p class="def">موکوزیت دهانی؛ دردناک‌ترین عارضه حاد شیمی‌درمانی/رادیوتراپی که تغذیه بیمار را مختل می‌کند.</p>
+            </div>
+        </div>
+
+        <div class="content-area rtl-box" id="topic7">
+            <h2>بخش ۷: پروفیلاکسی آنتی‌بیوتیک (AHA 2021) 🫀</h2>
+            <div class="cheat-sheet">
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-top-color: #e74c3c;">
+                        <strong>⚠️ گروه پرخطر (نیازمند پروفیلاکسی)</strong>
+                        <ul>
+                            <li>بیماران دارای <span class="hl-yellow">دریچه قلب مصنوعی</span> (پروتزی).</li>
+                            <li>داشتن <span class="hl-red">سابقه قبلی</span> آندوکاردیت عفونی (IE).</li>
+                            <li>بیماری مادرزادی قلب (CHD) از نوع <span class="hl-cyan">سیانوتیک ترمیم‌نشده</span>.</li>
+                            <li>پیوند قلب که دچار والولوپاتی (مشکل دریچه‌ای) شده باشد.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #2ecc71;">
+                        <strong>✅ گروه متوسط (بدون نیاز به پروفیلاکسی)</strong>
+                        <ul>
+                            <li><span class="hl-red">تب روماتیسمی</span> یا افتادگی دریچه میترال (MVP).</li>
+                            <li>بیماران دارای پیس‌میکر (دستگاه ضربان‌ساز).</li>
+                            <li><span class="def">درمان‌های معاف از پروفیلاکسی:</span> تزریق بی‌حسی (در بافت سالم)، رادیوگرافی، افتادن دندان شیری.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #f1c40f;">
+                        <strong>💊 پروتکل و تغییرات جدید</strong>
+                        <ul>
+                            <li>آنتی‌بیوتیک برای مقابله با: <span class="hl-cyan">استرپتوکوک‌های گروه ویریدنس (VGS)</span>.</li>
+                            <li>زمان مصرف: <span class="hl-yellow">۳۰ تا ۶۰ دقیقه قبل</span> از کار دندانپزشکی (تا ۲ ساعت بعد هم مجاز است).</li>
+                            <li><span class="hl-red">هشدار بزرگ:</span> داروی <strong>کلیندامایسین</strong> به دلیل عوارض جانبی شدید (C.diff) از دستورالعمل AHA حذف شده است!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="diagram-container">
+                
+
+[Image of infective endocarditis valve vegetation]
+
+                <p class="def">وژتاسیون باکتریایی روی دریچه قلب. هدف پروفیلاکسی جلوگیری از کلونیزه شدن باکتری‌های دهانی (VGS) روی دریچه‌های آسیب‌دیده است.</p>
+            </div>
+        </div>
+
+        <div class="content-area rtl-box" id="topic8">
+            <h2>بخش ۸: داروشناسی، نسخه‌نویسی و مدیریت درد 💊</h2>
+            <div class="cheat-sheet">
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-top-color: #e74c3c;">
+                        <strong>⚠️ هشدارهای حیاتی (Red Flags)</strong>
+                        <ul>
+                            <li><span class="hl-red">Metronidazole:</span> مصرف الکل در طول درمان و تا ۴۸ ساعت بعد <strong>اکیداً ممنوع</strong> (واکنش شدید دی‌سولفیرام).</li>
+                            <li><span class="hl-red">Clindamycin:</span> خطر اسهال کشنده و عفونت <strong>C. difficile</strong>.</li>
+                            <li><span class="hl-red">Tetracyclines:</span> در بارداری، شیردهی و کودکان کاملاً ممنوع (تغییر رنگ دندان).</li>
+                            <li>ترکیب آنتی‌بیوتیک باکتری‌سیدال + باکتریواستاتیک <span class="hl-yellow">ممنوع است</span> (خاصیت آنتاگونیستی دارند).</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #3498db;">
+                        <strong>💊 پروتکل پله‌ای درد</strong>
+                        <ul>
+                            <li><strong>درد خفیف:</strong> تک‌درمانی با <strong>ایبوپروفن</strong> (Max 2400mg) یا <strong>استامینوفن</strong> (Max 4000mg).</li>
+                            <li><strong>درد متوسط التهابی:</strong> درمان ترکیبی و <span class="hl-cyan">هم‌افزایی (Synergy)</span> ⬅️ ایبوپروفن و استامینوفن به صورت متناوب (هر ۳ ساعت).</li>
+                            <li><strong>درد شدید حاد:</strong> مخدرها (اپیوئیدها) ⬅️ حتماً <span class="hl-yellow">کمتر از ۳ روز</span> تجویز شوند.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #2ecc71;">
+                        <strong>📝 اختصارات و محاسبات مهم</strong>
+                        <ul>
+                            <li>حداکثر دوز لیدوکائین ۲٪: <span class="hl-cyan">4.4 mg/kg</span> (سقف مطلق: 300mg).</li>
+                            <li><span class="hl-cyan">PRN:</span> در صورت نیاز | <span class="hl-cyan">PO:</span> خوراکی.</li>
+                            <li><span class="hl-cyan">q6h:</span> هر ۶ ساعت | <span class="hl-cyan">BID/TID:</span> دو/سه بار در روز.</li>
+                            <li><span class="hl-cyan">a.c.:</span> قبل غذا | <span class="hl-cyan">p.c.:</span> بعد غذا.</li>
+                            <li>تکرار نسخه (Refill) برای مخدرها و آنتی‌بیوتیک‌ها <span class="hl-red">ممنوع</span> است.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="diagram-container">
+                
+                <p class="def">ساختار یک نسخه استاندارد. نام، دوز، فرم، تعداد، فواصل زمانی و شرایط مصرف باید کاملاً واضح (بدون ابهام) نوشته شود.</p>
+            </div>
+        </div>
+
+        <div class="content-area rtl-box" id="topic9">
+            <h2>بخش ۹: ذهن و دهان (تظاهرات استرس) 🧠</h2>
+            <div class="cheat-sheet">
+                <div class="cheat-grid">
+                    <div class="cheat-box" style="border-top-color: #9b59b6;">
+                        <strong>⚖️ قوانین بالینی استرس</strong>
+                        <ul>
+                            <li>استرس یک <span class="hl-yellow">تشخیص حذفی (Diagnosis of Exclusion)</span> است (اول باید بیماری‌های جسمی رد شوند).</li>
+                            <li>عدم تطابق شدت درد با ظاهر بافت، نشانه <span class="hl-cyan">درد نوروپاتیک (عصبی)</span> است، نه مشکل روانی.</li>
+                            <li>طبیعی بودن مخاط دهان، بیماری‌های استرسی را رد نمی‌کند!</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #e74c3c;">
+                        <strong>🦠 زخم‌ها و التهابات</strong>
+                        <ul>
+                            <li><strong>آفت (RAS):</strong> هاله قرمز (Red halo). زخم‌های استرسی تروماتیک <strong>حاشیه سفید (کراتوتیک)</strong> دارند (به دلیل گاز گرفتن/Morsicatio).</li>
+                            <li><span class="hl-red">NUG / ANUG:</span> تخریب پاپی‌های بین‌دندانی به شکل <strong>سرخریده (Punched-out)</strong>، بوی بد دهان، طعم فلزی. ناشی از ترکیب استرس حاد و بهداشت ضعیف.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-box" style="border-top-color: #3498db;">
+                        <strong>💧 خشکی دهان و براکسیزم</strong>
+                        <ul>
+                            <li><strong>خشکی دهان استرسی:</strong> احساس خشکی وجود دارد و بزاق <span class="hl-cyan">چسبناک و کف‌آلود</span> می‌شود، اما حجم ترشح بزاق (Flow rate) <span class="hl-yellow">کاملاً نرمال</span> است (ناشی از غلبه سمپاتیک).</li>
+                            <li><strong>دندان‌قروچه (Bruxism):</strong> سایش دندان‌ها، خط سفید گونه (Linea alba) و زبان دندانه‌دار (Scalloping).</li>
+                            <li>استرس باعث تاخیر در ترمیم بافت و اپیتلیالیزاسیون می‌شود.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="diagram-container">
+                
+                <p class="def">نمای بالینی ژنژیویت نکروزان (ANUG) با پاپی‌های سرخریده (Punched-out) و غشای خاکستری رنگ؛ بسیار مرتبط با استرس شدید.</p>
+            </div>
+        </div>
+
+        <div style="background-color: var(--primary); color: white; padding: 25px; border-radius: 12px; margin-top: 40px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+            <h2 style="margin: 0 0 10px 0; color: var(--hl-yellow);">🎓 آماده برای درخشش!</h2>
+            <p style="font-size: 1.15rem; margin: 0; opacity: 0.95;">این جزوه تمام تله‌های امتحانی را پوشش داده است. یک دور مرور سریع این فایل برای گرفتن بالاترین نمره کافی است. موفق باشید دکتر!</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
