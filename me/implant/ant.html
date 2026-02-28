@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسترکلاس ایمپلنت | یادگیری عمیق</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text-main: #374151;
+            --text-muted: #6b7280;
+            --accent: #10b981;
+            --accent-bg: #ecfdf5;
+            --border: #e5e7eb;
+            --highlight: rgba(253, 224, 71, 0.4);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --text-main: #e5e7eb;
+                --text-muted: #9ca3af;
+                --accent: #34d399;
+                --accent-bg: rgba(16, 185, 129, 0.1);
+                --border: #2d3748;
+                --highlight: rgba(253, 224, 71, 0.15);
+            }
+        }
+        
+        body {
+            font-family: 'Vazirmatn', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        ::selection { background-color: var(--accent-bg); color: var(--accent); }
+
+        .container { max-width: 70ch; margin: 0 auto; padding: 2rem 1.2rem; }
+        
+        /* Ant Fu Style Typography & Elements */
+        h1, h2, h3 { font-weight: 900; letter-spacing: -0.02em; color: var(--text-main); }
+        h2 { font-size: 1.5rem; margin-top: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        
+        .def-word { 
+            text-decoration: underline; 
+            text-decoration-style: dashed; 
+            text-underline-offset: 6px; 
+            text-decoration-color: var(--text-muted);
+            font-weight: 700;
+            cursor: help;
+        }
+        
+        mark {
+            background-color: var(--highlight);
+            color: inherit;
+            padding: 0 4px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .vocab-box {
+            background: var(--bg);
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ADHD-Friendly Accordion (Details/Summary) */
+        details {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        details[open] { border-color: var(--accent); box-shadow: 0 4px 20px -10px var(--accent); }
+        
+        summary {
+            padding: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; font-size: 1.5rem; color: var(--text-muted); transition: transform 0.2s; }
+        details[open] summary::after { content: '−'; color: var(--accent); transform: rotate(180deg); }
+        
+        .details-content { padding: 0 1.2rem 1.2rem 1.2rem; }
+
+        .choice {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            background: var(--bg);
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        .choice-correct {
+            border-color: var(--accent);
+            background: var(--accent-bg);
+            color: var(--accent);
+            opacity: 1;
+            font-weight: 700;
+        }
+
+        .step-tag { display: inline-block; padding: 2px 8px; border-radius: 99px; background: var(--border); font-size: 0.8rem; margin-left: 4px; margin-bottom: 4px;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ============================================== -->
+    <!-- MODULE 1: ANATOMY & POSITIONING -->
+    <!-- ============================================== -->
+    <h2>بخش اول: معماری و جایگذاری ایمپلنت</h2>
+    
+    <div class="vocab-box">
+        <b>فرهنگ لغت سریع:</b><br>
+        • <span class="def-word">رستوریشن (Restoration):</span> روکش یا همان دندان مصنوعی.<br>
+        • <span class="def-word">رستوریشن پیچ‌شونده (Screw-retained):</span> روکشی که با چسب وصل نمی‌شود، بلکه وسط آن یک سوراخ دارد و با پیچ به ایمپلنت فیکس می‌شود.<br>
+        • <span class="def-word">باکولینگوال (Buccolingual):</span> محور جلو به عقب (از سمت گونه/لب به سمت زبان).<br>
+        • <span class="def-word">اپیکوکرونال (Apicocoronal):</span> محور عمودی (از نوک ریشه تا تاج دندان).<br>
+        • <span class="def-word">سینگولوم (Cingulum):</span> آن برآمدگی و شکم‌دادگیِ پشت دندان‌های جلویی (سمت زبان).<br>
+        • <span class="def-word">کرست استخوان (Crest):</span> بالاترین لبه‌ی استخوان فک که دندان در آن کاشته شده.
+    </div>
+
+    <details>
+        <summary>۱. در جایگزینی یک دندان سانترال، اگر روکش پیچ‌شونده باشد، معیار قراردهی چیست؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) از جهت باکولینگوال باید زیر لبه انسیزال (لبه برنده دندان) قرار داده شود</div>
+            <div class="choice">(۲) از جهت اپیکوکرونال باید ۱ میلی‌متر زیر CEJ دندان مجاور باشد</div>
+            <div class="choice choice-correct">✅ (۳) از جهت باکولینگوال باید زیر سینگولوم رستوریشن نهایی قرار داده شود</div>
+            <div class="choice">(۴) از جهت اپیکوکرونال باید ۲ میلی‌متر زیر کرست استخوان باشد</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> وقتی می‌خواهیم روکش دندانِ جلویی (سانترال) را با پیچ ببندیم، سوراخِ پیچ باید از یک جایی بیرون بزند. اگر ایمپلنت را کج بکاریم و سوراخ روی لبه‌ی پایینی دندان (انسیزال) یا روی نمای جلویی دندان بیفتد، زیبایی بیمار کاملاً نابود می‌شود! 
+                ما ایمپلنت را طوری زاویه می‌دهیم که سوراخ دقیقاً از <span class="def-word">سینگولوم (پشت دندان)</span> خارج شود تا در ظاهر اصلاً دیده نشود.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۳. برای ایمپلنت ۴ میلی‌متری، سوراخ اولیه (Pilot hole) چقدر باید از دندان مجاور فاصله داشته باشد؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) 1.5 mm</div>
+            <div class="choice choice-correct">✅ (۲) 3.5 mm (توضیح: در برگه شما گزینه ۴ میلی‌متر تیک خورده بود اما علمی 3.5 است)</div>
+            <div class="choice">(۳) 3 mm</div>
+            <div class="choice">(۴) 4 mm</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> ایمپلنت نباید به ریشه دندان کناری بچسبد، وگرنه خون‌رسانی دندان قطع می‌شود و می‌میرد. قانون جهانی ایمپلنت می‌گوید: <b>باید حداقل ۱.۵ میلی‌متر استخوان سالم بین لبه ایمپلنت و دندان باشد.</b><br>
+                حالا ریاضی ساده: قطر ایمپلنت ۴ است، پس شعاع آن (از مرکز تا لبه) می‌شود ۲ میلی‌متر. <br>
+                فاصله مرکز فرز تا دندان = شعاع ایمپلنت (۲) + حریم امنیتی (۱.۵) = <b>۳.۵ میلی‌متر.</b>
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۹. در کدام حالت، «قانون مولر اول» به عنوان کلید قرارگیری ایمپلنت صدق نمی‌کند؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) بی‌دندانی کامل فک بالا</div>
+            <div class="choice">(۲) بی‌دندانی ناکامل فک پایین</div>
+            <div class="choice choice-correct">✅ (۳) بی‌دندانی کامل فک پایین</div>
+            <div class="choice">(۴) بی‌دندانی ناکامل فک بالا</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> معمولاً دندان مولر اول (دندان شماره ۶) شاه‌کلید جویدن است و ایمپلنت آن مهم است. اما وقتی <b>کل فک پایین</b> دندان ندارد، بزرگترین ترس جراح برخورد با «عصب فک تحتانی» است که از عقب فک رد می‌شود. بنابراین در بی‌دندانی کامل فک پایین، ایمپلنت‌ها را در <b>ناحیه قدامی (جلوی فک، بین دو سوراخ چانه‌ای)</b> می‌کاریم و اصلاً کاری به ناحیه مولر نداریم!
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۱۰. اگر مولر اول و دوم پایین کشیده شده باشند، بهترین محل ایمپلنت‌ها کجاست؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) دیستال مولر اول / مزیال مولر دوم</div>
+            <div class="choice">(۲) مزیال مولر اول / مزیال مولر دوم</div>
+            <div class="choice choice-correct">✅ (۳) مزیال مولر اول / دیستال مولر دوم</div>
+            <div class="choice">(۴) دیستال مولر اول / دیستال مولر دوم</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد (قانون A-P):</mark> <span class="def-word">مزیال</span> یعنی سمت جلو، <span class="def-word">دیستال</span> یعنی سمت عقب. برای اینکه روکش روی دو پایه ایمپلنت الاکلنگ نشود، باید پایه‌ها را <b>تا جای ممکن از هم دور کنیم</b>. پس ایمپلنت اول را در جلویی‌ترین نقطه ممکن (مزیال مولر اول) و ایمپلنت دوم را در عقبی‌ترین نقطه ممکن (دیستال مولر دوم) می‌کاریم.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۱۲. بیماری که لاترال، کانین و پره‌مولر اول فک بالا را ندارد، ایمپلنت‌ها کجا کاشته شوند؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) کانین و پره‌مولر</div>
+            <div class="choice choice-correct">✅ (۲) لاترال، کانین، پره‌مولر اول</div>
+            <div class="choice">(۳) لاترال و کانین</div>
+            <div class="choice">(۴) لاترال و پره‌مولر اول</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> فک بالا خط لبخند (Smile Zone) است. اگر مثل فک عقب بیاییم دو تا پایه بگذاریم و وسطش را روکش معلق (پونتیک) کنیم، لثه در آن ناحیه تحلیل می‌رود و خط لبخند زشت می‌شود. در ناحیه قدامی بالا، بهتر است <b>برای هر دندان از دست رفته، یک ایمپلنت مجزا</b> (لاترال، کانین و پره‌مولر) بکاریم تا زیبایی لثه (پاپیلاها) حفظ شود.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۲۶. حداقل فاصله ایمپلنت تا کف سینوس ماگزیلا و دندان مجاور چقدر است؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) 2mm - 2mm</div>
+            <div class="choice choice-correct">✅ (۲) 1.5mm - 1.5mm</div>
+            <div class="choice">(۳) 1.5mm - 2mm</div>
+            <div class="choice">(۴) 2mm - 1.5mm</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> عدد <b>۱.۵</b> عدد مقدس ایمنی است! ما ۱.۵ میلی‌متر از سینوس فاصله می‌گیریم که غشای آن پاره نشود، و ۱.۵ میلی‌متر از ریشه دندان کناری فاصله می‌گیریم که رباط (PDL) دندان آسیب نبیند.
+            </p>
+        </div>
+    </details>
+
+    <!-- ============================================== -->
+    <!-- MODULE 2: SURGERY & TOOLS -->
+    <!-- ============================================== -->
+    <h2>بخش دوم: جراحی، شابلون‌ها و ابزارها</h2>
+    
+    <div class="vocab-box">
+        <b>فرهنگ لغت سریع:</b><br>
+        • <span class="def-word">تمپلیت / استنت (Surgical Stent):</span> شابلون پلاستیکی که روی دندان‌ها قرار می‌گیرد تا جراح بداند مته را کجا بگذارد.<br>
+        • <span class="def-word">رادیواپک (Radiopaque):</span> ماده‌ای که در عکس اشعه ایکس، اشعه را عبور نمی‌دهد و "سفید روشن" دیده می‌شود.<br>
+        • <span class="def-word">استئوتومی (Osteotomy):</span> استخوان‌تراشی، یعنی همان سوراخ کردن فک با دریل.<br>
+    </div>
+
+    <details>
+        <summary>۲. برای رادیواپک کردن استنت از چه ماده‌ای استفاده می‌شود؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) فسفات باریوم</div>
+            <div class="choice">(۲) سولفات رادیوم</div>
+            <div class="choice">(۳) فسفات رادیوم</div>
+            <div class="choice choice-correct">✅ (۴) سولفات باریوم</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> اگر شابلون پلاستیکی خالی باشد، تو عکس رادیولوژی دیده نمی‌شود (نامرئی است). برای اینکه توی عکس دیده شود، پودر <b>سولفات باریوم</b> (Barium Sulfate) به آن می‌زنیم. باریوم در کل پزشکی (مثل عکس معده) برای سفید نشان دادن اجزا در اشعه ایکس کاربرد دارد.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۴. کدام مورد درباره تمپلیت‌های جراحی صحیح است؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) تمپلیت non limiting موقعیت مزیودیستال را نشان می‌دهد</div>
+            <div class="choice choice-correct">✅ (۲) در تمپلیت completely limiting، عمق استئوتومی هم دیکته می‌شود</div>
+            <div class="choice">(۳) در partially limiting می‌توان از قبل روکش موقت ساخت</div>
+            <div class="choice">(۴) نوع completely limiting تنها مسیر فرز را مشخص می‌کند</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> شابلون‌ها ۳ دسته‌اند:<br>
+                ۱. <b>Non-limiting (بدون محدودیت):</b> فقط می‌گوید دندان اینجا بود. جراح خودش زاویه و عمق را تعیین می‌کند.<br>
+                ۲. <b>Partially limiting (محدودیت نسبی):</b> زاویه مته را قفل می‌کند، اما جراح باید خودش حواسش به عمق باشد.<br>
+                ۳. <b>Completely limiting (محدودیت کامل):</b> یک لوله فلزی (اسلیو) دارد که هم زاویه را دقیق قفل می‌کند، و هم به مته اجازه نمی‌دهد بیشتر از یک عمق مشخص پایین برود (عمق را دیکته می‌کند).
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۲۴. ایجاد زبری (Roughness) با روش کاهنده (Subtractive) کدام است؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) Biocoating</div>
+            <div class="choice choice-correct">✅ (۲) Acid etching</div>
+            <div class="choice">(۳) Plasma spray</div>
+            <div class="choice">(۴) Unization</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> برای اینکه استخوان به ایمپلنت بچسبد، سطح ایمپلنت باید زبر باشد. زبر کردن ۲ راه دارد:<br>
+                ۱. <b>افزاینده (Additive):</b> یک چیزی روی ایمپلنت می‌پاشیم (مثل اسپری پلاسما یا پوشش زیستی/Coating).<br>
+                ۲. <b>کاهنده (Subtractive):</b> سطح خود تیتانیوم را می‌خوریم و گودال ایجاد می‌کنیم. مثل <b>اسیدشویی (Acid etching)</b> که اسید سطح فلز را می‌خورد و زبر می‌کند.
+            </p>
+        </div>
+    </details>
+
+    <!-- ============================================== -->
+    <!-- MODULE 3: PROSTHETICS -->
+    <!-- ============================================== -->
+    <h2>بخش سوم: قالب‌گیری و پروتز</h2>
+
+    <div class="vocab-box">
+        <b>فرهنگ لغت سریع:</b><br>
+        • <span class="def-word">ایمپرشن کوپینگ (Impression Coping):</span> پیچ مخصوصی که روی ایمپلنت بسته می‌شود تا موقع قالب‌گیری در خمیر قالب گیر کند و جای ایمپلنت را ثبت کند.<br>
+        • <span class="def-word">Open Tray (تکنیک قاشقک باز):</span> کوپینگ داخل خمیر می‌ماند. از سوراخ بالای قالب، پیچ را باز می‌کنیم و قالب را با کوپینگ در می‌آوریم.<br>
+        • <span class="def-word">ترانسفر جیگ (Transfer Jig):</span> یک قطعه پلاستیکی که نشان می‌دهد اباتمنت (پایه دندان) دقیقاً باید با چه زاویه‌ای در دهان بسته شود.
+    </div>
+
+    <details>
+        <summary>۵. وسیله اطمینان از موقعیت صحیح اباتمنت‌ها در دهان؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۱) ترانسفر جیگ</div>
+            <div class="choice">(۲) تورک رنچ</div>
+            <div class="choice">(۳) پلنینگ کیت</div>
+            <div class="choice">(۴) ایمپرشن کوپینگ</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> لابراتوار اباتمنت را روی مدل گچی در بهترین زاویه تنظیم می‌کند. برای اینکه جراح دقیقاً همان زاویه را در دهان بیمار اجرا کند (و اشتباهی اباتمنت را نچرخاند)، لابراتوار یک کلاهک پلاستیکی به نام <b>ترانسفر جیگ</b> می‌سازد که اباتمنت را در آن زاویه قفل می‌کند و به دهان منتقل می‌کند.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۶. در رابطه با قالب‌گیری ایمپلنت کدام صحیح است؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) در کلوز تری، آنالوگ در قالب قرار دارد...</div>
+            <div class="choice choice-correct">✅ (۲) در مجموع روش قالبگیری Open Tray (اپن تری) روش دقیقتری محسوب می‌شود.</div>
+            <div class="choice">(۳) در کلوز تری از کوپینگ مربعی با پین بلند استفاده می‌شود</div>
+            <div class="choice">(۴) جینجی‌مسک برای محافظت از لثه بیمار است</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> روش <b>Open Tray (تری باز)</b> همیشه دقیق‌تر است. چرا؟ چون در روش بسته (کلوز)، وقتی قالب سفت شد، باید آن را به زور از دهان بکشیم بیرون و ممکن است مواد کِش بیاید یا تغییر شکل دهد. اما در Open Tray، پیچ را باز می‌کنیم و کوپینگِ گیرکرده در مواد، بدون هیچ فشاری با قالب خارج می‌شود.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۸. ترتیب صحیح کاربرد قطعات در پروسه ایمپلنت چیست؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۲) کاور اسکرو ← هیلینگ اباتمنت ← ایمپرشن کوپینگ ← پلنینگ کیت ← اباتمنت ← ترانسفر جیگ ← تورک رنچ</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>سفر بیمار را تصور کن:</mark><br>
+                <span class="step-tag">۱. کاور اسکرو:</span> ایمپلنت کاشته شد، روی آن یک درپوش صاف می‌بندیم تا زیر لثه پنهان شود.<br>
+                <span class="step-tag">۲. هیلینگ:</span> لثه را باز می‌کنیم، پیچ فرم‌دهنده لثه می‌بندیم.<br>
+                <span class="step-tag">۳. ایمپرشن کوپینگ:</span> هیلینگ را باز کرده و برای قالب‌گیری این قطعه را می‌بندیم.<br>
+                <span class="step-tag">۴. پلنینگ کیت:</span> لابراتوار روی گچ طراحی می‌کند.<br>
+                <span class="step-tag">۵. اباتمنت:</span> پایه اصلی دندان آماده می‌شود.<br>
+                <span class="step-tag">۶. ترانسفر جیگ:</span> با این قطعه اباتمنت را با زاویه درست در دهان می‌گذاریم.<br>
+                <span class="step-tag">۷. تورک رنچ:</span> با آچار مخصوص (ترک‌متر) پیچ اباتمنت را سفتِ سفت می‌کنیم.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۳۲. بهترین طرح درمان ترکیبی (وقتی بیمار اصلاً دندان ندارد) چیست؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) ثابت پایین / متحرک بالا</div>
+            <div class="choice choice-correct">✅ (۲) اوردنچر (متحرک متصل به ایمپلنت) پایین / متحرک معمولی فک بالا</div>
+            <div class="choice">(۳) ثابت بالا / متحرک پایین</div>
+            <div class="choice">(۴) اوردنچر بالا / متحرک پایین</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> دندان مصنوعی فک بالا (به دلیل سطح وسیع سقف دهان) مثل بادکش می‌چسبد و گیر خوبی دارد. اما فک پایین چون زبان حرکت می‌کند، دندان مصنوعی مدام از جای خود می‌پرد. 
+                استاندارد طلایی و اقتصادی جهان این است: <b>فک بالا یک دندان مصنوعی معمولی (متحرک) بدهیم، فک پایین ۲ تا ایمپلنت بکاریم و دندان مصنوعی پایین را مثل دکمه قابلمه‌ای روی آن‌ها تق (کلیک) کنیم (اوردنچر پایین).</b>
+            </p>
+        </div>
+    </details>
+
+    <!-- ============================================== -->
+    <!-- MODULE 4: BIOMECHANICS & BONE -->
+    <!-- ============================================== -->
+    <h2>بخش چهارم: بیومکانیک و بیولوژی استخوان</h2>
+
+    <div class="vocab-box">
+        <b>فرهنگ لغت سریع:</b><br>
+        • <span class="def-word">Pitch (گام رزوه):</span> فاصله بین دنده‌های پیچ ایمپلنت.<br>
+        • <span class="def-word">کانتی لور (Cantilever):</span> بالکن! دندانی که یک سر آن به پایه وصل است و سر دیگر آن روی هوا معلق است.<br>
+        • <span class="def-word">استخوان Woven (بافته):</span> استخوان نابالغ و سریع‌الرشد که بعد از زخم فوراً تشکیل می‌شود.<br>
+        • <span class="def-word">استخوان Lamellar (لاملار):</span> استخوان بالغ و لایه‌لایه که سفت و محکم است.
+    </div>
+
+    <details>
+        <summary>۷. برای افزایش ثبات اولیه در استخوان پوک (تراکم پایین)، کدام کار نادرست است؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) شکل رزوه Square</div>
+            <div class="choice choice-correct">✅ (۲) کاهش عمق (Depth) رزوه‌ها</div>
+            <div class="choice">(۳) کاهش Pitch رزوه‌ها</div>
+            <div class="choice">(۴) استفاده از ایمپلنت تیپر (مخروطی)</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> وقتی دیوار خانه گچی و پوک است، از پیچی استفاده می‌کنی که دنده‌های عمیق‌تری دارد تا گچ را بیشتر درگیر کند. در استخوان فکِ نرم هم دقیقاً همینطور است. ما به رزوه‌های <b>عمیق‌تر</b> نیاز داریم تا سطح درگیری با استخوان زیاد شود. پس «کاهش عمق رزوه» یک کار کاملاً <b>نادرست</b> و مخرب است که باعث شل شدن ایمپلنت می‌شود.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۱۱. در صورت افزایش کدام عامل، می‌توان طول کانتی‌لور (بخش معلق) را افزایش داد؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) پارافانکشن (دندان‌قروچه)</div>
+            <div class="choice">(۲) نیروهای مضغی (نیروی جویدن)</div>
+            <div class="choice">(۳) ارتفاع پروتز</div>
+            <div class="choice choice-correct">✅ (۴) فاصله A-P (فاصله قدامی خلفی)</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> تصور کن یک تخته پرش (دایوینگ) داری. هرچه پایه‌های این تخته روی زمین از هم فاصله‌ی بیشتری داشته باشند و پهن‌تر باشند (افزایش فاصله A-P)، فونداسیون قوی‌تری داری و می‌توانی تخته پرش (کانتی‌لور) را بیشتر به سمت استخر دراز کنی بدون اینکه کل سازه کله‌پا شود.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۱۳. پدیده Stress Shielding به چه معناست؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) افزایش ضخامت پلیت باکال...</div>
+            <div class="choice">(۲) تحلیل استخوان به خاطر فشار شدید...</div>
+            <div class="choice">(۳) تحلیل استخوان اسفنجی...</div>
+            <div class="choice choice-correct">✅ (۴) تحلیل استخوان کورتیکال در اثر نیروی ناکافی اکلوزال</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> قانون مهم بدن (قانون ولف): <b>Use it or lose it!</b> (استفاده کن یا از دستش بده). استخوان فقط در صورتی زنده و قوی می‌ماند که به آن فشار وارد شود. وقتی طراحی پروتز طوری باشد که کل فشار جویدن را خودش جذب کند و مانند سپر (Shield) مانع رسیدن استرس به استخوان کورتیکال شود، استخوان فکر می‌کند دیگر به آن نیازی نیست و شروع به تحلیل رفتن (آب شدن) می‌کند.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۱۴. در مقایسه استخوان Woven با Lamellar کدام درست است؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۴) سرعت تشکیل بالاتر و سلولاریته بالاتر استخوان woven</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> استخوان <b>Woven</b> مثل تیم اورژانس بدن است. بعد از جراحی سریعاً (سرعت تشکیل بالا) و با تعداد زیادی سلول (سلولاریته بالا) می‌ریزند تا محل سوراخ ایمپلنت را پر کنند. اما این استخوان نامنظم و ضعیف است. به مرور زمان جای خود را به استخوان <b>Lamellar</b> (لاملار = لایه‌لایه، منظم و قوی) می‌دهد.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۱۵. روی ایمپلنت‌های Machined (سطح ماشین‌کاری شده و صاف) چه چیزی بیشتر جذب می‌شود؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۲) Fibronectin (فیبرونکتین)</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> سطح صاف و صیقلی (Machined) تیتانیوم، عاشق گلیکوپروتئین‌های بافتی مثل <b>فیبرونکتین</b> است و آن‌ها را به سرعت جذب می‌کند. در حالی که سطوح زبر و خشن (Rough) بیشتر محل اتصال سلول‌های التهابی و درشت‌خوار مثل ماکروفاژها هستند.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۱۶. کدام مورد بر ثبات ثانویه (Secondary Stability) اثر ندارد؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) کمیت استخوان (Bone Quantity)</div>
+            <div class="choice choice-correct">✅ (۲) ماکرودیزاین ایمپلنت (Implant Macrodesign)</div>
+            <div class="choice">(۳) میکرودیزاین ایمپلنت (Implant Microdesign)</div>
+            <div class="choice">(۴) کیفیت استخوان (Bone Quality)</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> ما دو نوع ثبات داریم:<br>
+                ۱. <b>ثبات اولیه (مکانیکی):</b> در لحظه جراحی به دست می‌آید و کاملاً به رزوه‌ها، شکل کلی پیچ و طراحی فیزیکی <b>(Macrodesign)</b> بستگی دارد.<br>
+                ۲. <b>ثبات ثانویه (بیولوژیکی):</b> ماه ها بعد رخ می‌دهد وقتی که سلول‌های استخوانی به سطح ایمپلنت جوش می‌خورند (وابسته به زبری سطح یا Microdesign، و بیولوژی بیمار).<br>
+                پس ماکرودیزاین نقشی در ثبات ثانویه (که یک پروسه سلولی است) ندارد.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۲۰. چه مقدار تحلیل استخوان اطراف ایمپلنت طبیعی است؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۱) سال اول 1.2 میلی‌متر و سال‌های بعد 0.1 میلی‌متر در سال</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> طبق معیارهای جهانی موفقیت ایمپلنت (Albrektsson)، استخوان فک در سال اول پس از قرار دادن روکش، حدود <b>۱.۲ تا ۱.۵ میلی‌متر</b> عقب‌نشینی می‌کند تا یک حریم بیولوژیک (Biological Width) برای خودش بسازد. اما بعد از آن، شیب تحلیل باید متوقف شود و فقط اجازه دارد <b>یک‌دهم میلی‌متر</b> در سال تغییر کند.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۲۱. تفاوت ایمپلنت‌های Tissue Level با Bone Level چیست؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۱) در صاف یا پیچ‌دار بودن قسمت کرونال (گردن) ایمپلنت</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> 
+                - <b>Bone Level (سطح استخوان):</b> تمام بدنه تا لبه‌ی بالایی زبر و رزوه‌دار است، چون باید کاملاً زیرِ استخوان دفن شود.<br>
+                - <b>Tissue Level (سطح بافت):</b> قسمت پایین آن زبر است (در استخوان)، اما گردن (کرونال) آن حدود ۱.۸ میلی‌متر صاف و براق (مثل آینه) است، چون این قسمت از استخوان بیرون می‌ماند و درون لثه (بافت نرم) قرار می‌گیرد.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۲۲. کدام ماده باعث بیشترین اوسئواینتگریشن (جوش خوردن به استخوان) می‌شود؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۴) تیتانیوم (Titanium)</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> <b>تیتانیوم</b> پادشاهِ بلامنازعِ ایمپلنتولوژی است. چرا؟ چون به محض تماس با هوا، یک لایه "دی‌اکسید تیتانیوم" روی آن تشکیل می‌شود که استخوان فک این لایه را به عنوان یک بافت غریبه پس نمی‌زند، بلکه مستقیماً سلول‌هایش را به آن می‌چسباند (اینتگریشن).
+            </p>
+        </div>
+    </details>
+
+    <!-- ============================================== -->
+    <!-- MODULE 5: RADIOLOGY & ANATOMY -->
+    <!-- ============================================== -->
+    <h2>بخش پنجم: رادیولوژی و آناتومی خطر</h2>
+
+    <div class="vocab-box">
+        <b>فرهنگ لغت سریع:</b><br>
+        • <span class="def-word">پانورامیک (OPG):</span> عکس ۲ بعدی عریضی که کل فک بالا و پایین را نشان می‌دهد.<br>
+        • <span class="def-word">CBCT:</span> اسکن ۳ بعدی دندانپزشکی (مثل سی‌تی‌اسکن).<br>
+        • <span class="def-word">آناتومی خطر:</span> رگ‌ها و اعصابی که اگر جراح به آن‌ها بخورد بیمار دچار خونریزی شدید یا فلجی لب می‌شود.
+    </div>
+
+    <details>
+        <summary>۱۷. عیب و ویژگی اصلی عکس پانورامیک چیست؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۲) بزرگنمایی متفاوت در نواحی مختلف فیلم در بعد طولی</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> عکس پانورامیک شدیداً <b>دروغگو</b> است! به خاطر اینکه دستگاه دور سر بیمار می‌چرخد، بسته به اینکه فک بیمار کجای دستگاه قرار گرفته باشد، طول استخوان در عکس ممکن است کشیده یا فشرده شود (دیستورشن). پس <b>هرگز نباید طول ایمپلنت را با خط‌کش گذاشتن روی عکس پانورامیک محاسبه کرد.</b>
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۱۸. چرا در عکس CBCT از مارکرهای رادیواپک استفاده می‌کنیم؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۴) ارتباط محل رادیوگرافی انجام شده با محل مورد نظر برای ایمپلنت</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> وقتی اسکن سه بعدی بیمار در نرم‌افزار کامپیوتر باز می‌شود، نرم‌افزار نمی‌داند دندان‌ها دقیقاً کجا بوده‌اند (مخصوصاً در افراد بی‌دندان). مارکرهای سفید (رادیواپک) مثل <b>لوکیشن‌های نقشه (GPS)</b> عمل می‌کنند و به جراح اجازه می‌دهند تا شابلون پلاستیکی فیزیکی را با مدل سه‌بعدی دیجیتال دقیقاً منطبق (Match) کند.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۱۹. عیب اصلی عکس‌های داخل دهانی (مثل پری‌آپیکال یا PA) چیست؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۱) Coverage (محدوده پوشش)</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> عکس‌های داخل دهانی شفاف‌ترین و دقیق‌ترین عکس‌های دندانپزشکی هستند. اما عیبشان این است که سنسور آن‌ها بسیار کوچک است و فقط ۲ تا ۳ دندان را پوشش می‌دهد (Coverage ضعیفی دارند) و نمی‌توان با آن‌ها کل سینوس یا مسیر کامل عصب فک را بررسی کرد.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۲۳. قطعه فلزی به شکل تیغه که در عکس رادیولوژی دیده می‌شود چیست؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۳) Endosteal - blade (ایمپلنت‌های تیغه‌ای داخل استخوان)</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> در دهه‌های گذشته قبل از اختراع ایمپلنت‌های ریشه‌ای (پیچی شکل)، دندانپزشکان شیاری در فک ایجاد می‌کردند و یک ورقه فلزی مسطح (Blade) را با چکش درون استخوان می‌کوبیدند. این روش امروزه منسوخ شده است.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۲۵. کدام شریان در شبکه خارج استخوانی سینوس ماگزیلا نقش <u>ندارد</u>؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) Post lat nasal</div>
+            <div class="choice">(۲) PSA</div>
+            <div class="choice choice-correct">✅ (۳) Ant lat nasal (شریان نازال لترال قدامی)</div>
+            <div class="choice">(۴) Infraorbital</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> غشای سینوس ماگزیلا توسط شبکه‌ای از ۳ شریان اصلی تغذیه می‌شود: ۱. شریان آلوئولار خلفی فوقانی (PSA). ۲. شریان اینفرا اوربیتال. ۳. شریان نازال لترال <b>خلفی (Posterior)</b>. شریان قدامی در این پیوند (آناستوموز) نقشی ندارد.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۲۷. در کام با عمق متوسط، شریان «گریتر پالاتین» در چه فاصله‌ای از لثه است؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۲) 12 میلی‌متر</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> وقتی می‌خواهیم از سقف دهان بیمار (کام) برای پیوند لثه بافت برداریم، ترسناک‌ترین اتفاق برخورد چاقوی جراحی با شریان کامی بزرگ (Greater Palatine) است. در یک فرد با سقف دهان معمولی، این شریان پرخون در فاصله <b>۱۲ میلی‌متری</b> از لبه دندان‌ها (لبه آزاد لثه) عبور می‌کند. جراح باید برش خود را کمتر از این فاصله نگه دارد.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۲۸. کدام شریان در خونرسانی ماگزیلا (فک بالا) نقش <u>ندارد</u>؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۱) شریان کاروتید داخلی (Internal Carotid)</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> شریان کاروتید اصلی در گردن به دو شاخه تقسیم می‌شود: <b>خارجی</b> و <b>داخلی</b>.<br>
+                کاروتید داخلی مستقیماً و بدون هیچ شاخه‌ای وارد جمجمه می‌شود تا به مغز خون برساند و کاری به صورت ندارد. اما کاروتید خارجی تمام صورت، فک، زبان و دندان‌ها را مشروب می‌کند.
+            </p>
+        </div>
+    </details>
+
+    <!-- ============================================== -->
+    <!-- MODULE 6: MEDICAL CONTRAINDICATIONS -->
+    <!-- ============================================== -->
+    <h2>بخش ششم: پزشکی و موارد منع تجویز</h2>
+
+    <div class="vocab-box">
+        <b>فرهنگ لغت سریع:</b><br>
+        • <span class="def-word">اندیکاسیون (Indication):</span> موردی که انجام درمان برای آن واجب یا مجاز است.<br>
+        • <span class="def-word">کنترا اندیکاسیون (Contraindication):</span> ممنوعیت پزشکی (نباید انجام شود).
+    </div>
+
+    <details>
+        <summary>۲۹. آیا بیماران سیگاری می‌توانند ایمپلنت بگذارند؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۲) می‌توان با کاهش میزان سیگار کشیدن درمان ایمپلنت را انجام داد.</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> سیگار کشیدن یک "ممنوعیت مطلق" نیست (اینطور نیست که اصلاً نشود ایمپلنت گذاشت)، اما ریسک جوش نخوردن و عفونت را بالا می‌برد. پروتکل صحیح این است که از بیمار بخواهیم مصرف سیگار را قبل و بعد از جراحی به حداقل برساند یا موقتاً قطع کند.
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۳۰. در کدام مورد، ایمپلنت گذاشتن <u>ممنوع</u> (صحیح) است؟</summary>
+        <div class="details-content">
+            <div class="choice choice-correct">✅ (۱) در افراد زیر سن 18 سال بهتر است انجام نشود.</div>
+            <div class="choice">(۲) در سایکوز شدید (دیوانگی) مجاز است (غلط)</div>
+            <div class="choice">(۳) دیابت کنترل نشده منع ندارد (غلط - ممنوعیت مطلق است)</div>
+            <div class="choice">(۴) مصرف بیس‌فسفونات تزریقی منع ندارد (غلط - به شدت ممنوع است)</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> استخوان فک تا حدود ۱۸-۱۹ سالگی در حال رشد است. ایمپلنت مثل دندان ریشه دار نیست که با رشد فک حرکت کند؛ در استخوان فیکس (Ankylosed) می‌شود. اگر در یک نوجوان ۱۵ ساله ایمپلنت بکاریم، دندان‌های کناری رشد کرده و پایین می‌آیند، اما ایمپلنت همان بالا می‌ماند و گیر می‌کند!
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>۳۱. وجود کدام بیماری، مانعی برای کاشت ایمپلنت <u>نیست</u> (جزء اندیکاسیون‌هاست)؟</summary>
+        <div class="details-content">
+            <div class="choice">(۱) Bleeding disorders (اختلالات شدید خونریزی)</div>
+            <div class="choice">(۲) Drug/substance misuse (سوءمصرف مواد)</div>
+            <div class="choice choice-correct">✅ (۳) Dentinogenesis imperfecta (دنتینوژنز ایمپرفکتا)</div>
+            <div class="choice">(۴) Bone disorders (بیماری‌های استخوانی)</div>
+            <p class="mt-4 text-sm leading-relaxed">
+                <mark>تحلیل استاد:</mark> ایمپلنت یک پیچ تیتانیومی است که در <b>استخوان</b> کاشته می‌شود. <br>
+                بیماریِ «دنتینوژنز ایمپرفکتا» یک اختلال ژنتیکی است که فقط باعث خرابی و خرد شدن <b>عاج دندان</b> می‌شود، اما استخوان فکِ این بیماران کاملاً سالم است! اتفاقاً این افراد بهترین کاندید برای کشیدن دندان‌های خراب و جایگزینی با ایمپلنت هستند. سایر گزینه‌ها (مشکلات خونی، استخوانی و اعتیاد) جزو ممنوعیت‌ها می‌باشند.
+            </p>
+        </div>
+    </details>
+
+
+
+</div>
+
+</body>
+</html>

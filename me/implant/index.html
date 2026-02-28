@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IMPLANT OMNI-DATABASE | BRUTALIST X100</title>
+    <style>
+        /* BRUTALIST RESET & DENSITY CORE */
+        * { box-sizing: border-box; border-radius: 0 !important; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; outline: none; }
+        body { background: #000; color: #d4d4d8; font-size: 13.5px; line-height: 1.4; padding: 4px; display: flex; flex-direction: column; gap: 4px; }
+        
+        /* TYPOGRAPHY */
+        h1 { background: #fff; color: #000; font-size: 16px; font-weight: 900; padding: 8px; text-transform: uppercase; letter-spacing: -0.5px; border: 2px solid #555; text-align: center;}
+        h2 { background: #111; color: #fff; font-size: 15px; font-weight: 900; padding: 6px 8px; border-right: 6px solid #4f46e5; border-bottom: 1px solid #333; margin-top: 8px;}
+        h3 { color: #a1a1aa; font-size: 13px; font-weight: 900; background: #0a0a0a; padding: 4px 6px; border-bottom: 1px dashed #333; text-transform: uppercase;}
+
+        /* INLINE HIGHLIGHTERS (ADHD FOCUS) */
+        .t-num { background: #4c1d95; color: #ddd6fe; font-weight: 900; font-family: monospace; padding: 1px 4px; font-size: 14.5px;}
+        .t-ana { background: #064e3b; color: #6ee7b7; font-weight: 900; padding: 1px 4px;}
+        .t-con { background: #713f12; color: #fde047; font-weight: 900; padding: 1px 4px;}
+        .t-mat { background: #0f172a; color: #93c5fd; font-weight: 900; padding: 1px 4px;}
+        .t-err { background: #7f1d1d; color: #fca5a5; font-weight: 900; padding: 1px 4px; text-decoration: line-through;}
+        
+        /* LISTS & GRIDS */
+        ul { padding-right: 18px; margin: 0; }
+        li { margin-bottom: 3px; }
+        b { color: #fff; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 4px; }
+
+        /* DATA BLOCKS */
+        .block { border: 1px solid #333; background: #050505; padding: 6px; display: flex; flex-direction: column; gap: 4px;}
+        .block-god { border-color: #6d28d9; background: #1a1025; }
+
+        /* QUESTION SYSTEM (FLAT) */
+        .q-container { background: #000; border: 1px solid #333; border-right: 4px solid #10b981; margin-bottom: 6px;}
+        .q-header { display: flex; gap: 8px; padding: 8px; font-weight: 900; font-size: 14px; background: #111; color: #fff;}
+        .q-id { background: #3f3f46; color: #fff; padding: 2px 6px; font-size: 12px; font-weight: 900; }
+        .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #222; padding: 2px; border-bottom: 1px solid #333;}
+        @media (max-width: 500px) { .choices { grid-template-columns: 1fr; } }
+        .opt { background: #000; padding: 6px 8px; font-size: 13px; color: #888; display: flex; gap: 6px;}
+        .opt-t { background: #022c22; color: #fff; font-weight: 900; border-right: 3px solid #10b981;}
+        .analysis-grid { display: grid; grid-template-columns: 1fr; gap: 2px; padding: 2px; background: #111;}
+        @media (min-width: 600px) { .analysis-grid { grid-template-columns: 1fr 1fr; } }
+        .a-box { padding: 8px; font-size: 13px; display: flex; flex-direction: column; gap: 4px;}
+        .a-zero { background: #18181b; border-right: 3px solid #713f12;}
+        .a-logic { background: #0f172a; border-right: 3px solid #3b82f6;}
+        .a-trap { background: #2e1012; border-right: 3px solid #ef4444;}
+        .a-label { font-size: 11px; font-weight: 900; text-transform: uppercase; color: #aaa; margin-bottom: 2px; border-bottom: 1px solid #333; padding-bottom: 2px;}
+    </style>
+</head>
+<body>
+    <h1>[IMPLANT OMNI-DATABASE] :: ZERO TO HERO X100</h1>
+
+    <h2>[STAGE 0] مبانی مطلق (ویژه سال اولی‌ها)</h2>
+    <div class="grid-3">
+        <div class="block">
+            <h3>ترمینولوژی و بیولوژی</h3>
+            <ul>
+                <li><span class="t-con">Osseointegration (استئواینتگریشن)</span>: اتصال مستقیم استخوان زنده به <span class="t-mat">Titanium</span> بدون دخالت بافت فیبروز.</li>
+                <li><span class="t-err">Marsupialization / Fibro-integration</span>: تشکیل بافت اسکار (کپسول فیبروز) به جای استخوان. <span class="t-err">شکست مطلق ایمپلنت</span>.</li>
+                <li><span class="t-ana">Woven Bone (استخوان اسفنجی)</span>: اولین استخوان تشکیل شده، غیرمنظم، مینرالیزاسیون پایین، سرعت رشد <span class="t-num">50-100 μm/day</span>.</li>
+                <li><span class="t-ana">Lamellar Bone (استخوان لاملار)</span>: استخوان بالغ، منظم، سیستم هاورس تکامل یافته، مقاومت بیومکانیکی بالا.</li>
+                <li><span class="t-con">Primary Stability (ثبات اولیه)</span>: ثبات مکانیکی بلافاصله پس از جراحی. وابسته به <span class="t-con">Macrodesign</span> (رزوه و شکل).</li>
+                <li><span class="t-con">Secondary Stability (ثبات ثانویه)</span>: ثبات بیولوژیک در اثر استئواینتگریشن. وابسته به <span class="t-con">Microdesign</span> (زبری سطح).</li>
+            </ul>
+        </div>
+        <div class="block">
+            <h3>قطعات پروتزی و جراحی</h3>
+            <ul>
+                <li><span class="t-mat">Fixture</span>: بخش ریشه شکل و داخل استخوانی (جنس <span class="t-mat">Titanium</span> خالص تجاری).</li>
+                <li><span class="t-mat">Cover Screw</span>: پیچ پوشاننده فیکسچر در جراحی دو مرحله‌ای (جلوگیری از نفوذ استخوان/بافت نرم).</li>
+                <li><span class="t-mat">Healing Abutment</span>: فرم‌دهنده لثه (Emergence Profile) پس از اکسپوز کردن ایمپلنت.</li>
+                <li><span class="t-mat">Impression Coping</span>: قطعه انتقال دهنده موقعیت ایمپلنت از دهان به قالب. (<span class="t-mat">Open Tray</span> = مستقیم/دقیق‌تر، <span class="t-mat">Closed Tray</span> = غیرمستقیم/خلف دهان).</li>
+                <li><span class="t-mat">Analog</span>: شبیه‌ساز فیکسچر در کست گچی لابراتوار.</li>
+                <li><span class="t-mat">Transfer Jig</span>: رزین اکریلی برای اطمینان از نشستن دقیق اباتمنت‌ها در دهان.</li>
+            </ul>
+        </div>
+        <div class="block">
+            <h3>انواع اتچمنت‌ها (Attachments)</h3>
+            <ul>
+                <li><span class="t-mat">Bar Attachment</span>: اتصال ایمپلنت‌ها به هم (اسپلینت). توزیع نیروی عالی، <span class="t-err">هایپرپلازی لثه در صورت عدم رعایت بهداشت</span>.</li>
+                <li><span class="t-mat">Ball Attachment</span>: استاد اتچمنت مکانیکی. نیاز به موازی بودن ایمپلنت‌ها.</li>
+                <li><span class="t-mat">Locator</span>: ارتفاع کوتاه (<span class="t-num">1.5mm</span> vs بال <span class="t-num">3.4mm</span>)، تحمل دیورژانس تا <span class="t-num">40°</span>، گیر دوگانه (داخلی/خارجی).</li>
+                <li><span class="t-mat">Magnet</span>: کمترین گیر، مناسب بیماران با محدودیت حرکتی، <span class="t-err">خوردگی در بزاق</span>، منع مصرف در <span class="t-err">MRI</span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>[STAGE 1] چیت‌شیت گاد مود (استخراج طلایی کورس)</h2>
+    <div class="grid-2">
+        <div class="block-god">
+            <h3>📏 قوانین طلایی فواصل (Golden Distances)</h3>
+            <ul>
+                <li>فاصله فیکسچر تا دندان مجاور: حداقل <span class="t-num">1.5 mm</span>.</li>
+                <li>فاصله دو فیکسچر از هم: حداقل <span class="t-num">3 mm</span> (جلوگیری از تحلیل استخوان کرستال).</li>
+                <li>فاصله از کانال اینفریور آلوئولار (عصب): حداقل <span class="t-num">2 mm</span> (<span class="t-con">Safety Zone</span>).</li>
+                <li>فاصله از منتال فورامن (قوس عصب): حداقل <span class="t-num">5 mm</span> (3mm برای قوس + 2mm ایمنی).</li>
+                <li>فاصله فیکسچر از کف سینوس: <span class="t-num">2 mm</span>.</li>
+                <li>ضخامت استخوان باکال/لینگوال اطراف فیکسچر: حداقل <span class="t-num">1 mm</span>.</li>
+                <li>فضای اینتراکلوزال (CHS) برای ثابت پیچ‌شونده: حداقل <span class="t-num">4-5 mm</span>.</li>
+                <li>فضای اینتراکلوزال (CHS) برای اوردنچر (مثلاً بار): <span class="t-num">12-15 mm</span>.</li>
+                <li><span class="t-con">A-P Spread (فاصله قدامی-خلفی)</span>: تعیین‌کننده طول مجاز <span class="t-con">Cantilever</span> (تا <span class="t-num">1.5x</span> الی <span class="t-num">2x</span> فاصله A-P در ایده‌آل‌ترین شرایط).</li>
+            </ul>
+        </div>
+        <div class="block-god">
+            <h3>⚠️ تله‌های بیومکانیک و جراحی</h3>
+            <ul>
+                <li><span class="t-err">Overheating</span>: دمای <span class="t-num">47°C</span> به مدت <span class="t-num">1 minute</span> باعث <span class="t-err">Necrosis</span> و <span class="t-err">Failure</span> استخوان می‌شود. راه‌حل: دریلینگ منقطع، سرم خنک، فرز تیز.</li>
+                <li><span class="t-err">Micromovement</span>: حرکت بیش از <span class="t-num">150 microns</span> در فاز ترمیم باعث تمایز سلول‌ها به فیبروبلاست (<span class="t-err">اسکار فیبروز</span>) به جای استئوبلاست می‌شود.</li>
+                <li><span class="t-con">Platform Switching</span>: اباتمنت باریک‌تر از پلتفرم فیکسچر -> انتقال <span class="t-con">Microgap</span> به دور از استخوان -> تحلیل استخوان کمتر.</li>
+                <li><span class="t-con">D1 Bone (متراکم)</span>: خطر بالای <span class="t-err">Overheating</span>. حتماً از <span class="t-mat">Tap Drill / Countersink</span> استفاده شود تا <span class="t-err">Compression Necrosis</span> رخ ندهد.</li>
+                <li><span class="t-con">D4 Bone (نرم)</span>: خطر افت <span class="t-con">Primary Stability</span>. استفاده از <span class="t-mat">Tapered Implant</span> و Under-drilling توصیه می‌شود.</li>
+            </ul>
+        </div>
+        <div class="block-god">
+            <h3>🦷 پروتکل‌های اوردنچر مندیبل (Mandibular OD)</h3>
+            <ul>
+                <li><span class="t-con">OD-1</span>: 2 ایمپلنت (نواحی B, D) <span class="t-con">Isolated</span>. کمترین ثبات، حرکت لولایی.</li>
+                <li><span class="t-con">OD-2</span>: 2 ایمپلنت (نواحی B, D) اسپلینت شده با <span class="t-mat">Connecting Bar</span>. <span class="t-err">نباید کانتی‌لور دیستالی داشته باشد</span> (باعث گشتاور شدید می‌شود).</li>
+                <li><span class="t-con">OD-3</span>: 3 ایمپلنت (نواحی A, C, E). ثبات عالی. ایمپلنت C انعطاف بار را خنثی می‌کند.</li>
+                <li><span class="t-con">OD-4</span>: 4 ایمپلنت (نواحی A, B, D, E). ساپورت قوی، مجاز به کانتی‌لور، اتچمنت‌ها ترجیحاً Ball در دیستال تا حرکات قفل نشود.</li>
+                <li><span class="t-con">OD-5</span>: 5 ایمپلنت (A, B, C, D, E). پروتز کاملاً <span class="t-con">Implant Supported (RP4)</span>. حرکت پروتز <span class="t-num">PM=0</span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>[STAGE 2] دیتابانک تحلیلی (کالبدشکافی کامل)</h2>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q01</span>در جایگزینی یک دندان سانترال در صورتیکه رستوریشن پیچ شونده مد نظر باشد کدام گزینه معیار درست قرار دهی را مشخص میکند؟</div>
+        <div class="choices">
+            <div class="opt">(1) باکولینگوال باید زیر لبه انسیزال باشد</div>
+            <div class="opt">(2) اپیکوکرونال باید 1 میلی متر زیر CEJ باشد</div>
+            <div class="opt opt-t">✅ (3) از جهت باکولینگوال باید زیر سینگولوم رستوریشن نهایی قرار داده شود</div>
+            <div class="opt">(4) اپیکوکرونال 2 میلی متر زیر کرست باشد</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-zero">
+                <div class="a-label">مفاهیم پیش‌نیاز</div>
+                <ul><li><span class="t-con">Screw-retained Prosthesis</span>: روکش و اباتمنت یکپارچه پیچ می‌شوند. نیازمند Access Hole (سوراخ دسترسی به پیچ).</li></ul>
+            </div>
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li>برای دیده نشدن سوراخ پیچ از نمای فاسیال (زیبایی)، خروجی باید در ناحیه <span class="t-ana">سینگولوم (پالاتال)</span> باشد. لذا ایمپلنت باید مستقیماً زیر سینگولوم قرار گیرد.</li></ul>
+            </div>
+            <div class="a-box a-trap" style="grid-column: 1 / -1;">
+                <div class="a-label">تله‌های طراح</div>
+                <ul><li><span class="t-err">گزینه 1 (لبه انسیزال)</span>: سوراخ پیچ در لبه انسیزال باعث تخریب زیبایی و مستعد لب‌پریدگی <span class="t-mat">Porcelain</span> می‌شود.</li><li><span class="t-err">رستوریشن سمان‌شونده</span>: اگر سمان‌شونده بود، فیکسچر باید کمی فاسیالی‌تر (زیر لبه انسیزال) قرار می‌گرفت.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q02</span>برای رادیو اپیک کردن استنت رادیوگرافی از چه ماده ای استفاده می کنیم؟</div>
+        <div class="choices">
+            <div class="opt">(1) فسفات باریوم</div>
+            <div class="opt">(2) سولفات رادیوم</div>
+            <div class="opt">(3) فسفات رادیوم</div>
+            <div class="opt opt-t">✅ (4) سولفات باریوم</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li><span class="t-mat">Barium Sulfate (BaSO4)</span> یک ماده با عدد اتمی بالا است که با آکریل مخلوط شده و در <span class="t-mat">CBCT</span> کنتراست عالی (رادیواپک) ایجاد می‌کند تا فرم دندان روی گرافی دیده شود.</li></ul>
+            </div>
+            <div class="a-box a-trap">
+                <div class="a-label">تله‌های طراح</div>
+                <ul><li><span class="t-err">رادیوم (Radium)</span>: یک عنصر رادیواکتیو و به شدت خطرناک است! تشابه اسمی باریوم و رادیوم تله اصلی این سوال است.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q03</span>در صورتیکه بخواهیم ایمپلنتی به قطر ۴ میلی متر قرار دهیم؛ pilot hole مرکز ایمپلنت از دندان مجاور چقدر باید فاصله داشته باشد؟</div>
+        <div class="choices">
+            <div class="opt">(1) ۳ میلی‌متر</div>
+            <div class="opt">(2) ۴ میلی‌متر</div>
+            <div class="opt opt-t">✅ (3) ۳.۵ میلی‌متر</div>
+            <div class="opt">(4) ۴.۵ میلی‌متر</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-zero">
+                <div class="a-label">مفاهیم پیش‌نیاز</div>
+                <ul><li>قانون طلایی: فاصله سطح خارجی ایمپلنت تا <span class="t-ana">ریشه دندان مجاور</span> = حداقل <span class="t-num">1.5 mm</span>.</li></ul>
+            </div>
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li>مرکز Pilot hole = مرکز ایمپلنت. فاصله مرکز تا سطح ایمپلنت = شعاع = <span class="t-num">2 mm</span>.</li><li>شعاع (<span class="t-num">2 mm</span>) + فاصله ایمنی (<span class="t-num">1.5 mm</span>) = <span class="t-num">3.5 mm</span>.</li></ul>
+            </div>
+            <div class="a-box a-trap" style="grid-column: 1 / -1;">
+                <div class="a-label">تله‌های طراح</div>
+                <ul><li><span class="t-err">اشتباه قطر با شعاع</span>: اگر دانشجو قطر (<span class="t-num">4mm</span>) را با 1.5 جمع کند به <span class="t-err">5.5mm</span> می‌رسد، یا اگر اشتباها 4 را علامت بزند یعنی فاصله ایمنی را لحاظ نکرده است.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q04</span>کدام در مورد تمپلیتهای جراحی صحیح است؟</div>
+        <div class="choices">
+            <div class="opt">(1) تمپلیت non limiting موقعیت مزیودیستال را نشان میدهد</div>
+            <div class="opt opt-t">✅ (2) در تمپلیت completely limiting عمق استیوتومی هم دیکته می شود</div>
+            <div class="opt">(3) partially limiting میتوان از قبل رستوریشن موقت ساخت</div>
+            <div class="opt">(4) completely limiting تنها مسیر فرز پایلوت را مشخص می کند</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-zero">
+                <div class="a-label">مفاهیم پیش‌نیاز</div>
+                <ul><li><span class="t-con">Completely Limiting Guide</span> (گاید دیجیتال): همه چیز (مکان، زاویه، عمق) با Sleeves و Stops کنترل می‌شود.</li></ul>
+            </div>
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li>چون گاید فول‌گاید تمام حرکات را محدود می‌کند، <span class="t-mat">Drill Stops</span> در آن تعبیه شده تا عمق فرزکاری (استئوتومی) را کاملاً دیکته کند.</li></ul>
+            </div>
+            <div class="a-box a-trap" style="grid-column: 1 / -1;">
+                <div class="a-label">تله‌های طراح</div>
+                <ul><li><span class="t-err">گزینه 1</span>: Non-limiting فقط ناحیه کلی پروتز را نشان می‌دهد، زاویه و مکان دقیق را دیکته نمی‌کند.</li><li><span class="t-err">گزینه 4</span>: کلمه "تنها"! فول‌گاید تمام فرزها را هدایت می‌کند، نه فقط پایلوت دریل را.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q05/24</span>از کدام وسیله میتوان برای اطمینان از موقعیت صحیح اباتمنتها در دهان بیمار استفاده کرد؟</div>
+        <div class="choices">
+            <div class="opt opt-t">✅ (1) ترانسفر جیگ</div>
+            <div class="opt">(2) تورک رنچ</div>
+            <div class="opt">(3) پلنینگ کیت</div>
+            <div class="opt">(4) ایمپرشن کوپینگ</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li><span class="t-mat">Transfer Jig</span> (ساخته شده از رزین روی کست) دقیقاً روی دندان‌های مجاور می‌نشیند و اباتمنت را با زاویه دقیق در دهان Guide می‌کند تا از نشستن صحیح آن (Passive Fit) مطمئن شویم.</li></ul>
+            </div>
+            <div class="a-box a-trap">
+                <div class="a-label">تله‌های طراح</div>
+                <ul><li><span class="t-err">ایمپرشن کوپینگ</span> فقط برای انتقال موقعیت فیکسچر به قالب است، نه انتقال اباتمنت به دهان.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q06/22</span>در رابطه با قالبگیری ایمپلنت کدام گزینه درست است؟</div>
+        <div class="choices">
+            <div class="opt">(1) کلوز تری انالوگ به کوپینگ داخل قالب وصل میشود</div>
+            <div class="opt opt-t">✅ (2) در مجموع اوپن تری (Pick-up) روش دقیقتری محسوب می شود</div>
+            <div class="opt">(3) کلوز تری از کوپینگ مربعی با پین بلند استفاده می شود</div>
+            <div class="opt">(4) جینجیوال ماسک در هر دو روش برای محافظت لثه است</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li><span class="t-mat">Open Tray (Pick-up)</span>: کوپینگ با قالب خارج می‌شود (گیر در ماده قالب‌گیری). چون نیاز به "درآوردن و دوباره جا زدن" کوپینگ نیست، خطای جابه‌جایی حذف شده و دقیق‌تر است.</li></ul>
+            </div>
+            <div class="a-box a-trap" style="grid-column: 1 / -1;">
+                <div class="a-label">تله‌های طراح</div>
+                <ul><li><span class="t-err">گزینه 1</span>: در کلوز تری، کوپینگ از دهان باز می‌شود، به آنالوگ بسته می‌شود، و *سپس* این مجموعه داخل قالب جا (Snap-on) زده می‌شود.</li><li><span class="t-err">گزینه 3</span>: کوپینگ مربعی و پین بلند مخصوص <span class="t-mat">Open Tray</span> است تا از سوراخ تری بیرون بزند.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q07</span>برای افزایش ثبات اولیه ایمپلنت در استخوانی با تراکم پایین کدام اصلاح در طراحی مناسب نیست؟</div>
+        <div class="choices">
+            <div class="opt">(1) استفاده از رزوه square</div>
+            <div class="opt opt-t">✅ (2) کاهش depth (عمق) رزوه ها</div>
+            <div class="opt">(3) کاهش Pitch (فاصله) رزوه ها</div>
+            <div class="opt">(4) استفاده از ایمپلنت تیپر</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-zero">
+                <div class="a-label">مفاهیم پیش‌نیاز</div>
+                <ul><li><span class="t-ana">استخوان D4 (تراکم پایین/نرم)</span>: نیاز به <span class="t-con">بیشترین سطح تماس</span> و کمپرس کردن استخوان برای <span class="t-con">Primary Stability</span> دارد.</li></ul>
+            </div>
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li>کاهش عمق رزوه باعث می‌شود ایمپلنت در استخوان نرم درگیر نشود و بلغزد. برای استخوان ضعیف، رزوه باید <span class="t-con">عمیق‌تر (Deep Threads)</span> باشد.</li></ul>
+            </div>
+            <div class="a-box a-trap" style="grid-column: 1 / -1;">
+                <div class="a-label">تله‌های طراح</div>
+                <ul><li><span class="t-err">گزینه‌های 1 و 3 و 4</span> همگی استراتژی‌های صحیح برای استخوان نرم هستند: تیپر (کمپرس استخوان)، کاهش Pitch (افزایش تعداد رزوه‌ها در طول)، رزوه Square (بهترین انتقال نیروی فشاری).</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q08/23</span>کدام ترتیب کاربرد وسایل در پروسه درمانی ایمپلنت ترتیب صحیح است؟</div>
+        <div class="choices">
+            <div class="opt">(1) کاور اسکرو -> هیلینگ اباتمنت -> ایمپرشن کوپینگ -> ترانسفر جیگ -> پلنینگ کیت -> اباتمنت -> تورک رنچ</div>
+            <div class="opt opt-t">✅ (2) کاور اسکرو -> هیلینگ اباتمنت -> ایمپرشن کوپینگ -> پلنینگ کیت -> اباتمنت -> ترانسفر جیگ -> تورک رنچ</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul>
+                    <li>1. <span class="t-mat">Cover Screw</span> (مرحله جراحی اول زیر لثه).</li>
+                    <li>2. <span class="t-mat">Healing Abutment</span> (مرحله جراحی دوم برای فرم لثه).</li>
+                    <li>3. <span class="t-mat">Impression Coping</span> (قالب‌گیری).</li>
+                    <li>4. <span class="t-mat">Planning Kit / Bone Profiler</span> (برداشتن استخوان اضافی دور پلتفرم قبل از نشستن اباتمنت نهایی).</li>
+                    <li>5. <span class="t-mat">Abutment + Transfer Jig</span> (انتقال دقیق به دهان).</li>
+                    <li>6. <span class="t-mat">Torque Wrench</span> (سفت کردن نهایی).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q10</span>اگر دندانهای مولر اول و دوم پایین کشیده شده باشند بهترین محل قراردادن ایمپلنت ها عبارت است از:</div>
+        <div class="choices">
+            <div class="opt">(1) دیستال مولر 1 - مزیال مولر 2</div>
+            <div class="opt">(2) مزیال مولر 1 - مزیال مولر 2</div>
+            <div class="opt opt-t">✅ (3) مزیال مولر 1 - دیستال مولر 2</div>
+            <div class="opt">(4) دیستال مولر 1 - دیستال مولر 2</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-zero">
+                <div class="a-label">مفاهیم پیش‌نیاز</div>
+                <ul><li>قانون مکانیک: بیشترین <span class="t-con">A-P Spread</span> کمترین اهرم و فشار را ایجاد می‌کند.</li></ul>
+            </div>
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li>برای پوشش فضای دو مولر و حذف <span class="t-con">Cantilever</span>، باید ایمپلنت‌ها را در <span class="t-ana">ابتدایی‌ترین (مزیال 6)</span> و <span class="t-ana">انتهایی‌ترین (دیستال 7)</span> نقطه فضای بی‌دندانی قرار داد.</li></ul>
+            </div>
+            <div class="a-box a-trap">
+                <div class="a-label">تله‌های طراح</div>
+                <ul><li><span class="t-err">سایر گزینه‌ها</span> باعث ایجاد کانتی‌لور مزیالی یا دیستالی در بریج نهایی می‌شوند که موجب اورلود و شکستگی می‌شود.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q11</span>در صورت افزایش کدامیک از عوامل زیر، امکان افزایش میزان کانتی‌لور وجود دارد؟</div>
+        <div class="choices">
+            <div class="opt">(1) پارافانکشن</div>
+            <div class="opt">(2) نیروهای مضغی</div>
+            <div class="opt">(3) میزان ارتفاع پروتز (CHS)</div>
+            <div class="opt opt-t">✅ (4) فاصله A-P</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li><span class="t-con">A-P Distance (Anterior-Posterior Spread)</span>: هرچه ایمپلنت قدامی از ایمپلنت‌های خلفی دورتر باشد (پلی‌گون ساپورت وسیع‌تر)، می‌توان کانتی‌لور دیستالی بلندتری (تا <span class="t-num">1.5x</span> الی <span class="t-num">2x</span>) تعبیه کرد.</li></ul>
+            </div>
+            <div class="a-box a-trap" style="grid-column: 1 / -1;">
+                <div class="a-label">تله‌های طراح</div>
+                <ul><li><span class="t-err">پارافانکشن/نیروهای مضغی/CHS زیاد</span>: همگی نیروهای مخرب را ضرب می‌کنند (اهرم بلندتر می‌شود)، بنابراین باید طول کانتی‌لور <span class="t-err">کاهش</span> یابد!</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q13</span>Stress Shielding به چه معناست؟</div>
+        <div class="choices">
+            <div class="opt">(1) محافظت از استخوان</div>
+            <div class="opt">(2) توزیع مناسب استرس</div>
+            <div class="opt">(3) فشار بیش از حد به استخوان</div>
+            <div class="opt opt-t">✅ (4) تحلیل کورتیکال در اثر نیروی ناکافی</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li><span class="t-mat">Titanium</span> بسیار سخت‌تر از استخوان است. <span class="t-con">Stress Shielding</span> یعنی ایمپلنت تمام نیرو را جذب می‌کند و استخوان اطراف به دلیل عدم دریافت تحریک مکانیکی (Wolf's Law) دچار <span class="t-err">Disuse Atrophy (تحلیل)</span> می‌شود.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q15</span>جذب کدام مورد در ایمپلنتهای با سطح machine surface بیشتر از سطوح rough رخ می دهد؟</div>
+        <div class="choices">
+            <div class="opt">(1) Osteoblast</div>
+            <div class="opt opt-t">✅ (2) Fibronectin</div>
+            <div class="opt">(3) Macrophage</div>
+            <div class="opt">(4) Woven bone</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li>سطح <span class="t-mat">Machined (صاف ماشین‌کاری شده)</span> باعث می‌شود پروتئین‌های اتصالی اولیه خون مثل <span class="t-ana">فیبرونکتین</span> به سرعت در دقایق اولیه روی آن جذب و پخش شوند تا بستر سلولی فراهم شود.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q16</span>کدام مورد بر secondary stability ایمپلنت اثر ندارد؟</div>
+        <div class="choices">
+            <div class="opt">(1) کمیت استخوان</div>
+            <div class="opt opt-t">✅ (2) ماکرودیزاین ایمپلنت</div>
+            <div class="opt">(3) میکرودیزاین</div>
+            <div class="opt">(4) کیفیت استخوان</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li><span class="t-con">Secondary Stability</span> ناشی از تشکیل استخوان جدید (<span class="t-con">Osseointegration</span> بیولوژیک) است که به ویژگی‌های سطحی (<span class="t-con">Microdesign</span>) و بیولوژی بدن (کیفیت/کمیت) مرتبط است.</li></ul>
+            </div>
+            <div class="a-box a-trap">
+                <div class="a-label">تله‌های طراح</div>
+                <ul><li><span class="t-err">Macrodesign (طراحی رزوه/شکل کلی)</span>: صرفاً مسئول گیر مکانیکی حین جراحی یا همان <span class="t-con">Primary Stability</span> است.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q20</span>چه مقدار از تحلیل استخوان آلوئول پس از قرار دادن ایمپلنت طبیعی محسوب میشود؟</div>
+        <div class="choices">
+            <div class="opt opt-t">✅ (1) سال اول 1.5 میلی متر و سالهای بعد 0.1 میلی متر در سال</div>
+            <div class="opt">(2) سال اول 0.1 میلی متر و سالهای بعد 1.5 میلی متر</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li>بر اساس قانون Albrektsson، تحلیل <span class="t-ana">Crestal Bone</span> در سال اول بارگذاری به دلیل تشکیل <span class="t-con">Biologic Width</span> حدود <span class="t-num">1.2 تا 1.5 mm</span> است. پس از آن باید کمتر از <span class="t-num">0.1 mm</span> تا <span class="t-num">0.2 mm</span> در سال باشد. مقادیر بیش از این نشانه <span class="t-err">Peri-implantitis</span> است.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q21/48</span>تفاوت ایمپلنت‌های tissue integrated با bone level در چیست؟</div>
+        <div class="choices">
+            <div class="opt opt-t">✅ (1) در صاف یا پیچ‌دار بودن قسمت کرونال ایمپلنت</div>
+            <div class="opt">(2) در نوع آلیاژ تیتانیوم</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li>ایمپلنت <span class="t-con">Tissue Level</span> دارای یک یقه یا گردن (Collar) <span class="t-mat">صیقلی و صاف (Machined)</span> به طول 1.8mm است که درون بافت نرم قرار می‌گیرد. اما <span class="t-con">Bone Level</span> تا لبه دارای رزوه (Microthread) یا زبری است و کاملاً زیر کرست استخوان دفن می‌شود.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q26</span>حداقل فاصله استاندارد ایمپلنت با کف سینوس و دندان مجاور؟</div>
+        <div class="choices">
+            <div class="opt">(1) 2-2</div>
+            <div class="opt">(2) 1.5-1.5</div>
+            <div class="opt">(3) 1.5-2</div>
+            <div class="opt opt-t">✅ (4) 2-1.5 (2mm سینوس / 1.5mm دندان)</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li>حفظ سلامت پریودنتال دندان مجاور = حداقل <span class="t-num">1.5 mm</span>.</li><li>حفظ سلامت لندمارک‌های حیاتی (سینوس، عصب) = حداقل <span class="t-num">2 mm</span> (<span class="t-con">Safety Zone</span>).</li></ul>
+            </div>
+            <div class="a-box a-trap" style="grid-column: 1 / -1;">
+                <div class="a-label">تله‌های طراح</div>
+                <ul><li>در کلید اولیه دانشگاه، پاسخ <span class="t-err">1.5-1.5</span> درج شده بود که قانون ایمنی جراحی را نقض می‌کند. بر اساس کتاب مرجع میش پاسخ قطعی 2 برای سینوس و 1.5 برای دندان است.</li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q32</span>کدام طرح درمان مناسب‌تر است؟ (ترکیب فک بالا و پایین)</div>
+        <div class="choices">
+            <div class="opt">(1) اوردنچر فک بالا و پروتز ثابت فک پایین</div>
+            <div class="opt opt-t">✅ (2) اوردنچر فک پایین و پروتز متحرک فک بالا</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی</div>
+                <ul><li>اگر فک پایین ثابت/اوردنچر محکم باشد و فک بالا فقط دنچر کامل بدون ساپورت باشد، به دلیل نیروهای شدید قدامی، <span class="t-err">Combination Syndrome (سندرم ترکیب)</span> و تحلیل شدید قدام ماگزیلا رخ می‌دهد.</li><li>اوردنچر پایین با دنچر کامل بالا (<span class="t-con">OD-1/OD-2</span>) یک پروتکل استاندارد برای بالانس نیرو و گیر مندیبل است.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-container">
+        <div class="q-header"><span class="q-id">Q38/39</span>انجام دریل Countersink در استخوان های D1...</div>
+        <div class="choices">
+            <div class="opt">(1) ضروری است برای حفظ ثبات اولیه</div>
+            <div class="opt opt-t">✅ (2) به دلیل کاهش موفقیت استئو اینتگریشن توصیه نمیشود. (طبق کلید، اما متناقض با رفرنس!)</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-box a-logic">
+                <div class="a-label">منطق کلینیکی / تله دانشگاهی</div>
+                <ul>
+                    <li>در متن کورس ذکر شده که استخوان <span class="t-ana">D1 (کورتیکال ضخیم)</span> مستعد <span class="t-err">Compression Necrosis</span> است و باید دهانه آن با <span class="t-mat">Countersink / Tap Drill</span> باز شود. </li>
+                    <li>اما بر اساس <span class="t-err">کلید آزمون ورودی 96</span>، طراح معتقد است Countersink زیاد در D1 توصیه نمی‌شود! <b>اخطار بورد: همیشه پاسخ کلید دانشگاه را در تست‌ها مدنظر قرار دهید، حتی اگر با رفرنس اصلی تناقض ظاهری داشته باشد.</b></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IMPLANT CORE | BRUTALIST EDITION</title>
+    <style>
+        /* BRUTALIST RESET & DENSITY MAXIMIZER */
+        * { box-sizing: border-box; border-radius: 0 !important; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; outline: none; }
+        body { background: #000; color: #e5e5e5; font-size: 13px; line-height: 1.35; padding: 4px; display: flex; flex-direction: column; gap: 4px; }
+        
+        /* HEADERS */
+        h1 { background: #fff; color: #000; font-size: 16px; font-weight: 900; padding: 6px; text-transform: uppercase; letter-spacing: -0.5px; border: 2px solid #555;}
+        h2 { background: #222; color: #fff; font-size: 14px; font-weight: 900; padding: 4px 6px; border-right: 4px solid #f00; border-bottom: 1px solid #444; margin-top: 4px;}
+        h3 { color: #aaa; font-size: 12px; font-weight: 900; background: #111; padding: 2px 4px; border-bottom: 1px dashed #333;}
+
+        /* HIGHLIGHTERS (NO PADDING WASTE) */
+        .h-num { background: #4a0404; color: #ff8a8a; font-weight: 900; font-family: monospace; padding: 0 2px; }
+        .h-ana { background: #022c22; color: #6ee7b7; font-weight: 900; padding: 0 2px;}
+        .h-con { background: #422006; color: #fde047; font-weight: 900; padding: 0 2px;}
+        .h-mat { background: #1e1b4b; color: #a5b4fc; font-weight: 900; padding: 0 2px;}
+        .h-trp { background: #7f1d1d; color: #fff; font-weight: 900; padding: 0 2px; text-decoration: line-through;}
+
+        /* GRIDS & LAYOUTS */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 4px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 2px; }
+        
+        /* DATA BLOCKS */
+        .block { border: 1px solid #333; background: #0a0a0a; padding: 4px; display: flex; flex-direction: column; gap: 4px;}
+        .block-red { border-color: #500; }
+        
+        ul { padding-right: 14px; margin: 0; color: #bbb;}
+        li { margin-bottom: 2px; }
+
+        /* QUESTIONS SYSTEM */
+        .q-container { border: 1px solid #444; border-right: 4px solid #fff; background: #050505; display: flex; flex-direction: column; gap: 2px; padding: 2px;}
+        .q-head { display: flex; gap: 6px; background: #111; padding: 4px; color: #fff; font-weight: 900; font-size: 13.5px; border-bottom: 1px solid #333;}
+        .q-id { background: #fff; color: #000; padding: 0 4px; font-size: 11px; display: flex; align-items: center;}
+        
+        .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #333; border: 1px solid #333;}
+        @media (max-width: 400px) { .opt-grid { grid-template-columns: 1fr; } }
+        .opt { background: #000; padding: 4px 6px; color: #888; font-size: 12.5px; display: flex; gap: 4px;}
+        .opt-t { background: #064e3b; color: #fff; font-weight: 900; border-left: 2px solid #10b981;}
+
+        .analysis-grid { display: grid; grid-template-columns: 1fr; gap: 2px; margin-top: 2px;}
+        @media (min-width: 600px) { .analysis-dash { grid-template-columns: 1.5fr 1fr; } }
+        .a-logic { background: #111827; border-right: 3px solid #3b82f6; padding: 4px; font-size: 12px;}
+        .a-trap { background: #2e1012; border-right: 3px solid #ef4444; padding: 4px; font-size: 12px; color: #fca5a5;}
+        .a-fut { background: #3f2c00; border-right: 3px solid #eab308; padding: 4px; font-size: 12px; color: #fde047;}
+    </style>
+</head>
+<body>
+
+    <h1>[IMPLANT CORE] :: RAW DATA / ZERO RADIUS</h1>
+
+    <!-- 0. ZERO TO HERO BOOTCAMP -->
+    <h2>00 // BOOTCAMP (مبانی صفر کیلومتر)</h2>
+    <div class="grid-2">
+        <div class="block">
+            <h3>[HARDWARE] قطعات</h3>
+            <ul>
+                <li><b>فیکسچر:</b> ریشه تیتانیومی.</li>
+                <li><b>اباتمنت:</b> تاج فلزیِ تراش‌خورده.</li>
+                <li><b>روکش پیچ‌شونده:</b> سمان (چسب) ندارد. مزیت: <span class="h-con">Retrievability</span> (بازشدن راحت) و عدم عفونت.</li>
+                <li><b>Tissue Level:</b> یقه ایمپلنت بیرون استخوان است ➡️ یقه باید <span class="h-mat">صاف/بدون رزوه</span> باشد تا پلاک نگیرد.</li>
+            </ul>
+        </div>
+        <div class="block">
+            <h3>[BIOLOGY] استخوان</h3>
+            <ul>
+                <li><b>کورتیکال:</b> قشر سفت. <b>اسفنجی:</b> مغز نرم.</li>
+                <li><b>Woven:</b> اورژانسی. <span class="h-num">پرسلول/سریع</span> اما بی‌نظم/ضعیف.</li>
+                <li><b>Lamellar:</b> بالغ. کم‌سلول، کُند اما قوی.</li>
+                <li><b>D1 تا D4:</b> D1 سفت‌ترین (مثل بلوط). D4 نرم‌ترین (مثل اسفنج).</li>
+            </ul>
+        </div>
+        <div class="block">
+            <h3>[IMAGING] رادیولوژی</h3>
+            <ul>
+                <li><b>PA (پری‌آپیکال):</b> فیلم کوچک داخل دهان. وضوح بالا، اما <span class="h-trp">Coverage (میدان دید) کم</span>.</li>
+                <li><b>OPG (پانورامیک):</b> دیستورشن چرخشی. <span class="h-trp">بزرگنمایی نامساوی در طول فک</span> (خط‌کش ممنوع!).</li>
+                <li><b>CBCT:</b> سه بعدی. تراکم با <span class="h-num">HU</span>. مارکر سفید (رادیواپک) برای تطابق مدل.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 1. EXAM 96/98 GOD MODE -->
+    <h2>01 // GOD MODE (اسرار آزمون ۹۶/۹۸)</h2>
+    <div class="block block-red">
+        <div class="grid-2">
+            <ul>
+                <li>حریم عصب فک پایین: توقف در <span class="h-num">2mm</span> مانده به عصب.</li>
+                <li>زاویه کانین بالا: <span class="h-num">25 درجه</span>.</li>
+                <li>بی‌دندانی کامل پایین: <span class="h-ana">بین دو فورامن منتال (5 ایمپلنت)</span>.</li>
+                <li>عرض بیولوژیک: <span class="h-num">3mm</span> (عامل تحلیل کرستال).</li>
+                <li>میکروموومنت مجاز: <span class="h-num">< 150 میکرون</span> (برای استئواینتگریشن).</li>
+                <li>زمان جوش قدام پایین: حداقل <span class="h-num">6 ماه</span>.</li>
+                <li>استخوان D1: <span class="h-trp">Countersinking (پخ زدن) ممنوع</span>.</li>
+                <li>شابلون Semi-Guided: فقط مسیر دریل پایلوت هدایت می‌شود.</li>
+                <li>شکست FGG: علت اصلی <span class="h-trp">Insufficient blood supply</span>.</li>
+            </ul>
+            <ul>
+                <li>تکنیک آکاردئون FGG: برای ناحیه گیرنده وسیع.</li>
+                <li>بیمار ۱۱-۱۲ ساله: <span class="h-trp">ممنوعیت مطلق</span> (سن رشد).</li>
+                <li>اوردنچر کلاس OD4: پوشش کامی حذف می‌شود.</li>
+                <li>محافظت رزوه: <b>تفلون</b> روی سر پیچ.</li>
+                <li>عوامل Peri-implantitis: Overloading، پلاک، سمان.</li>
+                <li>بایت بلاک: حین جراحی برای راحتی فک.</li>
+                <li>فضای اکلوزالی کم: مانع بزرگ پروتز.</li>
+                <li>گرافت اتوژن: بهترین نوع (از <span class="h-ana">چانه/ایلیاک</span>).</li>
+                <li>عضله کف دهان: <span class="h-ana">اوربیکولار اوریس</span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 2. THE 32 QUESTIONS DATA-BANK -->
+    <h2>02 // THE 32 CORE QUESTIONS (دیتا بانک اصلی)</h2>
+
+    <!-- Q1 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q01</span>دندان سانترال + روکش پیچ شونده -> معیار قرار دهی؟</div>
+        <div class="opt-grid">
+            <div class="opt">(۱) باکولینگوال: زیر لبه انسیزال</div>
+            <div class="opt">(۲) اپیکوکرونال: ۱mm زیر CEJ</div>
+            <div class="opt opt-t">✅ (۳) باکولینگوال: زیر سینگولوم</div>
+            <div class="opt">(۴) اپیکوکرونال: ۲mm زیر کرست</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> سوراخ دسترسی نباید در نمای لبخند دیده شود. زاویه فیکسچر باید طوری باشد که پیچ از ضخیم‌ترین نقطه پشت دندان <b>(<span class="h-ana">سینگولوم</span>)</b> خارج شود.</div>
+            <div class="a-trap"><b>[TRAP]</b> خروج از <span class="h-trp">لبه انسیزال (لبه برنده)</span> باعث خرد شدن سرامیک می‌شود.</div>
+        </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q02</span>ماده رادیو اپیک برای استنت رادیوگرافی؟</div>
+        <div class="opt-grid">
+            <div class="opt">(۱) فسفات باریوم</div><div class="opt">(۲) سولفات رادیوم</div>
+            <div class="opt">(۳) فسفات رادیوم</div><div class="opt opt-t">✅ (۴) سولفات باریوم</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> پلاستیک شفاف در اشعه X دیده نمی‌شود. با پودر ایمنِ <b><span class="h-mat">سولفات باریوم (Barium Sulfate)</span></b> آن را رادیواپک (سفید) می‌کنند.</div>
+            <div class="a-trap"><b>[TRAP]</b> <span class="h-trp">رادیوم</span> رادیواکتیو و مرگبار است!</div>
+        </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q03</span>ایمپلنت 4mm -> فاصله pilot hole (مرکز) تا دندان مجاور؟</div>
+        <div class="opt-grid">
+            <div class="opt">(1) 1.5 mm</div><div class="opt opt-t">✅ (2) 3.5 mm</div>
+            <div class="opt">(3) 3 mm</div><div class="opt">(4) 4 mm</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> فرمول: <code>شعاع (2) + حریم امن (1.5) = <span class="h-num">3.5mm</span></code>.</div>
+            <div class="a-trap"><b>[TRAP]</b> <span class="h-num">1.5mm</span> فاصله <b>لبه</b> است، نه <b>مرکز (Pilot)</b>.</div>
+        </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q04</span>تمپلیت های جراحی (شابلون) -> کدام صحیح است؟</div>
+        <div class="opt-grid">
+            <div class="opt">(۱) Non limiting مزیودیستال را نشان میدهد</div>
+            <div class="opt opt-t">✅ (۲) Completely limiting عمق استیوتومی هم دیکته می شود</div>
+            <div class="opt">(۳) Partially limiting برای رستوریشن موقت...</div>
+            <div class="opt">(۴) Completely limiting تنها مسیر فرز را...</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> شابلون <b><span class="h-mat">Completely Limiting</span></b> دارای لوله فلزی و فرز استپ‌دار است ➡️ هم زاویه و هم <b><span class="h-con">عمق تراش</span></b> قفل و دیکته می‌شود.</div>
+            <div class="a-trap"><b>[TRAP]</b> گزینه ۴ می‌گوید "تنها مسیر"، که غلط است (عمق را هم کنترل می‌کند).</div>
+        </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q05</span>اطمینان از موقعیت صحیح اباتمنت ها در دهان -> کدام وسیله؟</div>
+        <div class="opt-grid">
+            <div class="opt opt-t">✅ (۱) ترانسفر جیگ</div><div class="opt">(۲) تورک رنچ</div>
+            <div class="opt">(۳) پلنینگ کیت</div><div class="opt">(۴) ایمپرشن کوپینگ</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> ایمپلنت ۶ وجه دارد. لابراتوار برای اینکه جراح اباتمنت را اشتباه نچرخاند، کلاهکی به نام <b><span class="h-mat">Transfer Jig (ایندکس)</span></b> می‌سازد که زاویه را از گچ به دهان کپی می‌کند.</div>
+        </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q06</span>قالبگیری ایمپلنت -> کدام صحیح است؟</div>
+        <div class="opt-grid">
+            <div class="opt">(۱) کلوز تری: کوپینگ در قالب می‌ماند...</div>
+            <div class="opt opt-t">✅ (۲) روش اپن تری (Open Tray) دقیقتر است.</div>
+            <div class="opt">(۳) کلوز تری: پین بلند...</div>
+            <div class="opt">(۴) جینجی مسک برای محافظت لثه...</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> در <b><span class="h-mat">Open Tray</span></b>، پیچ از روی قاشقک باز می‌شود ➡️ خروج بدون کشش، گیر و اعوجاج مواد ➡️ <b>بالاترین دقت</b>.</div>
+            <div class="a-trap"><b>[TRAP]</b> در کلوز تری، کوپینگ در دهان جا می‌ماند (رد ۱). پین بلند مخصوص اپن تری است (رد ۳).</div>
+        </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q07</span>افزایش ثبات اولیه در استخوان تراکم پایین -> کدام <span class="h-trp">مناسب نیست</span>؟</div>
+        <div class="opt-grid">
+            <div class="opt">(۱) رزوه square</div><div class="opt opt-t">✅ (۲) کاهش depth رزوه ها</div>
+            <div class="opt">(۳) کاهش Pitch</div><div class="opt">(۴) ایمپلنت تیپر</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> استخوان D4 (پوک) مثل اسفنج است. رزوه‌ها باید <b>عمیق</b> باشند تا درگیر شوند. <b><span class="h-trp">کاهش عمق (Depth)</span></b> باعث هرز چرخیدن کامل می‌شود.</div>
+            <div class="a-fut"><b>[FUTURE]</b> تیپر کردن (مخروطی) و کاهش Pitch (تراکم دنده‌ها) برای استخوان نرم عالی است.</div>
+        </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q08</span>ترتیب وسایل در پروسه درمانی ایمپلنت؟</div>
+        <div class="opt-grid">
+            <div class="opt" style="grid-column: 1 / -1;">(۱) کاور اسکرو -> هیلینگ -> ایمپرشن -> جیگ -> پلنینگ...</div>
+            <div class="opt opt-t" style="grid-column: 1 / -1;">✅ (۲) کاور اسکرو -> هیلینگ -> ایمپرشن کوپینگ -> پلنینگ کیت -> اباتمنت -> ترانسفر جیگ -> تورک رنچ</div>
+            <div class="opt" style="grid-column: 1 / -1;">(۳) هیلینگ -> کاور اسکرو...</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> ۱.کاور اسکرو (دفن) ۲.هیلینگ (شکل‌دهی لثه ۳ماه بعد) ۳.کوپینگ (قالب) ۴.پلنینگ (لابراتوار) ۵.اباتمنت+جیگ (نشاندن در دهان) ۶.تورک رنچ (سفت کردن).</div>
+        </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q09</span>قانون مولر اولی (کلید قرارگیری) کجا صدق نمی کند؟</div>
+        <div class="opt-grid">
+            <div class="opt">(1) بی دندانی کامل بالا</div><div class="opt">(۲) بی دندانی ناکامل پایین</div>
+            <div class="opt opt-t">✅ (۳) بی دندانی کامل فک پایین</div><div class="opt">(۴) بی دندانی ناکامل بالا</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> در فک پایین بی‌دندان، استخوان عقب تحلیل رفته و عصب روی سطح است. <b>قانون لغو می‌شود</b> و تمام ایمپلنت‌ها در <span class="h-ana">ناحیه قدام (بین دو سوراخ منتال)</span> کاشته می‌شوند.</div>
+        </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q10</span>دندان مولر ۱ و ۲ نیستند. بهترین محل ایمپلنت ها؟</div>
+        <div class="opt-grid">
+            <div class="opt">(۱) دیستال ۱ / مزیال ۲</div><div class="opt">(۲) مزیال ۱ / مزیال ۲</div>
+            <div class="opt opt-t">✅ (۳) مزیال مولر ۱ / دیستال مولر ۲</div><div class="opt">(۴) دیستال ۱ / دیستال ۲</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> قانون <span class="h-con">A-P Spread</span>: پایه‌های بریج باید بیشترین فاصله را داشته باشند. ➡️ <span class="h-ana">جلوترین نقطه (مزیال ۶)</span> و <span class="h-ana">عقب‌ترین نقطه (دیستال ۷)</span>.</div>
+        </div>
+    </div>
+
+    <!-- Q11 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q11</span>افزایش کدامیک، امکان افزایش میزان کانتی لور را میدهد؟</div>
+        <div class="opt-grid">
+            <div class="opt">(۱) پارافانکشن</div><div class="opt">(۲) نیروهای مضغی</div>
+            <div class="opt">(۳) ارتفاع پروتز</div><div class="opt opt-t">✅ (۴) فاصله A_P</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> کانتی‌لور = بالکن معلق. هرچه فونداسیون <b>(<span class="h-con">فاصله A_P پایه‌ها</span>)</b> بزرگتر باشد، بالکن می‌تواند طولانی‌تر شود.</div>
+            <div class="a-trap"><b>[TRAP]</b> دندان‌قروچه (پارافانکشن)، جویدن و ارتفاع تاج، نیروهای اهرمیِ <span class="h-trp">مخرب</span> هستند.</div>
+        </div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q12</span>بیماری لاترال، کانین و پره مولر ۱ بالا را ندارد. بهترین محل‌ها؟</div>
+        <div class="opt-grid">
+            <div class="opt">(۱) کانین و پره مولر</div><div class="opt opt-t">✅ (۲) لاترال ، کانین و پره مولر اول</div>
+            <div class="opt">(۳) لاترال وکانین</div><div class="opt">(۴) لاترال و پره مولر ۱</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> <span class="h-ana">Esthetic Zone (ناحیه زیبایی فک بالا)</span>: پونتیک (دندان معلق) باعث تحلیل لثه و نابودی پاپیلا می‌شود. قانون: <b><span class="h-con">جایگزینی تک‌به‌تک</span></b> (۳ دندان = ۳ ایمپلنت).</div>
+        </div>
+    </div>
+
+    <!-- Q13 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q13</span>Stress Shielding به چه معناست؟</div>
+        <div class="opt-grid">
+            <div class="opt" style="grid-column: 1 / -1;">(۱) تحلیل باکال / (۲) تحلیل کرستال (نیروی شدید) / (۳) تحلیل اسفنجی</div>
+            <div class="opt opt-t" style="grid-column: 1 / -1;">✅ (۴) تحلیل استخوان کورتیکال در اثر نیروی ناکافی اکلوزال</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> قانون ولف: استخوان به فشار نیاز دارد. اگر ایمپلنتِ صلب تمام نیرو را جذب کند (سپر شود)، <span class="h-ana">کورتیکال اطراف از بی‌کاری آب می‌شود (نیروی ناکافی).</span></div>
+        </div>
+    </div>
+
+    <!-- Q14 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q14</span>استخوان Woven در مقابل Lamellar (کدام درست است)؟</div>
+        <div class="opt-grid">
+            <div class="opt" style="grid-column: 1 / -1;">(۱) منظم‌تر / (۲) منظم‌تر / (۳) سلولاریته پایین‌تر Woven</div>
+            <div class="opt opt-t" style="grid-column: 1 / -1;">✅ (۴) سرعت تشکیل بالاتر و سلولاریته بالاتر استخوان woven</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> <b><span class="h-ana">Woven</span></b> بافت ترمیمی اولیه است. <span class="h-num">سرعت نور تشکیل می‌شود، پرسلول است</span>، اما کلاژن آن به شدت بی‌نظم و ضعیف است.</div>
+        </div>
+    </div>
+
+    <!-- Q15 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q15</span>جذب کدام در سطح Machined بیشتر از Rough است؟</div>
+        <div class="opt-grid">
+            <div class="opt">(1) PGE2</div><div class="opt opt-t">✅ (۲) Fibronectin</div>
+            <div class="opt">(3) Macrophage</div><div class="opt">(4) TGF-β1</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> سطوح <b><span class="h-mat">کاملاً صاف و صیقلی (Machined)</span></b> آهن‌ربای گلیکوپروتئین‌های چسبناک خونی مثل <b><span class="h-ana">فیبرونکتین</span></b> هستند. سلول‌های درشت (ماکروفاژ) در زبری‌ها گیر می‌کنند.</div>
+        </div>
+    </div>
+
+    <!-- Q16 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q16</span>کدام مورد بر secondary stability ایمپلنت اثر ندارد؟</div>
+        <div class="opt-grid">
+            <div class="opt">(1) Bone Quantity</div><div class="opt opt-t">✅ (۲) Implant Macrodesign</div>
+            <div class="opt">(3) Implant Microdesign</div><div class="opt">(4) Bone Quality</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> ثبات اولیه = فیزیکی/مکانیکی ➡️ <span class="h-con">Macrodesign</span> (شکل هندسی پیچ).<br>ثبات ثانویه = بیولوژیک/سلولی ➡️ فقط زبری (Microdesign) و کیفیت بافت. شکل کلی پیچ در فرآیند سلولی بی‌اثر است.</div>
+        </div>
+    </div>
+
+    <!-- Q17 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q17</span>تکنیک پانورامیک (OPG) -> کدام صحیح است؟</div>
+        <div class="opt-grid">
+            <div class="opt" style="grid-column: 1 / -1;">(۱) بزرگنمایی ثابت در بعد عرضی</div>
+            <div class="opt opt-t" style="grid-column: 1 / -1;">✅ (۲) بزرگنمائی متفاوت در نواحی مختلف فیلم در بعد طولی</div>
+            <div class="opt" style="grid-column: 1 / -1;">(۳) اندازه گیری دقیق زاویه ای و خطی</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> دستگاه دور سر می‌چرخد. <b>بزرگنمایی (Magnification) دندان‌های جلو و عقب با هم فرق دارد.</b></div>
+            <div class="a-trap"><b>[TRAP]</b> اندازه‌گیری طول ایمپلنت با خط‌کش روی OPG <span class="h-trp">ممنوع</span> است (دیستورشن دارد).</div>
+        </div>
+    </div>
+
+    <!-- Q18 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q18</span>مارکرهای رادیو اپیک در CBCT به چه منظور استفاده میشوند؟</div>
+        <div class="opt-grid">
+            <div class="opt">(۱) آنالیز حجمی استخوان</div><div class="opt">(۲) شبیه سازی قرار گیری...</div>
+            <div class="opt opt-t" style="grid-column: 1 / -1;">✅ (۴) ارتباط محل رادیوگرافی انجام شده با محل مورد نظر برای ایمپلنت</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> نقاط سفیدِ شابلون، <b>مانند GPS</b> عمل می‌کنند تا نرم‌افزار بفهمد شابلون پلاستیکی (دندان آینده) دقیقاً کجای استخوان سه‌بعدی قرار دارد (Match کردن فضاها).</div>
+        </div>
+    </div>
+
+    <!-- Q19 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q19</span>معایب تکنیکهای داخل دهانی (مثل PA)؟</div>
+        <div class="opt-grid">
+            <div class="opt opt-t">✅ (1) coverage</div><div class="opt">(۲) بررسی دندان مجاور</div>
+            <div class="opt">(۳) قدرت وضوح</div><div class="opt">(۴) دسترسی به تکنیک</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> سنسور بسیار کوچک است ➡️ <b><span class="h-trp">Coverage (میدان دید) کم است</span></b> (کل مسیر عصب را یکجا نشان نمی‌دهد).</div>
+            <div class="a-trap"><b>[TRAP]</b> وضوح (Resolution) بالا نقطه قوتِ PA است، نه عیب آن!</div>
+        </div>
+    </div>
+
+    <!-- Q20 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q20</span>چه مقدار تحلیل استخوان آلوئول طبیعی است؟</div>
+        <div class="opt-grid">
+            <div class="opt opt-t" style="grid-column: 1 / -1;">✅ (۱) سال اول 1.2mm و سالهای بعد 0.1mm در سال</div>
+            <div class="opt">(۲) 0.5mm هر سال</div><div class="opt">(۳) 3mm و 1mm</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> معیار Albrektsson: سال اول تحلیل تند است (ایجاد حریم بیولوژیک) ➡️ تا <span class="h-num">1.2mm</span>. سال‌های بعد تثبیت ➡️ حداکثر <span class="h-num">0.1mm</span> در سال.</div>
+        </div>
+    </div>
+
+    <!-- Q21 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q21</span>تفاوت ایمپلنت tissue integrated با bone level؟</div>
+        <div class="opt-grid">
+            <div class="opt opt-t" style="grid-column: 1 / -1;">✅ (۱) در صاف یا پیچ دار بودن قسمت کرونال ایمپلنت</div>
+            <div class="opt">(۲) نوع اتصال اباتمنت</div><div class="opt">(۳) میزان ناصافی سطح</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> Bone Level تا بالا زبر است. Tissue Level یقه آن بیرون استخوان و داخل لثه است ➡️ پس قسمت کرونال (یقه) باید <b><span class="h-con">کاملاً صاف و صیقلی</span></b> باشد تا پلاک نگیرد.</div>
+        </div>
+    </div>
+
+    <!-- Q22 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q22</span>کدام ماده ایجاد osseointegration بیشتری می کند؟</div>
+        <div class="opt-grid">
+            <div class="opt">(1) carbone</div><div class="opt">(2) alumin</div>
+            <div class="opt">(3) hydroxyapatite</div><div class="opt opt-t">✅ (4) titanium</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> <b><span class="h-mat">تیتانیوم</span></b> در تماس با بدن فوراً لایه TiO2 (دی‌اکسید تیتانیوم) می‌سازد. سلول‌ها آن را پس نمی‌زنند و مستقیماً به آن جوش می‌خورند.</div>
+            <div class="a-trap"><b>[TRAP]</b> هیدروکسی آپاتیت (HA) استخوان‌ساز است اما در درازمدت از روی فلز <span class="h-trp">کنده می‌شود (Delamination)</span>.</div>
+        </div>
+    </div>
+
+    <!-- Q23 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q23</span>تصویر رادیوگرافی این قطعه چیست؟ (تیغه داخل استخوان)</div>
+        <div class="opt-grid">
+            <div class="opt">(1) Transosteal</div><div class="opt">(۲) Subperiosteal</div>
+            <div class="opt opt-t">✅ (3) Endosteal - blade</div><div class="opt">(۴) Endosteal pins</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> دهه ۷۰: ورقه‌های <b><span class="h-mat">تیغه‌ای (Blade)</span></b> که با چکش <b>داخل استخوان (Endosteal)</b> کوبیده می‌شدند. (امروزه منسوخ است).</div>
+        </div>
+    </div>
+
+    <!-- Q24 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q24</span>ایجاد roughness از طریق subtractive (کاهنده)؟</div>
+        <div class="opt-grid">
+            <div class="opt">(1) biocoating</div><div class="opt opt-t">✅ (۲) Acid etching</div>
+            <div class="opt">(3) Plasma spray</div><div class="opt">(4) unization</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> Subtractive یعنی برداشتن. <b><span class="h-mat">اسید شویی (Acid Etching)</span></b> اسید فلز را می‌خورد و متخلخل می‌کند.</div>
+            <div class="a-trap"><b>[TRAP]</b> اسپری پلاسما و کوتینگ، روش‌های Additive (افزاینده) هستند.</div>
+        </div>
+    </div>
+
+    <!-- Q25 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q25</span>شاخههای شریانی آناستوموز خارج استخوانی سینوس <span class="h-trp">به جز</span>:</div>
+        <div class="opt-grid">
+            <div class="opt">(۱) post lat nasal</div><div class="opt">(۲) PSA</div>
+            <div class="opt opt-t">✅ (۳) ant lat nasal</div><div class="opt">(۴) اینفرا اربیتال</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> حلقه خونی سینوس = <b><span class="h-ana">PSA + اینفرااوربیتال + نازال لترال خلفی (Post)</span></b>. شریان <span class="h-trp">قدامی (Ant)</span> در این شبکه حضور ندارد.</div>
+        </div>
+    </div>
+
+    <!-- Q26 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q26</span>حداقل فاصله اپکس با کف سینوس، و ایمپلنت با دندان مجاور؟</div>
+        <div class="opt-grid">
+            <div class="opt">(1) 2-2</div><div class="opt opt-t">✅ (2) 1.5-1.5 mm</div>
+            <div class="opt">(3) 1.5-2</div><div class="opt">(4) 2-1.5</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> قانون طلایی ایمنی: <b><span class="h-num">1.5mm</span></b>. 1.5 تا ریشه (حفظ PDL). 1.5 تا سینوس (جلوگیری از پارگی غشا).</div>
+        </div>
+    </div>
+
+    <!-- Q27 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q27</span>کام با ارتفاع متوسط (FGG) -> فاصله گریتر پالاتین تا لبه لثه؟</div>
+        <div class="opt-grid">
+            <div class="opt">(1) 14</div><div class="opt opt-t">✅ (۲) 12 mm</div>
+            <div class="opt">(3) 17</div><div class="opt">(4) 7</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> کام کم‌عمق=7mm. <b>کام متوسط=<span class="h-num">12mm</span></b>. کام عمیق=17mm. (برش پیوند لثه نباید از 12mm بالاتر رود).</div>
+        </div>
+    </div>
+
+    <!-- Q28 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q28</span>شریان‌های خونرسانی ماگزیلا نقش دارند <span class="h-trp">به جز</span>:</div>
+        <div class="opt-grid">
+            <div class="opt opt-t">✅ (۱) شریان کاروتید داخلی</div><div class="opt">(۲) لینگوال</div>
+            <div class="opt">(۳) کاروتید خارجی</div><div class="opt">(۴) فاسیال</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> <span class="h-ana">کاروتید خارجی</span> به کل فک/صورت خون می‌دهد. <b><span class="h-ana">کاروتید داخلی</span></b> مستقیماً وارد جمجمه شده و <b>فقط به مغز خون می‌دهد!</b></div>
+        </div>
+    </div>
+
+    <!-- Q29 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q29</span>سیگار کشیدن -> کدام صحیح است؟</div>
+        <div class="opt-grid">
+            <div class="opt" style="grid-column: 1 / -1;">(1) قطع سیگار از یک هفته قبل ضروری است</div>
+            <div class="opt opt-t" style="grid-column: 1 / -1;">✅ (۲) مي توان با کاهش میزان سیگار درمان را انجام داد.</div>
+            <div class="opt" style="grid-column: 1 / -1;">(۳) سیگار عدم تجویز مطلق محسوب می گردد</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> سیگار کشیدن <b><span class="h-con">ممنوعیت نسبی</span></b> است. با اخذ تعهد برای کاهش شدید مصرف، جراحی موفقیت‌آمیز است. (ممنوعیت مطلق نیست).</div>
+        </div>
+    </div>
+
+    <!-- Q30 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q30</span>اندیکاسیون قرار دادن ایمپلنت -> کدام صحیح است؟</div>
+        <div class="opt-grid">
+            <div class="opt opt-t" style="grid-column: 1 / -1;">✅ (۱) در افراد زیر سن 18 سال بهتر است انجام نشود</div>
+            <div class="opt" style="grid-column: 1 / -1;">(۲) سایکوز / (۳) دیابت کنترل نشده / (۴) بیس فوسفونات تزريقي</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> فک <span class="h-num">زیر 18 سال</span> در حال رشد است. ایمپلنت (چون PDL ندارد) ثابت می‌ماند و نسبت به دندان‌ها <b><span class="h-trp">غرق می‌شود (Infraocclusion)</span></b>.</div>
+            <div class="a-trap"><b>[TRAP]</b> بیس‌فسفونات تزریقی (سرطان) شدیدترین ممنوعیت است (نکروز استخوان).</div>
+        </div>
+    </div>
+
+    <!-- Q31 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q31</span>کدامیک جزو اندیکاسیونهای (موارد مجاز) ایمپلنت است؟</div>
+        <div class="opt-grid">
+            <div class="opt">(1) bleeding disorders</div><div class="opt">(۲) substance misuse</div>
+            <div class="opt opt-t">✅ (3) dentinogenesis imperfecta</div><div class="opt">(4) bone disorders</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> بیماری <b><span class="h-ana">Dentinogenesis Imperfecta</span></b> فقط عاج دندان را پودر می‌کند اما <b><span class="h-con">استخوان فک 100% سالم است.</span></b> بهترین تجویز است.</div>
+        </div>
+    </div>
+
+    <!-- Q32 -->
+    <div class="q-container">
+        <div class="q-head"><span class="q-id">Q32</span>طرح درمان مناسب برای بیمار کاملاً بی‌دندان؟</div>
+        <div class="opt-grid">
+            <div class="opt">(۱) ثابت پایین / متحرک بالا</div>
+            <div class="opt opt-t">✅ (۲) اوردنچر پایین / متحرک بالا</div>
+            <div class="opt">(۳) ثابت بالا / متحرک پایین</div>
+            <div class="opt">(۴) اوردنچر بالا / متحرک پایین</div>
+        </div>
+        <div class="analysis-grid">
+            <div class="a-logic"><b>[LOGIC]</b> استاندارد مک‌گیل: دندان متحرک فک بالا به سقف کام می‌چسبد (گیر عالی). فک پایین به خاطر زبان لق می‌زند ➡️ <b><span class="h-con">اوردنچر (قفل‌شونده) روی 2 ایمپلنت</span></b>.</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 16px; padding: 12px; background: #fff; color: #000; font-weight: 900; text-align: center; font-size: 11px; letter-spacing: 1px;">
+        100% DATA EXTRACTED // ZERO REDUNDANCY // EXAM READY
+    </div>
+
+</body>
+</html>
